@@ -150,5 +150,14 @@ public class GuiAluno implements Serializable {
         this.cursos = cursos;
     }
     
+        public Curso getCursoSelecionado() {
+        for (Curso c: cursos) {
+            if (c.getNomeCurso().equals(campoCursoNome)) {
+                return c;
+            }
+        }
+        return null;
+    }
+    
     
 }

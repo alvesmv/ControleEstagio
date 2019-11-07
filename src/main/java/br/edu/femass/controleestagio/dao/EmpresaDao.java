@@ -49,10 +49,4 @@ public class EmpresaDao {
         Query q = em.createQuery("select e from Empresa e order by e.nomeEmpresa");
         return q.getResultList();
     }
-
-    public Empresa getEmpresaByString(String nomeEmpresa) {
-        Query q = em.createQuery("select e from Empresa e where e.nomeEmpresa = :nEmpresa");
-        q.setParameter("nEmpresa", nomeEmpresa);
-        return (Empresa) q.getSingleResult();
-    }
 }

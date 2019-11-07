@@ -106,9 +106,9 @@ public class GuiEstagio implements Serializable {
 
     public String gravar() {
 
-        estagio.setAlunoEstagio(alunoDao.getAlunoByString(campoNomeAluno));
+        estagio.setAlunoEstagio(getAlunoSelecionado());
         estagio.setEmpresaEstagio(getEmpresaSelecionada());
-        estagio.setOrientadorEstagio(orientadorDao.getOrientadorByString(campoNomeOrientador));
+        estagio.setOrientadorEstagio(getOrientadorSelecionado());
         
         if (alterando) {
             daoEstagio.alterar(estagio);
@@ -250,4 +250,24 @@ public class GuiEstagio implements Serializable {
         }
         return null;
     }
+    
+    public Aluno getAlunoSelecionado() {
+        for (Aluno a: alunos) {
+            if (a.getNome().equals(campoNomeAluno)) {
+                return a;
+            }
+        }
+        return null;
+    }
+    
+    public Orientador getOrientadorSelecionado() {
+        for (Orientador o: orientadores) {
+            if (o.getNomeOrientador().equals(campoNomeOrientador)) {
+                return o;
+            }
+        }
+        return null;
+    }
+    
+    
 }

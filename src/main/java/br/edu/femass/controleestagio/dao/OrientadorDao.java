@@ -48,10 +48,4 @@ public class OrientadorDao {
         Query q = em.createQuery("select o.nomeOrientador from Orientador o order by o.nomeOrientador");
        return q.getResultList(); 
     }
-    
-    public Orientador getOrientadorByString(String nomeOrientador) {
-        Query q = em.createQuery("select o from Orientador o where o.nomeOrientador = :nOrientador");
-        q.setParameter("nOrientador", nomeOrientador);
-        return (Orientador) q.getSingleResult();
-    }
 }
