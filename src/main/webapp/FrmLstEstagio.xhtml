@@ -40,9 +40,11 @@
         </h:form>
         
         <h:form>
-
-            <p:dataTable style="margin-top:5%; justify-content: center; align-items: center; display: flex;" var="est" value="#{guiEstagio.estagios}">
-            
+                 <p:dataTable var="est" value="#{guiEstagio.estagios}" rows="10"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="10">
+  
                 <p:column headerText="Aluno" filterBy="#{est.alunoEstagio}" filterMatchMode="contains">
                     <h:outputText value="#{est.alunoEstagio}" />
                 </p:column>
