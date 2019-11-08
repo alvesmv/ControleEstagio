@@ -49,6 +49,14 @@ and open the template in the editor.
         <div style="margin-top:5%; justify-content: center; align-items: center; display: flex; border-radius: 6px; border-color: #2694e8">
         
             <h:form>
+            
+            <p:dataTable style="margin-top:5%; justify-content: center; align-items: center; display: flex;" var="est" value="#{guiAluno.aluno}">
+            
+                <p:column headerText="Aluno" filterBy="#{est}" filterMatchMode="contains">
+                    <h:outputText value="#{guiAluno.aluno.nome}" />
+                </p:column>
+                
+                
             <h:panelGrid columns="2">
                 <p:outputLabel value="Nome" />
                 <p:inputText value="#{guiAluno.aluno.nome}" />

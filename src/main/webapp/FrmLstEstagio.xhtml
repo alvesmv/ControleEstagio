@@ -40,9 +40,9 @@
         </h:form>
         
         <h:form>
-            
+
             <p:dataTable style="margin-top:5%; justify-content: center; align-items: center; display: flex;" var="est" value="#{guiEstagio.estagios}">
-                
+            
                 <p:column headerText="Aluno" filterBy="#{est.alunoEstagio}" filterMatchMode="contains">
                     <h:outputText value="#{est.alunoEstagio}" />
                 </p:column>

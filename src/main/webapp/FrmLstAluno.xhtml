@@ -47,9 +47,11 @@ and open the template in the editor.
         <h:form>
             
             <p:dataTable style="margin-top:5%; justify-content: center; align-items: center; display: flex;" var="alu" value="#{guiAluno.alunos}">
-                <p:column headerText="Nome">
+                
+                <p:column headerText="Nome" filterBy="##{alu.nome}" filterMatchMode="contains">
                     <h:outputText value="#{alu.nome}" />
                 </p:column>
+                
                 <p:column headerText="Matricula">
                     <h:outputText value="#{alu.matricula}" />
                 </p:column>

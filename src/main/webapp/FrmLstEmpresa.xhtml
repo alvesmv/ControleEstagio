@@ -45,10 +45,12 @@ and open the template in the editor.
         
         <h:form>
             
-             <p:dataTable style="margin-top:5%; justify-content: center; align-items: center; display: flex;" var="emp" value="#{guiEmpresa.empresas}">
-            <p:column headerText="Nome">
+         <p:dataTable style="margin-top:5%; justify-content: center; align-items: center; display: flex;" var="emp" value="#{guiEmpresa.empresas}">
+             
+            <p:column headerText="Nome" filterBy="#{emp.nomeEmpresa}" filterMatchMode="contains">
                 <h:outputText value="#{emp.nomeEmpresa}" />
             </p:column>
+          
             <p:column headerText="CPF">
                 <h:outputText value="#{emp.cnpj}" />
             </p:column>
