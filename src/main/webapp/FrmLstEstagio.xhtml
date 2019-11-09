@@ -43,8 +43,8 @@
                  <p:dataTable var="est" value="#{guiEstagio.estagios}" rows="10"
                  paginator="true"
                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                 rowsPerPageTemplate="10">
-  
+                 rowsPerPageTemplate="10,20,30">
+                
                 <p:column headerText="Aluno" filterBy="#{est.alunoEstagio}" filterMatchMode="contains">
                     <h:outputText value="#{est.alunoEstagio}" />
                 </p:column>
