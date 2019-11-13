@@ -35,7 +35,7 @@ and open the template in the editor.
         </style>
         <h:form>
             <p:tabMenu style="justify-content: center; align-items: center; display: flex">
-                <p:menuitem style="text-align: center;" class="item" value="Aluno" action="#{guiAluno.iniciar()}" ajax="false" />
+                <p:menuitem class="item" value="Aluno" action="#{guiAluno.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Estágio" action="#{guiEstagio.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Empresa" action="#{guiEmpresa.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Curso" action="#{guiCurso.iniciar()}" ajax="false" />
@@ -49,31 +49,23 @@ and open the template in the editor.
         <div style="margin-top:5%; justify-content: center; align-items: center; display: flex; border-radius: 6px; border-color: #2694e8">
         
             <h:form>
-            
-            <p:dataTable style="margin-top:5%; justify-content: center; align-items: center; display: flex;" var="est" value="#{guiAluno.aluno}">
-            
-                <p:column headerText="Aluno" filterBy="#{est}" filterMatchMode="contains">
-                    <h:outputText value="#{guiAluno.aluno.nome}" />
-                </p:column>
-                
-                
-            <h:panelGrid columns="2">
-                <p:outputLabel value="Nome" />
-                <p:inputText value="#{guiAluno.aluno.nome}" />
-                <p:outputLabel value="Matricula" />
-                <p:inputText value="#{guiAluno.aluno.matricula}" />
-                <p:outputLabel value="Curso" />
-                <p:selectOneMenu value="#{guiAluno.campoCursoNome}" dynamic="true" style="width:200px">
-                    <f:selectItem itemLabel="Selecione o Curso" itemValue="" />
-                    <f:selectItems value="#{guiAluno.listaDeCursos}" />
-                </p:selectOneMenu>
-            </h:panelGrid>
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Nome" />
+                    <p:inputText value="#{guiAluno.aluno.nome}" />
+                    <p:outputLabel value="Matricula" />
+                    <p:inputText value="#{guiAluno.aluno.matricula}" />
+                    <p:outputLabel value="Curso" />
+                    <p:selectOneMenu value="#{guiAluno.campoCursoNome}" dynamic="true" style="width:200px">
+                        <f:selectItem itemLabel="Selecione o Curso" itemValue="" />
+                        <f:selectItems value="#{guiAluno.listaDeCursos}" />
+                    </p:selectOneMenu>
+                </h:panelGrid>
             
             
-            <div style="margin-top:5%; justify-content: center; align-items: center; display: flex">
-            <p:commandButton value="Gravar" action="#{guiAluno.gravar()}" ajax="false" />
-            <p:commandButton value="Voltar" action="#{guiAluno.voltar()}" ajax="false" />
-            </div>
+                <div style="margin-top:5%; justify-content: center; align-items: center; display: flex">
+                    <p:commandButton value="Gravar" action="#{guiAluno.gravar()}" ajax="false" />
+                    <p:commandButton value="Voltar" action="#{guiAluno.voltar()}" ajax="false" />
+                </div>
             
         </h:form>
         </div>  
