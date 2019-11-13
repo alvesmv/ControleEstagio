@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Cadastro de Curso</title>
         <link type="text/css" rel="stylesheet"
@@ -15,8 +16,9 @@ and open the template in the editor.
     </h:head>
     <h:body>
         
-        <div style="font-size:34px; font-family:monospace ;margin-top: 4%; margin-bottom:2%; text-align: center;">CONTROLE DE ESTÁGIO</div>    
-        
+        <div style="font-size:34px; font-family:monospace ;margin-top: 4%; margin-bottom:2%; text-align: center;">
+            CONTROLE DE ESTÁGIO
+        </div>    
         <style>
             body{
                 
@@ -35,18 +37,30 @@ and open the template in the editor.
         </style>
         <h:form>
             <p:tabMenu style="justify-content: center; align-items: center; display: flex">
-                <p:menuitem style="text-align: center;" class="item" value="Aluno" action="#{guiAluno.iniciar()}" ajax="false" />
+                <p:menuitem style="display:none;"/>
+                <p:menuitem class="item" value="Aluno" action="#{guiAluno.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Estágio" action="#{guiEstagio.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Empresa" action="#{guiEmpresa.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Curso" action="#{guiCurso.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Orientador" action="#{guiOrientador.iniciar()}" ajax="false" />
             </p:tabMenu>
         </h:form>
-        
+        <div style="font-size:25px; font-family:monospace ;margin-top: 2%; margin-bottom:2%; text-align: center;">
+            LISTA DE CURSOS
+        </div>
         <h:form>
             
-            <p:dataTable style="margin-top:5%; justify-content: center; align-items: center; display: flex;" var="cur" value="#{guiCurso.cursos}">
-                <p:column headerText="Nome do curso">
+            <p:dataTable style="margin-top:2%; justify-content: center; align-items: center;"
+                         var="cur" value="#{guiCurso.cursos}" widgetVar="cursoFiltro">
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Pesquisar:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('cursoFiltro').filter()"
+                                     style="width:150px" placeholder="Palavra-Chave"/>
+                    </p:outputPanel>
+                </f:facet>
+                <p:column headerText="Nome do curso" filterBy="#{cur.nomeCurso}" filterMatchMode="contains" 
+                          filterStyle="display:none;">
                     <h:outputText value="#{cur.nomeCurso}" />
                 </p:column>
                 <p:column >

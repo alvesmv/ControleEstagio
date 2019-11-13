@@ -29,7 +29,8 @@
         </style>
         <h:form>
             <p:tabMenu style="justify-content: center; align-items: center; display: flex">
-                <p:menuitem style="text-align: center;" class="item" value="Aluno" action="#{guiAluno.iniciar()}" ajax="false" />
+                <p:menuitem style="display:none;"/>
+                <p:menuitem class="item" value="Aluno" action="#{guiAluno.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Estágio" action="#{guiEstagio.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Empresa" action="#{guiEmpresa.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Curso" action="#{guiCurso.iniciar()}" ajax="false" />

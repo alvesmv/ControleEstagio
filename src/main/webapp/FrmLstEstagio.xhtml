@@ -11,8 +11,9 @@
     </h:head>
     <h:body>
         
-        <div style="font-size:34px; font-family:monospace ;margin-top: 4%; margin-bottom:2%; text-align: center;">CONTROLE DE ESTÁGIO</div>    
-        
+        <div style="font-size:34px; font-family:monospace ;margin-top: 4%; margin-bottom:2%; text-align: center;">
+            CONTROLE DE ESTÁGIO
+        </div>    
         <style>
             body{
                 
@@ -31,27 +32,42 @@
         </style>
         <h:form>
             <p:tabMenu style="justify-content: center; align-items: center; display: flex">
-                <p:menuitem style="text-align: center;" class="item" value="Aluno" action="#{guiAluno.iniciar()}" ajax="false" />
+                <p:menuitem style="display:none;"/>
+                <p:menuitem class="item" value="Aluno" action="#{guiAluno.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Estágio" action="#{guiEstagio.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Empresa" action="#{guiEmpresa.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Curso" action="#{guiCurso.iniciar()}" ajax="false" />
                 <p:menuitem class="item" value="Orientador" action="#{guiOrientador.iniciar()}" ajax="false" />
             </p:tabMenu>
         </h:form>
-        
+        <div style="font-size:25px; font-family:monospace ;margin-top: 2%; margin-bottom:2%; text-align: center;">
+            LISTA DE ESTAGIOS
+        </div>
         <h:form>
-                 <p:dataTable var="est" value="#{guiEstagio.estagios}" rows="10"
-                 paginator="true"
-                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                 rowsPerPageTemplate="10,20,30">
+                 <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
+                              rows="10"
+                              paginator="true"
+                              paginatorTemplate="{CurrentPageReport} {FirstPageLink}
+                                                 {PreviousPageLink} {PageLinks} {NextPageLink}
+                                                 {LastPageLink} {RowsPerPageDropdown}"
+                              rowsPerPageTemplate="10,20,30"
+                              var="est"
+                              widgetVar="estagioFiltro"
+                              value="#{guiEstagio.estagios}">
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Pesquisar:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('estagioFiltro').filter()" style="width:150px" placeholder="Palavra-Chave"/>
+                    </p:outputPanel>
+                </f:facet>
                 
-                <p:column headerText="Aluno" filterBy="#{est.alunoEstagio}" filterMatchMode="contains">
+                <p:column headerText="Aluno" filterBy="#{est.alunoEstagio}" filterMatchMode="contains" filterStyle="display:none;">
                     <h:outputText value="#{est.alunoEstagio}" />
                 </p:column>
-                <p:column headerText="Orientador">
-                    <h:outputText value="#{est.orientadorEstagio}" />
+                <p:column headerText="Orientador" filterBy="#{est.orientadorEstagio}" filterMatchMode="contains" filterStyle="display:none;">
+                    <h:outputText value="#{est.orientadorEstagio}"  />
                 </p:column>
-                <p:column headerText="Empresa">
+                <p:column headerText="Empresa" filterBy="#{est.empresaEstagio}" filterMatchMode="contains" filterStyle="display:none;">
                     <h:outputText value="#{est.empresaEstagio}" />
                 </p:column>
                 <p:column headerText="Data inicio">
