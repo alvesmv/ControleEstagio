@@ -15,13 +15,13 @@ and open the template in the editor.
               href="jquery-ui.theme.css"></link>
     </h:head>
     <h:body>
-        
+
         <div style="font-size:34px; font-family:monospace ;margin-top: 4%; margin-bottom:2%; text-align: center;">
             CONTROLE DE ESTÁGIO
         </div>     
         <style>
             body{
-                
+
                 background-color: white;
             }
             #item{
@@ -32,7 +32,7 @@ and open the template in the editor.
             } 
             h:form{  
                 background-color: #3333ff;
-                
+
             }
         </style>
         <h:form>
@@ -49,13 +49,13 @@ and open the template in the editor.
             LISTA DE ALUNOS
         </div>   
         <h:form>
-            
+
             <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
                          rows="10"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink}
-                                            {PreviousPageLink} {PageLinks} {NextPageLink}
-                                            {LastPageLink} {RowsPerPageDropdown}"
+                         {PreviousPageLink} {PageLinks} {NextPageLink}
+                         {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="10,20,30"
                          var="alu" value="#{guiAluno.alunos}" widgetVar="alunoFiltro">
                 <f:facet name="header">
@@ -67,25 +67,51 @@ and open the template in the editor.
                 <p:column headerText="Nome" filterBy="#{alu.nome}" filterMatchMode="contains" filterStyle="display:none;">
                     <h:outputText value="#{alu.nome}" />
                 </p:column>
-                
                 <p:column headerText="Matricula" filterBy="#{alu.matricula}" filterMatchMode="contains" filterStyle="display:none;">
                     <h:outputText value="#{alu.matricula}" />
                 </p:column>
                 <p:column headerText="Curso" filterBy="#{alu.curso}" filterMatchMode="contains" filterStyle="display:none;">
                     <h:outputText value="#{alu.curso.nomeCurso}" />
                 </p:column>
+                <p:column headerText="E-mail" filterBy="#{alu.email}" filterMatchMode="contains" filterStyle="display:none;">
+                    <h:outputText value="#{alu.email}" />
+                </p:column>
+                <p:column headerText="Telefone" filterBy="#{alu.telefone}" filterMatchMode="contains" filterStyle="display:none;">
+                    <h:outputText value="#{alu.telefone}" />
+                </p:column>
+                <p:column headerText="Celular" filterBy="#{alu.celular}" filterMatchMode="contains" filterStyle="display:none;">
+                    <h:outputText value="#{alu.celular}" />
+                </p:column>
+                <p:column headerText="Logradouro" filterBy="#{alu.logradouro}" filterMatchMode="contains" filterStyle="display:none;">
+                    <h:outputText value="#{alu.logradouro}" />
+                </p:column>
+                <p:column headerText="Número" filterBy="#{alu.numero}" filterMatchMode="contains" filterStyle="display:none;">
+                    <h:outputText value="#{alu.numero}" />
+                </p:column>
+                <p:column headerText="Complemento" filterBy="#{alu.complemento}" filterMatchMode="contains" filterStyle="display:none;">
+                    <h:outputText value="#{alu.complemento}" />
+                </p:column>
+                <p:column headerText="Bairro" filterBy="#{alu.bairro}" filterMatchMode="contains" filterStyle="display:none;">
+                    <h:outputText value="#{alu.bairro}" />
+                </p:column>
+                <p:column headerText="Cidade" filterBy="#{alu.cidade}" filterMatchMode="contains" filterStyle="display:none;">
+                    <h:outputText value="#{alu.cidade}" />
+                </p:column>
+                <p:column headerText="CEP" filterBy="#{alu.cep}" filterMatchMode="contains" filterStyle="display:none;">
+                    <h:outputText value="#{alu.cep}" />
+                </p:column>                
                 <p:column >
                     <p:commandButton value="Alterar" action="#{guiAluno.alterar()}" ajax="false" />
                     <p:commandButton value="Excluir" action="#{guiAluno.excluir(alu)}" ajax="false" />
                 </p:column>
             </p:dataTable>
-            
+
             <div style="margin-top:3%; justify-content: center; align-items: center; display: flex;">
-            <p:commandButton value="Menu Principal" action="#{guiAluno.voltarMenuPrincipal()}" ajax="false" />
-            <p:commandButton value="Incluir" action="#{guiAluno.incluir()}" ajax="false" />
+                <p:commandButton value="Menu Principal" action="#{guiAluno.voltarMenuPrincipal()}" ajax="false" />
+                <p:commandButton value="Incluir" action="#{guiAluno.incluir()}" ajax="false" />
             </div>
-            
+
         </h:form>
-           
+
     </h:body>
 </html>

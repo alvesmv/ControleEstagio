@@ -10,13 +10,13 @@
               href="jquery-ui.theme.css"></link>
     </h:head>
     <h:body>
-        
+
         <div style="font-size:34px; font-family:monospace ;margin-top: 4%; margin-bottom:2%; text-align: center;">
             CONTROLE DE ESTÁGIO
         </div>    
         <style>
             body{
-                
+
                 background-color: white;
             }
             #item{
@@ -27,7 +27,7 @@
             } 
             h:form{  
                 background-color: #3333ff;
-                
+
             }
         </style>
         <h:form>
@@ -44,23 +44,23 @@
             LISTA DE ESTAGIOS
         </div>
         <h:form>
-                 <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
-                              rows="10"
-                              paginator="true"
-                              paginatorTemplate="{CurrentPageReport} {FirstPageLink}
-                                                 {PreviousPageLink} {PageLinks} {NextPageLink}
-                                                 {LastPageLink} {RowsPerPageDropdown}"
-                              rowsPerPageTemplate="10,20,30"
-                              var="est"
-                              widgetVar="estagioFiltro"
-                              value="#{guiEstagio.estagios}">
+            <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink}
+                         {PreviousPageLink} {PageLinks} {NextPageLink}
+                         {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="10,20,30"
+                         var="est"
+                         widgetVar="estagioFiltro"
+                         value="#{guiEstagio.estagios}">
                 <f:facet name="header">
                     <p:outputPanel>
                         <h:outputText value="Pesquisar:" />
                         <p:inputText id="globalFilter" onkeyup="PF('estagioFiltro').filter()" style="width:150px" placeholder="Palavra-Chave"/>
                     </p:outputPanel>
                 </f:facet>
-                
+
                 <p:column headerText="Aluno" filterBy="#{est.alunoEstagio}" filterMatchMode="contains" filterStyle="display:none;">
                     <h:outputText value="#{est.alunoEstagio}" />
                 </p:column>
@@ -69,6 +69,12 @@
                 </p:column>
                 <p:column headerText="Empresa" filterBy="#{est.empresaEstagio}" filterMatchMode="contains" filterStyle="display:none;">
                     <h:outputText value="#{est.empresaEstagio}" />
+                </p:column>
+                <p:column headerText="Supervisor">
+                    <h:outputText value="#{est.nomeSupervisor}" />
+                </p:column>
+                <p:column headerText="Contato do Supervisor">
+                    <h:outputText value="#{est.contatoSupervisor}" />
                 </p:column>
                 <p:column headerText="Data inicio">
                     <h:outputText value="#{est.dataInicioEstagio}" />
@@ -87,12 +93,12 @@
                     <p:commandButton value="Excluir" action="#{guiEstagio.excluir(est)}" ajax="false" />
                 </p:column>
             </p:dataTable>
-            
+
             <div style="margin-top:3%; justify-content: center; align-items: center; display: flex;">
-            <p:commandButton value="Menu Principal" action="#{guiEstagio.voltarMenuPrincipal()}" ajax="false" />
-            <p:commandButton value="Incluir" action="#{guiEstagio.incluir()}" ajax="false" />
+                <p:commandButton value="Menu Principal" action="#{guiEstagio.voltarMenuPrincipal()}" ajax="false" />
+                <p:commandButton value="Incluir" action="#{guiEstagio.incluir()}" ajax="false" />
             </div>
-            
+
         </h:form>
 
     </h:body>
