@@ -31,6 +31,8 @@ public class Estagio implements Serializable{
     private Date dataInicioEstagio;
     private Date datafimEstagio;
     private Status statusDoEstagio;
+    private String nomeSupervisor;
+    private String contatoSupervisor;
 
     public String getId() {
         return id;
@@ -118,6 +120,34 @@ public class Estagio implements Serializable{
     @Override
     public String toString() {
         return id;
+    }
+
+    /**
+     * @return the nomeSupervisor
+     */
+    public String getNomeSupervisor() {
+        return nomeSupervisor;
+    }
+
+    /**
+     * @param nomeSupervisor the nomeSupervisor to set
+     */
+    public void setNomeSupervisor(String nomeSupervisor) {
+        this.nomeSupervisor = nomeSupervisor;
+    }
+
+    /**
+     * @return the contatoSupervisor
+     */
+    public String getContatoSupervisor() {
+        return contatoSupervisor;
+    }
+
+    /**
+     * @param contatoSupervisor the contatoSupervisor to set
+     */
+    public void setContatoSupervisor(String contatoSupervisor) {
+        this.contatoSupervisor = contatoSupervisor;
     }
 
     

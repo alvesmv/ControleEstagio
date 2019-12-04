@@ -16,10 +16,10 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <div style="font-size:34px; font-family:monospace ;margin-top: 4%; margin-bottom:2%; text-align: center;">CONTROLE DE ESTÁGIO</div>    
-        
+
         <style>
             body{
-                
+
                 background-color: white;
             }
             #item{
@@ -30,7 +30,7 @@ and open the template in the editor.
             } 
             h:form{  
                 background-color: #3333ff;
-                
+
             }
         </style>
         <h:form>
@@ -42,12 +42,12 @@ and open the template in the editor.
                 <p:menuitem class="item" value="Orientador" action="#{guiOrientador.iniciar()}" ajax="false" />
             </p:tabMenu>
         </h:form>
-        
-        
-          
-        
+
+
+
+
         <div style="margin-top:5%; justify-content: center; align-items: center; display: flex; border-radius: 6px; border-color: #2694e8">
-        
+
             <h:form>
                 <h:panelGrid columns="2">
                     <p:outputLabel value="Nome" />
@@ -59,16 +59,34 @@ and open the template in the editor.
                         <f:selectItem itemLabel="Selecione o Curso" itemValue="" />
                         <f:selectItems value="#{guiAluno.listaDeCursos}" />
                     </p:selectOneMenu>
+                    <p:outputLabel value="E-mail" />
+                    <p:inputText value="#{guiAluno.aluno.email}" />
+                    <p:outputLabel value="Telefone" />
+                    <p:inputText value="#{guiAluno.aluno.telefone}" />
+                    <p:outputLabel value="Celular" />
+                    <p:inputText value="#{guiAluno.aluno.celular}" />
+                    <p:outputLabel value="Logradouro" />
+                    <p:inputText value="#{guiAluno.aluno.logradouro}" />
+                    <p:outputLabel value="Número" />
+                    <p:inputText value="#{guiAluno.aluno.numero}" />
+                    <p:outputLabel value="Complemento" />
+                    <p:inputText value="#{guiAluno.aluno.complemento}" />
+                    <p:outputLabel value="Bairro" />
+                    <p:inputText value="#{guiAluno.aluno.bairro}" />
+                    <p:outputLabel value="Cidade" />
+                    <p:inputText value="#{guiAluno.aluno.cidade}" />
+                    <p:outputLabel value="CEP" />
+                    <p:inputText value="#{guiAluno.aluno.cep}" />
                 </h:panelGrid>
-            
-            
+
+
                 <div style="margin-top:5%; justify-content: center; align-items: center; display: flex">
                     <p:commandButton value="Gravar" action="#{guiAluno.gravar()}" ajax="false" />
                     <p:commandButton value="Voltar" action="#{guiAluno.voltar()}" ajax="false" />
                 </div>
-            
-        </h:form>
+
+            </h:form>
         </div>  
-            
+
     </h:body>
 </html>
