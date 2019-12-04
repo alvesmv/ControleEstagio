@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+        <link type="text/css" rel="stylesheet"
+              href="jquery-ui.theme.css"></link>
+    </h:head>
+        <h:body>
+        <div style="font-size:34px; font-family:monospace ;margin-top: 4%; margin-bottom:2%; text-align: center;">CONTROLE DE ESTÁGIO</div>    
+        
+        <style>
+            body{
+                
+                background-color: white;
+            }
+            #item{
+                width: 20%;
+                padding:3px;
+                align-content: center;
+                color: white;
+            } 
+            h:form{  
+                background-color: #3333ff;
+                
+            }
+        </style>      
+        <div style="margin-top:5%; justify-content: center; align-items: center; display: flex; border-radius: 6px; border-color: #2694e8">
+        
+            <h:form>
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Login" />
+                    <p:inputText value="#{guiLogin.login}" />
+                    <p:outputLabel value="Senha" />
+                    <p:inputText value="#{guiLogin.senha}" />
+                </h:panelGrid>
+                <p:selectOneRadio value="#{guiLogin.tipoUsuario}" unselectable="true">
+                        <f:selectItem itemLabel="Aluno" itemValue="aluno" />
+                        <f:selectItem itemLabel="Coordenador" itemValue="coordenador" />
+                </p:selectOneRadio>
+            
+                <div style="margin-top:5%; justify-content: center; align-items: center; display:flex">
+                    <p:commandButton value="Entrar" action="#{guiLogin.entrar()}" ajax="false" />
+                </div>
+            
+            </h:form>
+        </div>  
+            
+    </h:body>
+</html>
