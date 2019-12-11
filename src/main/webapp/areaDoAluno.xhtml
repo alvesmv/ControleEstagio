@@ -7,6 +7,34 @@
         <title>Area do Aluno</title>
         <link type="text/css" rel="stylesheet"
               href="jquery-ui.theme.css"></link>
+        <script>
+            PrimeFaces.locales['pt_BR'] = {
+                closeText: 'Fechar',
+                prevText: 'Anterior',
+                nextText: 'Próximo',
+                currentText: 'Começo',
+                monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],
+                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+                dayNamesMin: ['D','S','T','Q','Q','S','S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Só Horas',
+                timeText: 'Tempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                ampm: false,
+                month: 'Mês',
+                week: 'Semana',
+                day: 'Dia',
+                allDayText : 'Todo Dia'
+            };
+        </script>
     </h:head>
     <h:body>
         <div style="font-size:34px; font-family:monospace ;margin-top: 4%; margin-bottom:2%; text-align: center;">ÁREA DO ALUNO</div>    
@@ -29,9 +57,9 @@
         <h:form>
             <p:tabMenu style="justify-content: center; align-items: center; display: flex">
                 <p:menuitem style="display:none;"/>
-                <p:menuitem class="item" value="Inicio" action=" " ajax="false" />
-                <p:menuitem class="item" value="Dados do Estagio" action=" " ajax="false" />
-                <p:menuitem class="item" value="Relatorios" action=" " ajax="false" />
+                <p:menuitem class="item" value="Inicio" action="#{guiAreaDoAluno.irAbaInicial()}" ajax="false" />
+                <p:menuitem class="item" value="Dados do Estagio" action="#{guiAreaDoAluno.irAbaDadosDoEstagio()}" ajax="false" />
+                <p:menuitem class="item" value="Relatorios" action="#{guiAreaDoAluno.irAbaRelatorios()}" ajax="false" />
             </p:tabMenu>
         </h:form>
         <div style="margin-left: 40%; margin-top: 10%;">

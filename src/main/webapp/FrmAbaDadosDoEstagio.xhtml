@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Dados do Estagio</title>
+        <link type="text/css" rel="stylesheet"
+              href="jquery-ui.theme.css"></link>
+    </h:head>
+    <h:body>
+        <div style="font-size:34px; font-family:monospace ;margin-top: 4%; margin-bottom:2%; text-align: center;">ÁREA DO ALUNO</div>    
+        <style>
+            body{
+                
+                background-color: white;
+            }
+            #item{
+                width: 20%;
+                padding:3px;
+                align-content: center;
+                color: white;
+            } 
+            h:form{  
+                background-color: #3333ff;
+                
+            }
+        </style>
+        <h:form>
+            <p:tabMenu style="justify-content: center; align-items: center; display: flex">
+                <p:menuitem style="display:none;"/>
+                <p:menuitem class="item" value="Inicio" action="#{guiAreaDoAluno.irAbaInicial()}" ajax="false" />
+                <p:menuitem class="item" value="Dados do Estagio" action="#{guiAreaDoAluno.irAbaDadosDoEstagio()}" ajax="false" />
+                <p:menuitem class="item" value="Relatorios" action="#{guiAreaDoAluno.irAbaRelatorios()}" ajax="false" />
+            </p:tabMenu>
+        </h:form>
+    </h:body>
+</html>
+
