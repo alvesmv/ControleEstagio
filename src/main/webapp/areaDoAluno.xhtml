@@ -30,11 +30,16 @@
             <p:tabMenu style="justify-content: center; align-items: center; display: flex">
                 <p:menuitem style="display:none;"/>
                 <p:menuitem class="item" value="Inicio" action=" " ajax="false" />
-                <p:menuitem class="item" value="Dados Cadastrais" action=" " ajax="false" />
+                <p:menuitem class="item" value="Dados do Estagio" action=" " ajax="false" />
                 <p:menuitem class="item" value="Relatorios" action=" " ajax="false" />
             </p:tabMenu>
         </h:form>
-        
+        <div style="margin-left: 40%; margin-top: 10%;">
+            <h:outputLabel style='font-size:150%; font-family:monospace'>Entregas Agendadas</h:outputLabel>
+            <h:panelGrid columns="2">
+                <p:calendar mode="inline"></p:calendar>
+            </h:panelGrid> 
+        </div>
     </h:body>
 </html>
 
