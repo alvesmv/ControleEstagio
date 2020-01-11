@@ -1,12 +1,73 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Area do Aluno</title>
+        <link type="text/css" rel="stylesheet"
+              href="jquery-ui.theme.css"></link>
+        <script>
+            PrimeFaces.locales['pt_BR'] = {
+                closeText: 'Fechar',
+                prevText: 'Anterior',
+                nextText: 'Próximo',
+                currentText: 'Começo',
+                monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],
+                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+                dayNamesMin: ['D','S','T','Q','Q','S','S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Só Horas',
+                timeText: 'Tempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                ampm: false,
+                month: 'Mês',
+                week: 'Semana',
+                day: 'Dia',
+                allDayText : 'Todo Dia'
+            };
+        </script>
     </h:head>
     <h:body>
-        Area Do Aluno A Fazer
+        <div style="font-size:34px; font-family:monospace ;margin-top: 4%; margin-bottom:2%; text-align: center;">ÁREA DO ALUNO</div>    
+        <style>
+            body{
+                
+                background-color: white;
+            }
+            #item{
+                width: 20%;
+                padding:3px;
+                align-content: center;
+                color: white;
+            } 
+            h:form{  
+                background-color: #3333ff;
+                
+            }
+        </style>
+        <h:form>
+            <p:tabMenu style="justify-content: center; align-items: center; display: flex">
+                <p:menuitem style="display:none;"/>
+                <p:menuitem class="item" value="Inicio" action="#{guiAreaDoAluno.irAbaInicial()}" ajax="false" />
+                <p:menuitem class="item" value="Dados do Estagio" action="#{guiAreaDoAluno.irAbaDadosDoEstagio()}" ajax="false" />
+                <p:menuitem class="item" value="Relatorios" action="#{guiAreaDoAluno.irAbaRelatorios()}" ajax="false" />
+            </p:tabMenu>
+        </h:form>
+        <div style="margin-left: 40%; margin-top: 10%;">
+            <h:outputLabel style='font-size:150%; font-family:monospace'>Entregas Agendadas</h:outputLabel>
+            <h:panelGrid columns="2">
+                <p:calendar mode="inline"></p:calendar>
+            </h:panelGrid> 
+        </div>
     </h:body>
 </html>
 
