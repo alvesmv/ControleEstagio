@@ -36,12 +36,12 @@ public class EstagioDao {
     }
 
     public List<Estagio> getEstagios() {
-        Query q = em.createQuery("select e from Estagio e order by e.id");
+        Query q = em.createQuery("select e from Estagio e order by e.idEstagio");
         return q.getResultList();
     }
 
     public List<Estagio> getEstagios(String id) {
-        Query q = em.createQuery("select e from Estagio e where e.id = :i");
+        Query q = em.createQuery("select e from Estagio e where e.idEstagio = :i");
         q.setParameter("i", id);
         return q.getResultList();
     }
