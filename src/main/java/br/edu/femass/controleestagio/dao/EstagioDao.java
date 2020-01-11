@@ -11,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
 /**
  *
  * @author souza
@@ -18,29 +19,28 @@ import javax.persistence.Query;
 
 @Stateless
 public class EstagioDao {
-    
+
     @PersistenceContext
     EntityManager em;
-    
-    
-    public void inserir(Estagio estagio){
+
+    public void inserir(Estagio estagio) {
         em.persist(estagio);
     }
-    
-    public void alterar(Estagio estagio){
+
+    public void alterar(Estagio estagio) {
         em.merge(estagio);
     }
-    
-    public void excluir(Estagio estagio){
+
+    public void excluir(Estagio estagio) {
         em.remove(em.merge(estagio));
     }
-    
-    public List<Estagio> getEstagios(){
+
+    public List<Estagio> getEstagios() {
         Query q = em.createQuery("select e from Estagio e order by e.id");
         return q.getResultList();
     }
-    
-     public List<Estagio> getEstagios(String id) {
+
+    public List<Estagio> getEstagios(String id) {
         Query q = em.createQuery("select e from Estagio e where e.id = :i");
         q.setParameter("i", id);
         return q.getResultList();

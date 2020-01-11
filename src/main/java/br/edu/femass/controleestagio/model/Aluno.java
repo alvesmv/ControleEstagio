@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 /**
  *
@@ -37,35 +36,7 @@ public class Aluno implements Serializable {
     private String bairro;
     private String cidade;
     private String cep;
-    
-
-    /**
-     * @return the idAluno
-     */
-    public Long getIdAluno() {
-        return idAluno;
-    }
-
-    /**
-     * @param idAluno the idAluno to set
-     */
-    public void setIdAluno(Long idAluno) {
-        this.idAluno = idAluno;
-    }
-
-    /**
-     * @return the curso
-     */
-    public Curso getCurso() {
-        return curso;
-    }
-
-    /**
-     * @param curso the curso to set
-     */
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
+    private Usuario usuario;
 
     /**
      * @return the matricula
@@ -95,29 +66,18 @@ public class Aluno implements Serializable {
         this.nome = nome;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idAluno != null ? idAluno.hashCode() : 0);
-        return hash;
+    /**
+     * @return the curso
+     */
+    public Curso getCurso() {
+        return curso;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the idAluno fields are not set
-        if (!(object instanceof Aluno)) {
-            return false;
-        }
-        Aluno other = (Aluno) object;
-        if ((this.idAluno == null && other.idAluno != null) || (this.idAluno != null && !this.idAluno.equals(other.idAluno))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return nome;
+    /**
+     * @param curso the curso to set
+     */
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 
     /**
@@ -244,6 +204,42 @@ public class Aluno implements Serializable {
      */
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    /**
+     * @return the usuario
+     */
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (idAluno != null ? idAluno.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the idAluno fields are not set
+        if (!(object instanceof Aluno)) {
+            return false;
+        }
+        Aluno other = (Aluno) object;
+        return this.getMatricula().equalsIgnoreCase(other.getMatricula());
     }
 
 }

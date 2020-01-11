@@ -25,20 +25,6 @@ public class Curso implements Serializable {
     private String nomeCurso;
 
     /**
-     * @return the idCurso
-     */
-    public Long getIdCurso() {
-        return idCurso;
-    }
-
-    /**
-     * @param idCurso the idCurso to set
-     */
-    public void setIdCurso(Long idCurso) {
-        this.idCurso = idCurso;
-    }
-
-    /**
      * @return the nomeCurso
      */
     public String getNomeCurso() {
@@ -50,6 +36,11 @@ public class Curso implements Serializable {
      */
     public void setNomeCurso(String nomeCurso) {
         this.nomeCurso = nomeCurso;
+    }
+
+    @Override
+    public String toString() {
+        return nomeCurso;
     }
 
     @Override
@@ -66,14 +57,7 @@ public class Curso implements Serializable {
             return false;
         }
         Curso other = (Curso) object;
-        if ((this.idCurso == null && other.idCurso != null) || (this.idCurso != null && !this.idCurso.equals(other.idCurso))) {
-            return false;
-        }
-        return true;
+        return this.idCurso.equals(other.idCurso);
     }
 
-    @Override
-    public String toString() {
-        return nomeCurso;
-    }
 }

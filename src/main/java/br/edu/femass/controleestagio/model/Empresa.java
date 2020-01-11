@@ -30,14 +30,6 @@ public class Empresa implements Serializable {
     private Integer numero;
     private String complemento;
     private String cep;
-    private Boolean convenio;
-
-    /**
-     * @param idEmpresa the idEmpresa to set
-     */
-    public void setIdEmpresa(Long idEmpresa) {
-        this.idEmpresa = idEmpresa;
-    }
 
     /**
      * @return the nomeEmpresa
@@ -151,48 +143,25 @@ public class Empresa implements Serializable {
         this.cep = cep;
     }
 
-    /**
-     * @return the convenio
-     */
-    public Boolean getConvenio() {
-        return convenio;
-    }
-
-    /**
-     * @param convenio the convenio to set
-     */
-    public void setConvenio(Boolean convenio) {
-        this.convenio = convenio;
+    @Override
+    public String toString() {
+        return nomeEmpresa;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (getIdEmpresa() != null ? getIdEmpresa().hashCode() : 0);
+        hash += (idEmpresa != null ? idEmpresa.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Empresa)) {
             return false;
         }
         Empresa other = (Empresa) object;
-        
-        return this.getNomeEmpresa().equals(other.getNomeEmpresa());
-
+        return this.getCnpj().equals(other.getCnpj());
     }
 
-    /**
-     * @return the idEmpresa
-     */
-    public Long getIdEmpresa() {
-        return idEmpresa;
-    }
-    
-    @Override
-    public String toString(){
-        return nomeEmpresa;
-    }
 }

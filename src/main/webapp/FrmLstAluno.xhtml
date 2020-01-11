@@ -101,7 +101,7 @@ and open the template in the editor.
                     <h:outputText value="#{alu.cep}" />
                 </p:column>                
                 <p:column >
-                    <p:commandButton value="Alterar" action="#{guiAluno.alterar()}" ajax="false" />
+                    <p:commandButton value="Alterar" action="#{guiAluno.alterar(alu)}" ajax="false" />
                     <p:commandButton value="Excluir" action="#{guiAluno.excluir(alu)}" ajax="false" />
                 </p:column>
             </p:dataTable>

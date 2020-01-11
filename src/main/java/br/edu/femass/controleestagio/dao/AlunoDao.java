@@ -40,7 +40,7 @@ public class AlunoDao {
     }
     public List<String> getListaAlunos() {
         Query q = em.createQuery("select a.nome from Aluno a order by a.nome");
-       return q.getResultList(); 
+        return q.getResultList();
     }
 
     public List<Aluno> getAlunos(String nome) {

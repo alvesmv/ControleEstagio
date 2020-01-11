@@ -24,20 +24,7 @@ public class Orientador implements Serializable {
     private Long idOrientador;
     private String cpf;
     private String nomeOrientador;
-
-    /**
-     * @return the idOrientador
-     */
-    public Long getIdOrientador() {
-        return idOrientador;
-    }
-
-    /**
-     * @param idOrientador the idOrientador to set
-     */
-    public void setIdOrientador(Long idOrientador) {
-        this.idOrientador = idOrientador;
-    }
+    private Usuario usuario;
 
     /**
      * @return the cpf
@@ -67,6 +54,25 @@ public class Orientador implements Serializable {
         this.nomeOrientador = nomeOrientador;
     }
 
+    /**
+     * @return the usuario
+     */
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    @Override
+    public String toString() {
+        return nomeOrientador;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -81,14 +87,7 @@ public class Orientador implements Serializable {
             return false;
         }
         Orientador other = (Orientador) object;
-        if ((this.idOrientador == null && other.idOrientador != null) || (this.idOrientador != null && !this.idOrientador.equals(other.idOrientador))) {
-            return false;
-        }
-        return true;
+        return this.getCpf().equalsIgnoreCase(other.getCpf());
     }
 
-    @Override
-    public String toString() {
-        return nomeOrientador;
-    }
 }

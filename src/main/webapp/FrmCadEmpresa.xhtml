@@ -68,13 +68,8 @@ and open the template in the editor.
                     <p:inputText value="#{guiEmpresa.empresa.complemento}" />
                     <p:outputLabel value="CEP" />
                     <p:inputText value="#{guiEmpresa.empresa.cep}" />
-                    <p:outputLabel value="Convenio:" />
-                    <p:selectOneRadio value="#{guiEmpresa.empresa.convenio}" unselectable="true">
-                        <f:selectItem itemLabel="Conveniada" itemValue="true" />
-                        <f:selectItem itemLabel="Não Conveniada" itemValue="false" />
-                    </p:selectOneRadio>
                 </h:panelGrid>
-            
+        
                 <div style="margin-top:5%; justify-content: center; align-items: center; display: flex"> 
                     <p:commandButton value="Gravar" action="#{guiEmpresa.gravar()}" ajax="false" />
                     <p:commandButton value="Voltar" action="#{guiEmpresa.voltar()}" ajax="false" />

@@ -44,8 +44,9 @@ public class OrientadorDao {
         q.setParameter("n", nome);
         return q.getResultList();
     }
+
     public List<String> getListaOrientadores() {
         Query q = em.createQuery("select o.nomeOrientador from Orientador o order by o.nomeOrientador");
-       return q.getResultList(); 
+        return q.getResultList();
     }
 }

@@ -54,11 +54,12 @@ public class GuiEmpresa implements Serializable {
         empresas = empresaDao.getEmpresas();
         return null;
     }
-    
-    public String voltarMenuPrincipal(){
+
+    public String voltarMenuPrincipal() {
         return "index";
     }
-    public String voltar(){
+
+    public String voltar() {
         return "FrmLstEmpresa";
     }
 
