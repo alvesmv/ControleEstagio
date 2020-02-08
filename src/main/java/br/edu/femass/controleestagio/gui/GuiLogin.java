@@ -12,7 +12,9 @@ import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,25 +29,32 @@ public class GuiLogin implements Serializable {
 
     @EJB
     UsuarioDao usuarioDao;
-    
-    public GuiLogin(){
-        
+
+    public GuiLogin() {
+
     }
-    
+
     public String entrar() {
         usuarios = usuarioDao.getUsuarios();
         for (Usuario u : usuarios) {
             if (u.getLogin().equals(usuario.getLogin()) && u.getSenha().equals(usuario.getSenha())) {
                 if (u.getTipoDeAcesso().equals(TipoDeAcesso.aluno)) {
-                    return "areaDoAluno";
+                    return "pages/FrmAreaDoAluno";
                 } else if (u.getTipoDeAcesso().equals(TipoDeAcesso.orientador)) {
-                    return "index";
+                    return "pages/FrmAreaDoOrientador";
                 } else if (u.getTipoDeAcesso().equals(TipoDeAcesso.coordenador)) {
-                    return "index";
+                    return "pages/FrmAreaDoCoordenador";
                 }
             }
         }
-        return "LoginErro";
+        return "null";
+    }
+
+    public String logoff() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        session.invalidate();
+        return "/index.xhtml?faces-redirect=true";
     }
 
     /**
@@ -76,5 +85,4 @@ public class GuiLogin implements Serializable {
         this.usuario = usuario;
     }
 
-    
 }

@@ -10,8 +10,17 @@ package br.edu.femass.controleestagio.model;
  * @author dumas
  */
 public enum Disciplina {
-    
-    Estágio_Obrigatorio_I, Estágio_Obrigatorio_II;
 
-    
+    Estagio_Obrigatorio_I {
+        String getNome() {
+            return "Estágio Obrigatorio I";
+        }
+
+    },
+    Estagio_Obrigatorio_II {
+        String getNome() {
+            return "Estágio Obrigatorio II";
+        }
+    };
+
 }

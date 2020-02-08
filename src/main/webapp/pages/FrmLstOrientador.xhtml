@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/template/templateCoordenador.xhtml">
+        <ui:define name="content">
+            <h:form>
+                <p:dataTable style="margin-top:2%; justify-content: center; align-items: center;"
+                             var="ori" value="#{guiOrientador.orientadores}" widgetVar="orientadorFiltro" emptyMessage="Nenhum orientador cadastrado">
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <h:outputText value="Pesquisar:" />
+                            <p:inputText id="globalFilter" onkeyup="PF('orientadorFiltro').filter()"
+                                         style="width:150px" placeholder="Palavra-Chave"/>
+                        </p:outputPanel>
+                    </f:facet> 
+                    <p:column headerText="Nome" filterBy="#{ori.nomeOrientador}" filterMatchMode="contains" filterStyle="display:none;">
+                        <h:outputText value="#{ori.nomeOrientador}" />
+                    </p:column>
+                    <p:column headerText="CPF" filterBy="#{ori.cpf}" filterMatchMode="contains" filterStyle="display:none;">
+                        <h:outputText value="#{ori.cpf}" />
+                    </p:column>
+                    <p:column >
+                        <p:commandButton value="Alterar" action="#{guiOrientador.alterar(ori)}" ajax="false" />
+                        <p:commandButton value="Excluir" action="#{guiOrientador.excluir(ori)}" ajax="false" />
+                    </p:column>
+                </p:dataTable>
+
+                <div style="margin-top:3%; justify-content: center; align-items: center; display: flex;">
+                    <p:commandButton value="Incluir" action="#{guiOrientador.incluir()}" ajax="false" />
+                </div>
+            </h:form>   
+        </ui:define>
+    </ui:composition>
+
+</html>

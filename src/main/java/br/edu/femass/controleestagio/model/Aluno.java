@@ -36,6 +36,7 @@ public class Aluno implements Serializable {
     private String bairro;
     private String cidade;
     private String cep;
+    @ManyToOne
     private Usuario usuario;
 
     /**

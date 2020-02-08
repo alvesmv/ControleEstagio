@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <h:outputStylesheet library="css" name="jquery-ui.theme.css"/>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">
+                <style>
+                    body{
+
+                        background-color: white;
+                    }
+                    #item{
+                        width: 20%;
+                        padding:3px;
+                        align-content: center;
+                        color: white;
+                    } 
+                    h:form{  
+                        background-color: #3333ff;
+
+                    }
+                </style>
+                
+                <h:form>
+                    <p:menubar>
+                        <p:submenu label="Cadastro">
+                            <p:menuitem class="item" value="Aluno" action="#{guiAluno.iniciar()}" ajax="false" />
+                            <p:menuitem class="item" value="Empresa" action="#{guiEmpresa.iniciar()}" ajax="false" />
+                            <p:menuitem class="item" value="Orientador" action="#{guiOrientador.iniciar()}" ajax="false" />
+                        </p:submenu>
+                        <p:submenu label="Academico">
+                            <p:menuitem class="item" value="Curso" action="#{guiCurso.iniciar()}" ajax="false" />
+                            <p:menuitem class="item" value="Estágio" action="#{guiEstagio.iniciar()}" ajax="false" />
+                        </p:submenu>
+                        <p:submenu label="Conta">
+
+                        </p:submenu>
+                        <f:facet name="options">            
+                            <p:commandButton value="Logout" action="#{guiLogin.logoff()}" icon="ui-icon-extlink" ajax="false"/>
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">
+
+            </ui:insert>
+        </div>
+
+        <div id="bottom">
+            <ui:insert name="bottom">
+
+            </ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

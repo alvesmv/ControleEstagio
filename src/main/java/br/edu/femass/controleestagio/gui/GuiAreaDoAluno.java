@@ -11,10 +11,10 @@ import javax.enterprise.context.Dependent;
  */
 @Named(value = "guiAreaDoAluno")
 @Dependent
-public class guiAreaDoAluno implements Serializable {
+public class GuiAreaDoAluno implements Serializable {
 
     public String irAbaInicial(){
-        return "areaDoAluno";
+        return "FrmAreaDoAluno";
     }
     public String irAbaDadosDoEstagio(){
         return "FrmAbaDadosDoEstagio";

@@ -58,6 +58,7 @@ public class GuiAluno implements Serializable {
         alterando = false;
         inicializaListaDeCurso();
         usuario = new Usuario();
+        campoCursoNome = new String();
         return "FrmCadAluno";
     }
     
@@ -65,11 +66,12 @@ public class GuiAluno implements Serializable {
         aluno = a;
         alterando = true;
         inicializaListaDeCurso();
+        this.setCampoCursoNome(aluno.getCurso().getNomeCurso());
         return "FrmCadAluno";
     }
     
     public String voltarMenuPrincipal() {
-        return "index";
+        return "/index";
     }
     
     public String voltar() {

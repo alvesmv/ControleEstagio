@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/template/templateCoordenador.xhtml">
+        <ui:define name="content">
+            <h:form>
+                <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
+                             rows="10"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink}
+                             {PreviousPageLink} {PageLinks} {NextPageLink}
+                             {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="10,20,30"
+                             var="alu" value="#{guiAluno.alunos}" widgetVar="alunoFiltro" emptyMessage="Nenhum aluno cadastrado">
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <h:outputText value="Pesquisar:" />
+                            <p:inputText id="globalFilter" onkeyup="PF('alunoFiltro').filter()" style="width:150px" placeholder="Palavra-Chave"/>
+                        </p:outputPanel>
+                    </f:facet>
+                    <p:column headerText="Nome" filterBy="#{alu.nome}" filterMatchMode="contains" filterStyle="display:none;">
+                        <h:outputText value="#{alu.nome}" />
+                    </p:column>
+                    <p:column headerText="Matricula" filterBy="#{alu.matricula}" filterMatchMode="contains" filterStyle="display:none;">
+                        <h:outputText value="#{alu.matricula}" />
+                    </p:column>
+                    <p:column headerText="Curso" filterBy="#{alu.curso}" filterMatchMode="contains" filterStyle="display:none;">
+                        <h:outputText value="#{alu.curso.nomeCurso}" />
+                    </p:column>
+                    <p:column headerText="E-mail" filterBy="#{alu.email}" filterMatchMode="contains" filterStyle="display:none;">
+                        <h:outputText value="#{alu.email}" />
+                    </p:column>
+                    <p:column headerText="Celular" filterBy="#{alu.celular}" filterMatchMode="contains" filterStyle="display:none;">
+                        <h:outputText value="#{alu.celular}" />
+                    </p:column>               
+                    <p:column >
+                        <p:commandButton value="Alterar" action="#{guiAluno.alterar(alu)}" ajax="false" />
+                        <p:commandButton value="Excluir" action="#{guiAluno.excluir(alu)}" ajax="false" />
+                    </p:column>
+                </p:dataTable>
+
+                <div style="margin-top:3%; justify-content: center; align-items: center; display: flex;">
+                    <p:commandButton value="Incluir" action="#{guiAluno.incluir()}" ajax="false" />
+                </div>
+            </h:form>            
+        </ui:define>
+    </ui:composition>
+
+</html>

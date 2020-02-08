@@ -56,7 +56,7 @@ public class GuiEmpresa implements Serializable {
     }
 
     public String voltarMenuPrincipal() {
-        return "index";
+        return "/index";
     }
 
     public String voltar() {

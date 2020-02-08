@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,6 +25,7 @@ public class Orientador implements Serializable {
     private Long idOrientador;
     private String cpf;
     private String nomeOrientador;
+    @ManyToOne
     private Usuario usuario;
 
     /**
