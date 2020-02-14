@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -47,7 +48,10 @@ public class GuiLogin implements Serializable {
                 }
             }
         }
-        return "null";
+        FacesContext contexto = FacesContext.getCurrentInstance();
+        contexto.addMessage(null, new FacesMessage("Erro no Login!", "O nome de usuário ou a senha que você digitou não estão corretos. Tente digitá-los novamente."));
+            
+        return null;
     }
 
     public String logoff() {
