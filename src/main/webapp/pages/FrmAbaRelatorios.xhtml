@@ -37,7 +37,7 @@
                  <p:outputLabel value="Arquivo: " for="EnviarArquivo"/> 
                  <p:fileUpload id="EnviarArquivo" 
                                label="Procurar..." uploadLabel="Enviar" 
-                               cancelLabel="Cancelar"/>
+                               cancelLabel="Cancelar" fileUploadListener="#{MbUpload.upload}"/>
              </h:form>
             
         </h:form>
