@@ -34,10 +34,9 @@
                 <p:menuitem class="item" value="Relatorios" action="#{guiAreaDoAluno.irAbaRelatorios()}" ajax="false" />
             </p:tabMenu>
              <h:form>
-                 <p:outputLabel value="Arquivo: " for="EnviarArquivo"/> 
                  <p:fileUpload id="EnviarArquivo" 
-                               label="Procurar..." uploadLabel="Enviar" 
-                               cancelLabel="Cancelar" fileUploadListener="#{MbUpload.upload}"/>
+                               label="Procurar..."
+                               fileUploadListener="#{MbUpload.upload}"/>
              </h:form>
             
         </h:form>

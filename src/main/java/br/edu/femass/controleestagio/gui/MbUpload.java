@@ -8,6 +8,7 @@ import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.DocumentoDao;
 import br.edu.femass.controleestagio.model.Documento;
 import java.io.Serializable;
+
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -28,10 +29,12 @@ public class MbUpload implements Serializable{
     Documento doc;
     @EJB
     DocumentoDao docDao;
-    
+    @EJB
+    AlunoDao alunoDB;
     public MbUpload(){
         doc = new Documento();  
         docDao = new DocumentoDao();
+        alunoDB = new AlunoDao();
     }
  
     public void upload(FileUploadEvent event){
@@ -41,10 +44,9 @@ public class MbUpload implements Serializable{
         this.doc.setTamanho(this.doc.getArquivo().getSize());
         //Obtem o objeto usuario instanciado no durante o login 
         Object o = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-        this.doc.setAluno(new AlunoDao().getAlunoPorMatricula(o.toString()));
-        
+        this.doc.setAluno(alunoDB.getAlunoPorMatricula(o.toString()));
+       
         //Flush no DB
         docDao.inserir(this.doc);
-     
     }   
 }
