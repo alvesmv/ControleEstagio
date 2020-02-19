@@ -1,6 +1,7 @@
 package br.edu.femass.controleestagio.model;
 
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -27,7 +28,7 @@ public class Documento implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     Date dataEnvio;
     Long tamanho;
-    UploadedFile arquivo;
+    File arquivo;
 
     enum tipoDocumento{
         relatorio, documentoCadastral/*definir os outros tipos de documento??*/;
@@ -68,11 +69,11 @@ public class Documento implements Serializable {
         this.tamanho = tamanho;
     }
     
-    public UploadedFile getArquivo() {
+    public File getArquivo() {
         return arquivo;
     }
 
-    public void setArquivo(UploadedFile arquivo) {
+    public void setArquivo(File arquivo) {
         this.arquivo = arquivo;
     }
 }
