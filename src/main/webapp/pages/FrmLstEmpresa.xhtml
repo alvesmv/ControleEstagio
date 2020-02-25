@@ -13,13 +13,11 @@ and open the template in the editor.
 
     <ui:composition template="/template/templateCoordenador.xhtml">
         <ui:define name="content">
+
             <h:form>           
                 <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
-                             rows="10"
-                             paginator="true"
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink}
-                             {PreviousPageLink} {PageLinks} {NextPageLink}
-                             {LastPageLink} {RowsPerPageDropdown}"
+                             paginator="true" rows="10" paginatorPosition="bottom"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="10,20,30"
                              var="emp" value="#{guiEmpresa.empresas}" widgetVar="empresaFiltro" emptyMessage="Nenhuma empresa cadastrada">
                     <f:facet name="header">
@@ -28,11 +26,11 @@ and open the template in the editor.
                             <p:inputText id="globalFilter" onkeyup="PF('empresaFiltro').filter()" style="width:150px" placeholder="Palavra-Chave"/>
                         </p:outputPanel>
                     </f:facet>    
-                    <p:column headerText="Nome" filterBy="#{emp.nomeEmpresa}" filterMatchMode="contains" filterStyle="display:none;">
+                    <p:column headerText="Nome" filterBy="#{emp.nomeEmpresa}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{emp.nomeEmpresa}">
                         <h:outputText value="#{emp.nomeEmpresa}" />
                     </p:column>
 
-                    <p:column headerText="CNPJ" filterBy="#{emp.cnpj}" filterMatchMode="contains" filterStyle="display:none;">
+                    <p:column headerText="CNPJ" filterBy="#{emp.cnpj}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{emp.cnpj}">
                         <h:outputText value="#{emp.cnpj}" />
                     </p:column>
                     <p:column headerText="Contato do RH">
@@ -45,12 +43,12 @@ and open the template in the editor.
                         <p:commandButton value="Alterar" action="#{guiEmpresa.alterar(emp)}" ajax="false" />
                         <p:commandButton value="Excluir" action="#{guiEmpresa.excluir(emp)}" ajax="false" />
                     </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton value="Incluir" action="#{guiEmpresa.incluir()}" ajax="false" />
+                    </f:facet>
                 </p:dataTable>
-
-                <div style="margin-top:3%; justify-content: center; align-items: center; display: flex;">
-                    <p:commandButton value="Incluir" action="#{guiEmpresa.incluir()}" ajax="false" />
-                </div>
             </h:form>             
+
         </ui:define>
     </ui:composition>
 

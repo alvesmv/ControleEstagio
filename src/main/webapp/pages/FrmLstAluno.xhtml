@@ -15,44 +15,41 @@ and open the template in the editor.
         <ui:define name="content">
             <h:form>
                 <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
-                             rows="10"
-                             paginator="true"
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink}
-                             {PreviousPageLink} {PageLinks} {NextPageLink}
-                             {LastPageLink} {RowsPerPageDropdown}"
+                             paginator="true" rows="10" paginatorPosition="bottom"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="10,20,30"
                              var="alu" value="#{guiAluno.alunos}" widgetVar="alunoFiltro" emptyMessage="Nenhum aluno cadastrado">
                     <f:facet name="header">
                         <p:outputPanel>
-                            <h:outputText value="Pesquisar:" />
+                            <h:outputText value="Pesquisar:"/>
                             <p:inputText id="globalFilter" onkeyup="PF('alunoFiltro').filter()" style="width:150px" placeholder="Palavra-Chave"/>
                         </p:outputPanel>
                     </f:facet>
-                    <p:column headerText="Nome" filterBy="#{alu.nome}" filterMatchMode="contains" filterStyle="display:none;">
+                    <p:column headerText="Nome" filterBy="#{alu.nome}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{alu.nome}">
                         <h:outputText value="#{alu.nome}" />
                     </p:column>
-                    <p:column headerText="Matricula" filterBy="#{alu.matricula}" filterMatchMode="contains" filterStyle="display:none;">
+                    <p:column headerText="Matricula" filterBy="#{alu.matricula}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{alu.matricula}">
                         <h:outputText value="#{alu.matricula}" />
                     </p:column>
-                    <p:column headerText="Curso" filterBy="#{alu.curso}" filterMatchMode="contains" filterStyle="display:none;">
+                    <p:column headerText="Curso" filterBy="#{alu.curso}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{alu.curso}">
                         <h:outputText value="#{alu.curso.nomeCurso}" />
                     </p:column>
-                    <p:column headerText="E-mail" filterBy="#{alu.email}" filterMatchMode="contains" filterStyle="display:none;">
+                    <p:column headerText="E-mail" filterBy="#{alu.email}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{alu.email}">
                         <h:outputText value="#{alu.email}" />
                     </p:column>
-                    <p:column headerText="Celular" filterBy="#{alu.celular}" filterMatchMode="contains" filterStyle="display:none;">
+                    <p:column headerText="Celular" filterBy="#{alu.celular}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{alu.celular}">
                         <h:outputText value="#{alu.celular}" />
                     </p:column>               
                     <p:column >
                         <p:commandButton value="Alterar" action="#{guiAluno.alterar(alu)}" ajax="false" />
                         <p:commandButton value="Excluir" action="#{guiAluno.excluir(alu)}" ajax="false" />
                     </p:column>
-                </p:dataTable>
-
-                <div style="margin-top:3%; justify-content: center; align-items: center; display: flex;">
-                    <p:commandButton value="Incluir" action="#{guiAluno.incluir()}" ajax="false" />
-                </div>
+                    <f:facet name="footer">
+                        <p:commandButton value="Incluir" action="#{guiAluno.incluir()}" ajax="false" />
+                    </f:facet>
+                </p:dataTable>           
             </h:form>            
+
         </ui:define>
     </ui:composition>
 

@@ -13,6 +13,7 @@ and open the template in the editor.
 
     <ui:composition template="/template/templateCoordenador.xhtml">
         <ui:define name="content">
+            
             <h:form>
                 <p:dataTable style="margin-top:2%; justify-content: center; align-items: center;"
                              var="cur" value="#{guiCurso.cursos}" widgetVar="cursoFiltro" emptyMessage="Nenhum curso cadastrado">
@@ -23,7 +24,7 @@ and open the template in the editor.
                                          style="width:150px" placeholder="Palavra-Chave"/>
                         </p:outputPanel>
                     </f:facet>
-                    <p:column headerText="Nome do curso" filterBy="#{cur.nomeCurso}" filterMatchMode="contains" 
+                    <p:column headerText="Nome do curso" filterBy="#{cur.nomeCurso}" filterMatchMode="contains" sortBy="#{cur.nomeCurso}"
                               filterStyle="display:none;">
                         <h:outputText value="#{cur.nomeCurso}" />
                     </p:column>
@@ -31,12 +32,12 @@ and open the template in the editor.
                         <p:commandButton value="Alterar" action="#{guiCurso.alterar(cur)}" ajax="false" />
                         <p:commandButton value="Excluir" action="#{guiCurso.excluir(cur)}" ajax="false" />
                     </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton value="Incluir" action="#{guiCurso.incluir()}" ajax="false" />
+                    </f:facet>
                 </p:dataTable>
-
-                <div style="margin-top:3%; justify-content: center; align-items: center; display: flex;">
-                    <p:commandButton value="Incluir" action="#{guiCurso.incluir()}" ajax="false" />
-                </div>
             </h:form> 
+
         </ui:define>
     </ui:composition>
 
