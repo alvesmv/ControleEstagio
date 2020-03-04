@@ -12,20 +12,23 @@ import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+
+
 
 /**
  *
  * @author souza
  */
-@Named(value = "guiLogin")
+        @Named(value = "guiLogin")
 @SessionScoped
 public class GuiLogin implements Serializable {
 
     private List<Usuario> usuarios;
-    private Usuario usuario = new Usuario();
+    private Usuario usuario= new Usuario();
 
     @EJB
     UsuarioDao usuarioDao;
@@ -35,25 +38,35 @@ public class GuiLogin implements Serializable {
     }
 
     public String entrar() {
-        usuarios = usuarioDao.getUsuarios();
+        System.out.println("Entrou no 'entrar'");
+        usuarios = usuarioDao.getUsuarios();        
         for (Usuario u : usuarios) {
             if (u.getLogin().equals(usuario.getLogin()) && u.getSenha().equals(usuario.getSenha())) {
                 if (u.getTipoDeAcesso().equals(TipoDeAcesso.aluno)) {
-                    return "pages/FrmAreaDoAluno";
+                    //session.setAttribute("usuario logado", u);
+                    return "pages/FrmAreaDoAluno.xhtml?faces-redirect=true";
                 } else if (u.getTipoDeAcesso().equals(TipoDeAcesso.orientador)) {
-                    return "pages/FrmAreaDoOrientador";
+                    //ession.setAttribute("usuario logado", u);
+                    return "pages/FrmAreaDoOrientador.xhtml?faces-redirect=true";
                 } else if (u.getTipoDeAcesso().equals(TipoDeAcesso.coordenador)) {
-                    return "pages/FrmAreaDoCoordenador";
+                    //session.setAttribute("usuario logado", u);
+                    //System.out.println("Aqui foi;");
+                    return "pages/FrmAreaDoCoordenador.xhtml?faces-redirect=true";
                 }
+                FacesContext context = FacesContext.getCurrentInstance();
+                return null;
+                 
             }
         }
         return "null";
     }
 
     public String logoff() {
+        this.usuario = null;
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
         session.invalidate();
+        
         return "/index.xhtml?faces-redirect=true";
     }
 
@@ -75,6 +88,7 @@ public class GuiLogin implements Serializable {
      * @return the usuario
      */
     public Usuario getUsuario() {
+        System.out.println(usuario);
         return usuario;
     }
 
@@ -84,5 +98,5 @@ public class GuiLogin implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
+    
 }
