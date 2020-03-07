@@ -1,7 +1,6 @@
 package br.edu.femass.controleestagio.model;
 
 
-
 import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
@@ -28,6 +27,7 @@ public class Documento implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     Date dataEnvio;
     Long tamanho;
+    
     File arquivo;
     DocumentoTipo docTipo;
     DocumentoStatus docStatus;
