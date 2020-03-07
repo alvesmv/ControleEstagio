@@ -29,13 +29,9 @@ public class Documento implements Serializable {
     Date dataEnvio;
     Long tamanho;
     File arquivo;
-
-    enum tipoDocumento{
-        relatorio, documentoCadastral/*definir os outros tipos de documento??*/;
-    }
-    enum status{
-        em_analise, indeferido, deferido;
-    }
+    DocumentoTipo docTipo;
+    DocumentoStatus docStatus;
+    
 
     public Aluno getAluno() {
         return aluno;
@@ -76,4 +72,22 @@ public class Documento implements Serializable {
     public void setArquivo(File arquivo) {
         this.arquivo = arquivo;
     }
+
+    public DocumentoTipo getDocTipo() {
+        return docTipo;
+    }
+
+    public void setDocTipo(DocumentoTipo docTipo) {
+        this.docTipo = docTipo;
+    }
+
+    public DocumentoStatus getDocStatus() {
+        return docStatus;
+    }
+
+    public void setDocStatus(DocumentoStatus docStatus) {
+        this.docStatus = docStatus;
+    }
+    
+    
 }
