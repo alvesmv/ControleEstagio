@@ -11,18 +11,18 @@ package br.edu.femass.controleestagio.model;
  */
 public enum DocumentoStatus {
     em_analise{
-        String getNom(){
-            return "";
+        String getNome(){
+            return "Em analise";
         }
     },
     indeferido{
-        String getNom(){
-            return "";
+        String getNome(){
+            return "Indeferido";
         }
     }, 
     deferido{
-        String getNom(){
-            return "";
+        String getNome(){
+            return "Deferido";
         }
     };
 }
