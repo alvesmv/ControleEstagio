@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 
+
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -43,6 +44,7 @@ public class MbUpload implements Serializable{
         alunoDB = new AlunoDao();
     }
     
+    //O metodo abaixo converte o UpFile do primefaces para File do java.io
     public File convertUpFileToFile(UploadedFile uf){
         InputStream in = null;
         OutputStream out = null;
@@ -61,7 +63,7 @@ public class MbUpload implements Serializable{
         
         return novoArq;
     }
- 
+        
     public void upload(FileUploadEvent event){
         UploadedFile upFile = event.getFile();
         this.doc.setArquivo(convertUpFileToFile(upFile)); 
@@ -73,8 +75,8 @@ public class MbUpload implements Serializable{
         
         if(doc.getArquivo() == null)
             System.out.println("NULL!!!!!!!!!");
-        //Não é possível serializar abaixo (ERRO)
-        //Flush no DB
-        docDao.inserir(this.doc);
+        //Caso contrário, flush no DB
+        else
+            docDao.inserir(this.doc);
     }   
 }

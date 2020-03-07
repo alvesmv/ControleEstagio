@@ -1,6 +1,7 @@
 package br.edu.femass.controleestagio.model;
 
 
+
 import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
@@ -10,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
-import org.primefaces.model.UploadedFile;
 
 /**
  *
