@@ -13,48 +13,46 @@ and open the template in the editor.
 
     <ui:composition template="/template/templateCoordenador.xhtml">
         <ui:define name="content">
+            
             <div style="margin-top:5%; justify-content: center; align-items: center; display: flex; border-radius: 6px; border-color: #2694e8">
-
                 <h:form>
                     <h:panelGrid columns="2">
                         <p:outputLabel value="Nome" />
-                        <p:inputText value="#{guiAluno.aluno.nome}" />
+                        <p:inputText value="#{guiAluno.aluno.nome}" style="width:220px"/>
                         <p:outputLabel value="Matricula" />
-                        <p:inputText value="#{guiAluno.aluno.matricula}" />
+                        <p:inputText value="#{guiAluno.aluno.matricula}" style="width:220px"/>
                         <p:outputLabel value="Curso" />
-                        <p:selectOneMenu value="#{guiAluno.campoCursoNome}" dynamic="true" style="width:200px">
+                        <p:selectOneMenu value="#{guiAluno.campoCursoNome}" dynamic="true" style="width:210px">
                             <f:selectItem itemLabel="Selecione o Curso" itemValue="" />
                             <f:selectItems value="#{guiAluno.listaDeCursos}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="E-mail" />
-                        <p:inputText value="#{guiAluno.aluno.email}" />
+                        <p:inputText value="#{guiAluno.aluno.email}" style="width:220px"/>
                         <p:outputLabel value="Telefone" />
-                        <p:inputText value="#{guiAluno.aluno.telefone}" />
+                        <p:inputText value="#{guiAluno.aluno.telefone}" style="width:220px"/>
                         <p:outputLabel value="Celular" />
-                        <p:inputText value="#{guiAluno.aluno.celular}" />
+                        <p:inputText value="#{guiAluno.aluno.celular}" style="width:220px"/>
                         <p:outputLabel value="Logradouro" />
-                        <p:inputText value="#{guiAluno.aluno.logradouro}" />
+                        <p:inputText value="#{guiAluno.aluno.logradouro}" style="width:220px"/>
                         <p:outputLabel value="Número" />
-                        <p:inputText value="#{guiAluno.aluno.numero}" />
+                        <p:inputText value="#{guiAluno.aluno.numero}" style="width:220px"/>
                         <p:outputLabel value="Complemento" />
-                        <p:inputText value="#{guiAluno.aluno.complemento}" />
+                        <p:inputText value="#{guiAluno.aluno.complemento}" style="width:220px"/>
                         <p:outputLabel value="Bairro" />
-                        <p:inputText value="#{guiAluno.aluno.bairro}" />
+                        <p:inputText value="#{guiAluno.aluno.bairro}" style="width:220px"/>
                         <p:outputLabel value="Cidade" />
-                        <p:inputText value="#{guiAluno.aluno.cidade}" />
+                        <p:inputText value="#{guiAluno.aluno.cidade}" style="width:220px"/>
                         <p:outputLabel value="CEP" />
-                        <p:inputText value="#{guiAluno.aluno.cep}" />
+                        <p:inputMask value="#{guiAluno.aluno.cep}" mask="99999-999" style="width:220px"/>
                     </h:panelGrid>
-
 
                     <div style="margin-top:5%; justify-content: center; align-items: center; display: flex">
                         <p:commandButton value="Gravar" action="#{guiAluno.gravar()}" ajax="false" />
                         <p:commandButton value="Voltar" action="#{guiAluno.voltar()}" ajax="false" />
                     </div>
-
                 </h:form>
-
             </div>              
+
         </ui:define>
     </ui:composition>
 

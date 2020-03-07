@@ -58,7 +58,10 @@ public class GuiLogin implements Serializable {
                  
             }
         }
-        return "null";
+        FacesContext contexto = FacesContext.getCurrentInstance();
+        contexto.addMessage(null, new FacesMessage("Erro no Login!", "O nome de usuário ou a senha que você digitou não estão corretos. Tente digitá-los novamente."));
+            
+        return null;
     }
 
     public String logoff() {
