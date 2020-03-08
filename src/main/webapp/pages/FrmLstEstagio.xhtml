@@ -8,18 +8,13 @@
 
     <ui:composition template="/template/templateCoordenador.xhtml">
         <ui:define name="content">
+
             <h:form>
                 <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
-                             rows="10"
-                             paginator="true"
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink}
-                             {PreviousPageLink} {PageLinks} {NextPageLink}
-                             {LastPageLink} {RowsPerPageDropdown}"
+                             rows="10" paginator="true" paginatorPosition="bottom"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="10,20,30"
-                             var="est"
-                             widgetVar="estagioFiltro"
-                             value="#{guiEstagio.estagios}"
-                             emptyMessage="Nenhum estágio cadastrado">
+                             var="est" value="#{guiEstagio.estagios}" widgetVar="estagioFiltro" emptyMessage="Nenhum estágio cadastrado">
                     <f:facet name="header">
                         <p:outputPanel>
                             <h:outputText value="Pesquisar:" />
@@ -27,31 +22,31 @@
                         </p:outputPanel>
                     </f:facet>
 
-                    <p:column headerText="Aluno" filterBy="#{est.alunoEstagio}" filterMatchMode="contains" filterStyle="display:none;">
+                    <p:column headerText="Aluno" filterBy="#{est.alunoEstagio}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{est.alunoEstagio.nome}">
                         <h:outputText value="#{est.alunoEstagio}" />
                     </p:column>
-                    <p:column headerText="Orientador" filterBy="#{est.orientadorEstagio}" filterMatchMode="contains" filterStyle="display:none;">
+                    <p:column headerText="Orientador" filterBy="#{est.orientadorEstagio}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{est.orientadorEstagio.nomeOrientador}">
                         <h:outputText value="#{est.orientadorEstagio}"  />
                     </p:column>
-                    <p:column headerText="Empresa" filterBy="#{est.empresaEstagio}" filterMatchMode="contains" filterStyle="display:none;">
+                    <p:column headerText="Empresa" filterBy="#{est.empresaEstagio}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{est.empresaEstagio.nomeEmpresa}">
                         <h:outputText value="#{est.empresaEstagio}" />
                     </p:column>
-                    <p:column headerText="Tipo">
+                    <p:column headerText="Tipo" sortBy="#{est.categoriaObrigatoria}">
                         <h:outputText value="#{est.categoriaObrigatoria}" />
                     </p:column>
-                    <p:column headerText="Situação">
-                        <h:outputText value="#{est.statusDoEstagio}" />
+                    <p:column headerText="Situação" sortBy="#{est.statusDoEstagio}">
+                        <h:outputText value="#{est.statusDoEstagio}"/>
                     </p:column>
                     <p:column >
                         <p:commandButton value="Alterar" action="#{guiEstagio.alterar()}" ajax="false" />
                         <p:commandButton value="Excluir" action="#{guiEstagio.excluir(est)}" ajax="false" />
                     </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton value="Incluir" action="#{guiEstagio.incluir()}" ajax="false" />
+                    </f:facet>
                 </p:dataTable>
-
-                <div style="margin-top:3%; justify-content: center; align-items: center; display: flex;">
-                    <p:commandButton value="Incluir" action="#{guiEstagio.incluir()}" ajax="false" />
-                </div>
             </h:form>
+
         </ui:define>
     </ui:composition>
 

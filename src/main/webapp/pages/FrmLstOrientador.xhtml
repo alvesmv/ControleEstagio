@@ -13,6 +13,7 @@ and open the template in the editor.
 
     <ui:composition template="/template/templateCoordenador.xhtml">
         <ui:define name="content">
+
             <h:form>
                 <p:dataTable style="margin-top:2%; justify-content: center; align-items: center;"
                              var="ori" value="#{guiOrientador.orientadores}" widgetVar="orientadorFiltro" emptyMessage="Nenhum orientador cadastrado">
@@ -23,21 +24,21 @@ and open the template in the editor.
                                          style="width:150px" placeholder="Palavra-Chave"/>
                         </p:outputPanel>
                     </f:facet> 
-                    <p:column headerText="Nome" filterBy="#{ori.nomeOrientador}" filterMatchMode="contains" filterStyle="display:none;">
+                    <p:column headerText="Nome" filterBy="#{ori.nomeOrientador}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{ori.nomeOrientador}">
                         <h:outputText value="#{ori.nomeOrientador}" />
                     </p:column>
-                    <p:column headerText="CPF" filterBy="#{ori.cpf}" filterMatchMode="contains" filterStyle="display:none;">
+                    <p:column headerText="CPF" filterBy="#{ori.cpf}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{ori.cpf}">
                         <h:outputText value="#{ori.cpf}" />
                     </p:column>
                     <p:column >
                         <p:commandButton value="Alterar" action="#{guiOrientador.alterar(ori)}" ajax="false" />
                         <p:commandButton value="Excluir" action="#{guiOrientador.excluir(ori)}" ajax="false" />
                     </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton value="Incluir" action="#{guiOrientador.incluir()}" ajax="false" />
+                    </f:facet>
                 </p:dataTable>
 
-                <div style="margin-top:3%; justify-content: center; align-items: center; display: flex;">
-                    <p:commandButton value="Incluir" action="#{guiOrientador.incluir()}" ajax="false" />
-                </div>
             </h:form>   
         </ui:define>
     </ui:composition>
