@@ -26,9 +26,7 @@
                 
                 <p:column>
                     <h:form>
-                        <p:commandButton  immediate="true" value="Baixar  " action="#{MbDownload.convertBlobToFile(doc)}" ajax="false">
-                            <p:fileDownload value="#{MbDownload.out}"/>
-                        </p:commandButton>
+                        <p:commandButton  immediate="true" value="Baixar  " action="#{MbDownload.download(doc)}" ajax="false"/>
                         <p:commandButton value="Excluir" action="#{mbRelatorios.excluir(doc)}" ajax="false"/>    
                     </h:form>
                 </p:column>

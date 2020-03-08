@@ -4,9 +4,9 @@ import javax.enterprise.context.Dependent;
 import javax.inject.Named;
 import br.edu.femass.controleestagio.model.Documento;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -15,18 +15,14 @@ import java.io.OutputStream;
 @Named(value = "MbDownload")
 @Dependent
 public class MbDownload {
-
-    private OutputStream out;
-   
-    public void convertBlobToFile(Documento doc) throws FileNotFoundException, IOException{
-        byte[] blob = doc.getArquivo();
-        out = new FileOutputStream(doc.getNome());
-        out.write(blob);
-        out.close();
-    }   
-
-    public OutputStream getOut() {
-        return out;
-    }
     
+    public void download(Documento doc) throws FileNotFoundException, IOException{
+        byte[] blob = doc.getArquivo();
+        
+        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        response.setContentType("application/pdf");
+        response.setHeader("Content-disposition","attachment;filename=" + doc.getNome());
+        response.getOutputStream().write(blob);
+        FacesContext.getCurrentInstance().responseComplete(); 
+    }    
 }
