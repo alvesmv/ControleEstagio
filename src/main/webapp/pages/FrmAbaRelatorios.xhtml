@@ -36,7 +36,9 @@
              <h:form>
                  <p:fileUpload id="EnviarArquivo" 
                                label="Procurar..."
-                               fileUploadListener="#{MbUpload.upload}"/>
+                               fileUploadListener="#{MbUpload.upload}"
+                               sizeLimit="16000000"
+                               allowTypes="/(\.|\/)(pdf)$/"/>
              </h:form>
             
         </h:form>

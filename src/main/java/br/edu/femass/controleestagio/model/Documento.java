@@ -1,13 +1,14 @@
 package br.edu.femass.controleestagio.model;
 
 
-import java.io.File;
 import java.io.Serializable;
+
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
@@ -28,7 +29,7 @@ public class Documento implements Serializable {
     Date dataEnvio;
     Long tamanho;
     
-    File arquivo;
+    byte[] arquivo;
     DocumentoTipo docTipo;
     DocumentoStatus docStatus;
     
@@ -65,11 +66,11 @@ public class Documento implements Serializable {
         this.tamanho = tamanho;
     }
     
-    public File getArquivo() {
+    public byte[] getArquivo() {
         return arquivo;
     }
 
-    public void setArquivo(File arquivo) {
+    public void setArquivo(byte[] arquivo) {
         this.arquivo = arquivo;
     }
 
