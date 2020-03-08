@@ -46,6 +46,8 @@ public class GuiLogin implements Serializable {
 
                     //O comando a seguir Add o objeto usuario na sessao
                     FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", u);
+                    //return "pages/FrmAreaDoAluno";
+
                     //session.setAttribute("usuario logado", u);
                     return "pages/FrmAreaDoAluno.xhtml?faces-redirect=true";
 

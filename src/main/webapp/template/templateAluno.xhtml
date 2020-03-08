@@ -7,49 +7,34 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
+        <h:outputStylesheet library="css" name="jquery-ui.css"/>
+        <h:outputStylesheet library="css" name="jquery-ui.min.css"/>
         <h:outputStylesheet library="css" name="jquery-ui.theme.css"/>
+        <h:outputStylesheet library="css" name="jquery-ui.theme.min.css"/>
     </h:head>
 
     <h:body>
 
         <div id="top">
             <ui:insert name="top">
-                <style>
-                    body{
-
-                        background-color: white;
-                    }
-                    #item{
-                        width: 20%;
-                        padding:3px;
-                        align-content: center;
-                        color: white;
-                    } 
-                    h:form{  
-                        background-color: #3333ff;
-
-                    }
-                </style>
+                
+                <p:growl id="messages" showDetail="true" />
                 
                 <h:form>
                     <p:menubar>
-                        <p:submenu label="Cadastro">
-                            <p:menuitem class="item" value="Aluno" action="#{guiAluno.iniciar()}" ajax="false" />
-                            <p:menuitem class="item" value="Empresa" action="#{guiEmpresa.iniciar()}" ajax="false" />
-                            <p:menuitem class="item" value="Orientador" action="#{guiOrientador.iniciar()}" ajax="false" />
-                        </p:submenu>
-                        <p:submenu label="Academico">
-                            <p:menuitem class="item" value="Curso" action="#{guiCurso.iniciar()}" ajax="false" />
-                            <p:menuitem class="item" value="Estágio" action="#{guiEstagio.iniciar()}" ajax="false" />
+                        <p:submenu label="Aluno">
+                            <p:menuitem class="item" value="Inicio" action="#{guiAreaDoAluno.irAbaInicial()}" ajax="false" />
+                            <p:menuitem class="item" value="Dados do Estagio" action="#{guiAreaDoAluno.irAbaDadosDoEstagio()}" ajax="false" />
+                            <p:menuitem class="item" value="Relatorios" action="#{guiAreaDoAluno.irAbaRelatorios()}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Conta">
 
                         </p:submenu>
-                        <f:facet name="options">
+                        <f:facet name="options">            
                             <p:commandButton value="Logout" action="#{guiLogin.logoff()}" icon="ui-icon-extlink" ajax="false"/>
                         </f:facet>
                     </p:menubar>
-                </h:form>
+                </h:form>        
             </ui:insert>
         </div>
 
