@@ -10,7 +10,7 @@
         <ui:define name="content">
             <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
                          var="doc" value="#{mbRelatorios.docList}"
-                         widgetVar="relatorioFiltro" emptyMessage="Nenhum relatorio enviado">
+                         emptyMessage="Nenhum relatorio enviado">
                 
                 <p:column headerText="Nome do Arquivo">
                     <h:outputText value="#{doc.nome}"></h:outputText>
@@ -26,6 +26,11 @@
                 -->
                 <p:column headerText="Tamanho">
                     <h:outputText value="#{doc.tamanho}"></h:outputText>
+                </p:column>
+                
+                <p:column>
+                    <p:commandButton value="Baixar" />
+                   <p:commandButton value="Excluir" action="#{mbRelatorios.excluir(doc)}" />
                 </p:column>
                 
             </p:dataTable>

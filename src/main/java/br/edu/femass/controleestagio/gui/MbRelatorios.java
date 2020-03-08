@@ -29,7 +29,7 @@ public class MbRelatorios implements Serializable{
     private String matricula;
     
     @EJB
-    DocumentoDao docDao;
+    DocumentoDao docDao = new DocumentoDao();
     
     public MbRelatorios() {
     }
@@ -37,8 +37,8 @@ public class MbRelatorios implements Serializable{
     public String iniciar() {
         //Obtem o objeto usuario instanciado no durante o login
         Object o = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-        this.setMatricula(o.toString());
-        docList = docDao.getListaDocumentosByMatricula(this.getMatricula());
+        matricula = o.toString();
+        docList = docDao.getListaDocumentosByMatricula(matricula);
         return "FrmAbaRelatorios";
     }
    public String excluir(Documento d) {
