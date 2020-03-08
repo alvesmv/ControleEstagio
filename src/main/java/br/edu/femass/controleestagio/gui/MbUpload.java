@@ -63,6 +63,8 @@ public class MbUpload implements Serializable{
         //Obtem o objeto usuario instanciado no durante o login
         Object o = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         this.doc.setAluno(alunoDB.getAlunoPorMatricula(o.toString()));
+        //Estabelece o valor do atributo que auxilia na busca de documentos por matricula
+        this.doc.setAlunoMatricula(this.doc.getAluno().getMatricula());
         
         if(doc.getArquivo() == null)
             System.out.println("Arquivo nao convertido!!!!!!!!!");

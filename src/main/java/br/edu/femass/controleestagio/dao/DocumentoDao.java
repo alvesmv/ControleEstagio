@@ -52,4 +52,10 @@ public class DocumentoDao {
         return (Documento) q.getSingleResult();
     }
     
+    public List<Documento> getListaDocumentosByMatricula(String matricula){
+        Query q = em.createQuery("select d from Documento d where d.alunoMatricula = :m");
+        q.setParameter("m", matricula);
+        return q.getResultList();
+    }
+    
 }
