@@ -17,12 +17,12 @@ import javax.servlet.http.HttpServletResponse;
 public class MbDownload {
     
     public void download(Documento doc) throws FileNotFoundException, IOException{
-        byte[] blob = doc.getArquivo();
-        
+    
         HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         response.setContentType("application/pdf");
         response.setHeader("Content-disposition","attachment;filename=" + doc.getNome());
-        response.getOutputStream().write(blob);
+        //Escreve o conteudo de doc
+        response.getOutputStream().write(doc.getArquivo());
         FacesContext.getCurrentInstance().responseComplete(); 
     }    
 }
