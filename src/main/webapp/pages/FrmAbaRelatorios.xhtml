@@ -19,24 +19,23 @@
                 <p:column headerText="Data de Envio">
                     <h:outputText value="#{doc.dataEnvio}"></h:outputText>
                 </p:column>
-                <!--
-                <p:column headerText="Arquivo">
-                    <p:fileDownload value="#{doc.arquivo}"></p:fileDownload>
-                </p:column>
-                -->
+                
                 <p:column headerText="Tamanho">
                     <h:outputText value="#{doc.tamanho}"></h:outputText>
                 </p:column>
                 
                 <p:column>
-                    <p:commandButton value="Baixar" />
-                   <p:commandButton value="Excluir" action="#{mbRelatorios.excluir(doc)}" />
+                    <h:form>
+                        <p:commandButton  immediate="true" value="Baixar  " action="#{MbDownload.convertBlobToFile(doc)}" ajax="false">
+                            <p:fileDownload value="#{MbDownload.out}"/>
+                        </p:commandButton>
+                        <p:commandButton value="Excluir" action="#{mbRelatorios.excluir(doc)}" ajax="false"/>    
+                    </h:form>
                 </p:column>
-                
             </p:dataTable>
             <div style="margin-top:5%; justify-content: center; align-items: center; display: flex; border-radius: 6px; border-color: #2694e8">
                 <h:form enctype="multipart/form-data">
-                    <p:fileUpload id="EnviarArquivo" 
+                    <p:fileUpload id="EnviarArquivo"
                                   label="Procurar..."
                                   fileUploadListener="#{MbUpload.upload}"
                                   sizeLimit="16000000"
