@@ -1,32 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.femass.controleestagio.gui;
+
 import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.DocumentoDao;
 import br.edu.femass.controleestagio.model.Documento;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-
 import java.io.Serializable;
-import java.sql.Blob;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
-
 import javax.faces.context.FacesContext;
-import org.apache.commons.io.IOUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
-
 
 /**
  *
@@ -36,9 +24,6 @@ import org.primefaces.model.UploadedFile;
 @Dependent
 public class MbUpload implements Serializable{
 
-    /**
-     * Creates a new instance of MbUpload
-     */
     Documento doc;
     @EJB
     DocumentoDao docDao;
