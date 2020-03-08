@@ -33,7 +33,16 @@
                 <p:menuitem class="item" value="Dados do Estagio" action="#{guiAreaDoAluno.irAbaDadosDoEstagio()}" ajax="false" />
                 <p:menuitem class="item" value="Relatorios" action="#{guiAreaDoAluno.irAbaRelatorios()}" ajax="false" />
             </p:tabMenu>
+             <h:form>
+                 <p:fileUpload id="EnviarArquivo" 
+                               label="Procurar..."
+                               fileUploadListener="#{MbUpload.upload}"
+                               sizeLimit="16000000"
+                               allowTypes="/(\.|\/)(pdf)$/"/>
+             </h:form>
+            
         </h:form>
+         
     </h:body>
 </html>
 

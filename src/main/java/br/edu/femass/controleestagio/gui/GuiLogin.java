@@ -43,8 +43,14 @@ public class GuiLogin implements Serializable {
         for (Usuario u : usuarios) {
             if (u.getLogin().equals(usuario.getLogin()) && u.getSenha().equals(usuario.getSenha())) {
                 if (u.getTipoDeAcesso().equals(TipoDeAcesso.aluno)) {
+
+                    //O comando a seguir Add o objeto usuario na sessao
+                    FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", u);
+                    return "pages/FrmAreaDoAluno";
+
                     //session.setAttribute("usuario logado", u);
                     return "pages/FrmAreaDoAluno.xhtml?faces-redirect=true";
+
                 } else if (u.getTipoDeAcesso().equals(TipoDeAcesso.orientador)) {
                     //ession.setAttribute("usuario logado", u);
                     return "pages/FrmAreaDoOrientador.xhtml?faces-redirect=true";
