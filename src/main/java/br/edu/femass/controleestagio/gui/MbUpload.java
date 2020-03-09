@@ -41,7 +41,7 @@ public class MbUpload implements Serializable{
             System.setProperty("file.encoding", "UTF-8");
             File novoArq = new File(uf.getFileName());
             FileInputStream in;
-            byte[] blob = new byte[(int) novoArq.length()];
+            byte[] blob = uf.getContents();
   
         try{
             in = new FileInputStream(novoArq);
@@ -71,7 +71,6 @@ public class MbUpload implements Serializable{
         //Caso contrário, flush no DB
         else{
             docDao.inserir(this.doc);
-            System.out.println("Enviado com sucesso!!!");
         }
     }   
 }
