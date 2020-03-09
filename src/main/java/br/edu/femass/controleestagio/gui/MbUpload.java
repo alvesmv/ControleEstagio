@@ -41,7 +41,7 @@ public class MbUpload implements Serializable{
             System.setProperty("file.encoding", "UTF-8");
             File novoArq = new File(uf.getFileName());
             FileInputStream in;
-            byte[] blob = new byte[(int) novoArq.length()];
+            byte[] blob = uf.getContents();
   
         try{
             in = new FileInputStream(novoArq);
@@ -63,13 +63,14 @@ public class MbUpload implements Serializable{
         //Obtem o objeto usuario instanciado no durante o login
         Object o = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         this.doc.setAluno(alunoDB.getAlunoPorMatricula(o.toString()));
+        //Estabelece o valor do atributo que auxilia na busca de documentos por matricula
+        this.doc.setAlunoMatricula(this.doc.getAluno().getMatricula());
         
         if(doc.getArquivo() == null)
             System.out.println("Arquivo nao convertido!!!!!!!!!");
         //Caso contrário, flush no DB
         else{
             docDao.inserir(this.doc);
-            System.out.println("Enviado com sucesso!!!");
         }
     }   
 }

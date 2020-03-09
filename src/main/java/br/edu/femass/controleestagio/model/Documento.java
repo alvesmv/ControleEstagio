@@ -26,6 +26,7 @@ public class Documento implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     Date dataEnvio;
     Long tamanho;
+    String alunoMatricula;
     @Lob
     byte[] arquivo;
     DocumentoTipo docTipo;
@@ -63,7 +64,14 @@ public class Documento implements Serializable {
     public void setTamanho(Long tamanho) {
         this.tamanho = tamanho;
     }
-    
+
+    public String getAlunoMatricula() {
+        return alunoMatricula;
+    }
+
+    public void setAlunoMatricula(String alunoMatricula) {
+        this.alunoMatricula = alunoMatricula;
+    }
     public byte[] getArquivo() {
         return arquivo;
     }
