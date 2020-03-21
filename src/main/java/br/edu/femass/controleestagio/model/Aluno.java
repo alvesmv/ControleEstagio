@@ -6,6 +6,7 @@
 package br.edu.femass.controleestagio.model;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,7 +37,7 @@ public class Aluno implements Serializable {
     private String bairro;
     private String cidade;
     private String cep;
-    @ManyToOne
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Usuario usuario;
 
     /**
