@@ -40,8 +40,8 @@ and open the template in the editor.
                         <h:outputText value="#{emp.email}" />
                     </p:column>
                     <p:column >
-                        <p:commandButton value="Alterar" action="#{guiEmpresa.alterar(emp)}" ajax="false" />
-                        <p:commandButton value="Excluir" action="#{guiEmpresa.excluir(emp)}" ajax="false" />
+                        <p:commandButton title="Alterar" action="#{guiEmpresa.alterar(emp)}" ajax="false" icon="ui-icon-pencil"/>
+                        <p:commandButton title="Excluir" action="#{guiEmpresa.excluir(emp)}" ajax="false" icon="ui-icon-trash"/>
                     </p:column>
                     <f:facet name="footer">
                         <p:commandButton value="Incluir" action="#{guiEmpresa.incluir()}" ajax="false" />

@@ -7,30 +7,19 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
+        <title>Controle Estágio</title>
+        <h:outputStylesheet library="css" name="jquery-ui.css"/>
+        <h:outputStylesheet library="css" name="jquery-ui.min.css"/>
+        <h:outputStylesheet library="css" name="jquery-ui.structure.css"/>
+        <h:outputStylesheet library="css" name="jquery-ui.structure.min.css"/>
         <h:outputStylesheet library="css" name="jquery-ui.theme.css"/>
+        <h:outputStylesheet library="css" name="jquery-ui.theme.min.css"/>
     </h:head>
 
     <h:body>
 
         <div id="top">
-            <ui:insert name="top">
-                <style>
-                    body{
-
-                        background-color: white;
-                    }
-                    #item{
-                        width: 20%;
-                        padding:3px;
-                        align-content: center;
-                        color: white;
-                    } 
-                    h:form{  
-                        background-color: #3333ff;
-
-                    }
-                </style>
-                
+            <ui:insert name="top">              
                 <h:form>
                     <p:menubar>
                         <p:submenu label="Cadastro">

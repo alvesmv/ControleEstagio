@@ -37,7 +37,7 @@ public class Aluno implements Serializable {
     private String bairro;
     private String cidade;
     private String cep;
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private Usuario usuario;
 
     /**

@@ -7,8 +7,11 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
+        <title>Controle Estágio</title>
         <h:outputStylesheet library="css" name="jquery-ui.css"/>
         <h:outputStylesheet library="css" name="jquery-ui.min.css"/>
+        <h:outputStylesheet library="css" name="jquery-ui.structure.css"/>
+        <h:outputStylesheet library="css" name="jquery-ui.structure.min.css"/>
         <h:outputStylesheet library="css" name="jquery-ui.theme.css"/>
         <h:outputStylesheet library="css" name="jquery-ui.theme.min.css"/>
     </h:head>
@@ -17,9 +20,9 @@
 
         <div id="top">
             <ui:insert name="top">
-                
+
                 <p:growl id="messages" showDetail="true" />
-                
+
                 <h:form>
                     <p:menubar>
                         <p:submenu label="Aluno">

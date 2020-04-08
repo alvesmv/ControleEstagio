@@ -31,8 +31,8 @@ and open the template in the editor.
                         <h:outputText value="#{ori.cpf}" />
                     </p:column>
                     <p:column >
-                        <p:commandButton value="Alterar" action="#{guiOrientador.alterar(ori)}" ajax="false" />
-                        <p:commandButton value="Excluir" action="#{guiOrientador.excluir(ori)}" ajax="false" />
+                        <p:commandButton title="Alterar" action="#{guiOrientador.alterar(ori)}" ajax="false" icon="ui-icon-pencil"/>
+                        <p:commandButton title="Excluir" action="#{guiOrientador.excluir(ori)}" ajax="false" icon="ui-icon-trash"/>
                     </p:column>
                     <f:facet name="footer">
                         <p:commandButton value="Incluir" action="#{guiOrientador.incluir()}" ajax="false" />
