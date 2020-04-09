@@ -54,6 +54,7 @@ public class GuiOrientador implements Serializable {
 
     public String alterar(Orientador o) {
         orientador = o;
+        this.tipoDeAcesso = orientador.getUsuario().getTipoDeAcesso();
         alterando = true;
         return "FrmCadOrientador";
     }
@@ -74,10 +75,14 @@ public class GuiOrientador implements Serializable {
 
     public String gravar() throws NoSuchAlgorithmException, UnsupportedEncodingException {
         if (alterando) {
+            usuario = orientador.getUsuario();
+            usuario.setTipoDeAcesso(tipoDeAcesso);
+            orientador.setUsuario(usuario);
             orientadorDao.alterar(orientador);
         } else {
             usuario.setLogin(orientador.getCpf());
             usuario.setSenha(orientador.getCpf());
+            usuario.setTipoDeAcesso(tipoDeAcesso);
             usuarioDao.inserir(usuario);
             orientador.setUsuario(usuario);
             orientadorDao.inserir(orientador);

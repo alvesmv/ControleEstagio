@@ -38,8 +38,8 @@
                         <h:outputText value="#{est.statusDoEstagio}"/>
                     </p:column>
                     <p:column >
-                        <p:commandButton value="Alterar" action="#{guiEstagio.alterar()}" ajax="false" />
-                        <p:commandButton value="Excluir" action="#{guiEstagio.excluir(est)}" ajax="false" />
+                        <p:commandButton title="Alterar" action="#{guiEstagio.alterar(est)}" ajax="false" icon="ui-icon-pencil"/>
+                        <p:commandButton title="Excluir" action="#{guiEstagio.excluir(est)}" ajax="false" icon="ui-icon-trash"/>
                     </p:column>
                     <f:facet name="footer">
                         <p:commandButton value="Incluir" action="#{guiEstagio.incluir()}" ajax="false" />

@@ -41,8 +41,8 @@ and open the template in the editor.
                         <h:outputText value="#{alu.celular}" />
                     </p:column>               
                     <p:column >
-                        <p:commandButton value="Alterar" action="#{guiAluno.alterar(alu)}" ajax="false" />
-                        <p:commandButton value="Excluir" action="#{guiAluno.excluir(alu)}" ajax="false" />
+                        <p:commandButton title="Alterar" action="#{guiAluno.alterar(alu)}" ajax="false" icon="ui-icon-pencil"/>
+                        <p:commandButton title="Excluir" action="#{guiAluno.excluir(alu)}" ajax="false" icon="ui-icon-trash"/>
                     </p:column>
                     <f:facet name="footer">
                         <p:commandButton value="Incluir" action="#{guiAluno.incluir()}" ajax="false" />

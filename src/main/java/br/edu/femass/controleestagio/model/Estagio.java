@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -25,8 +27,11 @@ public class Estagio implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEstagio;
     private boolean categoriaObrigatoria;
+    @OneToOne
     private Aluno alunoEstagio;
+    @ManyToOne
     private Orientador orientadorEstagio;
+    @ManyToOne
     private Empresa empresaEstagio;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataInicioEstagio;

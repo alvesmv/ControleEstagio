@@ -14,43 +14,25 @@ and open the template in the editor.
         <h:outputStylesheet library="css" name="jquery-ui.theme.css"/>
     </h:head>
     <h:body>
-        <div style="font-size:34px; font-family:monospace ;margin-top: 4%; margin-bottom:2%; text-align: center;">
-            <img src="resources/images/logo.png"/>
-            <p>CONTROLE DE ESTÁGIO</p>
-        </div>    
-
-        <style>
-            body{
-
-                background-color: white;
-            }
-            #item{
-                width: 20%;
-                padding:3px;
-                align-content: center;
-                color: white;
-            } 
-            h:form{  
-                background-color: #3333ff;
-
-            }
-        </style>      
-        <div style="margin-top:5%; justify-content: center; align-items: center; display: flex; border-radius: 6px; border-color: #2694e8">
-            <p:growl id="growl" showDetail="true" sticky="true" />
-            <h:form>
-                <h:panelGrid columns="2">
-                    <p:outputLabel value="Login" />
-                    <p:inputText value="#{guiLogin.usuario.login}" />
-                    <p:outputLabel value="Senha" />
-                    <p:password value="#{guiLogin.usuario.senha}" />
-                </h:panelGrid>
-
-                <div style="margin-top:5%; justify-content: center; align-items: center; display:flex">
-                    <p:commandButton value="Entrar" action="#{guiLogin.entrar()}" update="@form" ajax="false" />
-                </div>
-
+        <h:body style="width: 100%; max-width: 1120px; height: 100vh; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+            <h:form style="margin: auto;" >
+                <p:growl id="growl-mensagem" showDetail="true" sticky="true"/>
+                <p:panel id="panel-login" header="Login" footer="Controle de Estágio"
+                         style="width: 520px">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage url="/resources/imagens/logo.png" />
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel value="Login" />
+                            <p:inputText value="#{guiLogin.usuario.login}" />
+                            <p:outputLabel value="Senha" />
+                            <p:password value="#{guiLogin.usuario.senha}" />
+                            <p:outputLabel />
+                            <p:commandButton value="Entrar" action="#{guiLogin.entrar()}" update="growl-mensagem" ajax="true" />
+                        </h:panelGrid>
+                    </h:panelGrid>
+                </p:panel>
             </h:form>
-        </div>  
+        </h:body>
 
     </h:body>
 </html>

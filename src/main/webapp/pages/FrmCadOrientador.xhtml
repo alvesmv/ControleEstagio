@@ -20,7 +20,7 @@ and open the template in the editor.
                         <p:outputLabel value="Nome" />
                         <p:inputText value="#{guiOrientador.orientador.nomeOrientador}" />
                         <p:outputLabel value="CPF" />
-                        <p:inputMask value="#{guiOrientador.orientador.cpf}" mask="999.999.999-99"/>
+                        <p:inputText value="#{guiOrientador.orientador.cpf}"/>
                         <p:selectOneRadio value="#{guiOrientador.tipoDeAcesso}" >
                             <f:selectItem itemLabel="Cordenador de estágio" itemValue="coordenador"/>
                             <f:selectItem itemLabel="Orientador de estágio" itemValue="orientador"/>

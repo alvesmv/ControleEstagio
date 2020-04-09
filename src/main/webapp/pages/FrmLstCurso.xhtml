@@ -29,8 +29,8 @@ and open the template in the editor.
                         <h:outputText value="#{cur.nomeCurso}" />
                     </p:column>
                     <p:column >
-                        <p:commandButton value="Alterar" action="#{guiCurso.alterar(cur)}" ajax="false" />
-                        <p:commandButton value="Excluir" action="#{guiCurso.excluir(cur)}" ajax="false" />
+                        <p:commandButton title="Alterar" action="#{guiCurso.alterar(cur)}" ajax="false" icon="ui-icon-pencil"/>
+                        <p:commandButton title="Excluir" action="#{guiCurso.excluir(cur)}" ajax="false" icon="ui-icon-trash"/>
                     </p:column>
                     <f:facet name="footer">
                         <p:commandButton value="Incluir" action="#{guiCurso.incluir()}" ajax="false" />

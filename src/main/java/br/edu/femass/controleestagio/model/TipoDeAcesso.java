@@ -10,6 +10,6 @@ package br.edu.femass.controleestagio.model;
  * @author dumas
  */
 public enum TipoDeAcesso {
-    aluno, orientador, coordenador;
+    aluno, orientador, coordenador, admin;
 
 }
