@@ -38,7 +38,6 @@ public class GuiLogin implements Serializable {
     }
 
     public String entrar() {
-        System.out.println("Entrou no 'entrar'");
         usuarios = usuarioDao.getUsuarios();        
         for (Usuario u : usuarios) {
             if (u.getLogin().equals(usuario.getLogin()) && u.getSenha().equals(usuario.getSenha())) {
@@ -46,17 +45,10 @@ public class GuiLogin implements Serializable {
 
                     //O comando a seguir Add o objeto usuario na sessao
                     FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", u);
-                    //return "pages/FrmAreaDoAluno";
-
-                    //session.setAttribute("usuario logado", u);
                     return "pages/FrmAreaDoAluno.xhtml?faces-redirect=true";
-
                 } else if (u.getTipoDeAcesso().equals(TipoDeAcesso.orientador)) {
-                    //ession.setAttribute("usuario logado", u);
                     return "pages/FrmAreaDoOrientador.xhtml?faces-redirect=true";
                 } else if (u.getTipoDeAcesso().equals(TipoDeAcesso.coordenador)) {
-                    //session.setAttribute("usuario logado", u);
-                    //System.out.println("Aqui foi;");
                     return "pages/FrmAreaDoCoordenador.xhtml?faces-redirect=true";
                 }
                 FacesContext context = FacesContext.getCurrentInstance();
@@ -97,7 +89,6 @@ public class GuiLogin implements Serializable {
      * @return the usuario
      */
     public Usuario getUsuario() {
-        System.out.println(usuario);
         return usuario;
     }
 

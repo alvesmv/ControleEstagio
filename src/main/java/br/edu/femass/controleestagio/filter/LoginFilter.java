@@ -36,20 +36,13 @@ public class LoginFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         String url = req.getRequestURI();
-        System.out.println(url.contains("/pages"));
-        System.out.println(guilogin.getUsuario());
-        System.out.println("Entrou no teste ");
         if (url.contains("/pages") ) {
-            System.out.println("Entrou no teste do pages");
             if (guilogin.getUsuario().getLogin()==null) {
-                System.out.println("Entrou no NULL");
                 res.sendRedirect(req.getServletContext().getContextPath() + "/faces/index.xhtml ");
-                System.out.println(req.getServletContext().getContextPath());
-                System.out.println("Não Continuou");
+                //System.out.println(req.getServletContext().getContextPath());
                 return;
             }
         }
-            System.out.println("Continuou");
             chain.doFilter(request, response);
 
         
