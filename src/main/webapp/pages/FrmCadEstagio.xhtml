@@ -30,7 +30,7 @@
                         <p:outputLabel value="Nome do supervisor" />
                         <p:inputText value="#{guiEstagio.estagio.nomeSupervisor}" style="width:220px"/>
                         <p:outputLabel value="Contato do supervisor" />
-                        <p:inputText value="#{guiEstagio.estagio.contatoSupervisor}" style="width:220px"/>
+                        <p:inputMask value="#{guiEstagio.estagio.contatoSupervisor}" mask="999.999.999-99" style="width:220px"/>
                         <p:outputLabel value="Data Inicio" />
                         <p:calendar value="#{guiEstagio.estagio.dataInicioEstagio}" />
                         <p:outputLabel value="Data Termino" />

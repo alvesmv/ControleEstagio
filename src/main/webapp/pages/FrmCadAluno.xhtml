@@ -29,9 +29,9 @@ and open the template in the editor.
                         <p:outputLabel value="E-mail" />
                         <p:inputText value="#{guiAluno.aluno.email}" style="width:220px"/>
                         <p:outputLabel value="Telefone" />
-                        <p:inputText value="#{guiAluno.aluno.telefone}" style="width:220px"/>
+                        <p:inputMask value="#{guiAluno.aluno.telefone}" mask="(99)9999-9999" style="width:220px"/>
                         <p:outputLabel value="Celular" />
-                        <p:inputText value="#{guiAluno.aluno.celular}" style="width:220px"/>
+                        <p:inputMask value="#{guiAluno.aluno.celular}" mask="(99)99999-9999" style="width:220px"/>
                         <p:outputLabel value="Logradouro" />
                         <p:inputText value="#{guiAluno.aluno.logradouro}" style="width:220px"/>
                         <p:outputLabel value="Número" />

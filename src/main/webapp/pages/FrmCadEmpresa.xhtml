@@ -20,7 +20,7 @@ and open the template in the editor.
                         <p:outputLabel value="Nome da Empresa" />
                         <p:inputText value="#{guiEmpresa.empresa.nomeEmpresa}" style="width:220px"/>
                         <p:outputLabel value="CNPJ" />
-                        <p:inputText value="#{guiEmpresa.empresa.cnpj}" style="width:220px"/>
+                        <p:inputMask value="#{guiEmpresa.empresa.cnpj}" mask="99.999.999/9999-99" style="width:220px"/>
                         <p:outputLabel value="Contato do RH" />
                         <p:inputText value="#{guiEmpresa.empresa.contatoDoRH}" style="width:220px"/>
                         <p:outputLabel value="E-mail" />
@@ -32,7 +32,7 @@ and open the template in the editor.
                         <p:outputLabel value="Complemento" />
                         <p:inputText value="#{guiEmpresa.empresa.complemento}" style="width:220px"/>
                         <p:outputLabel value="CEP" />
-                        <p:inputText value="#{guiEmpresa.empresa.cep}" style="width:220px"/>
+                        <p:inputMask value="#{guiEmpresa.empresa.cep}" mask="99999-999" style="width:220px"/>
                     </h:panelGrid>
                     
                     <div style="margin-top:5%; justify-content: center; align-items: center; display: flex"> 
