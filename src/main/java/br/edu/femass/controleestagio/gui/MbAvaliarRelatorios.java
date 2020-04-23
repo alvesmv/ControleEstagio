@@ -50,7 +50,7 @@ public class MbAvaliarRelatorios {
         }
         else
         {
-            alunoList = alunoDao.getAlunos();    
+            alunoList = alunoDao.getAlunosComEstagio();    
         }
         
         

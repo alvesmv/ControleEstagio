@@ -66,4 +66,9 @@ public class AlunoDao {
         q.setParameter("cpf", orientadorCpf);
         return q.getResultList();
     }
+    
+    public List<Aluno> getAlunosComEstagio(){
+        Query q = em.createQuery("select e.alunoEstagio from Estagio e");
+        return q.getResultList();
+    }
 }
