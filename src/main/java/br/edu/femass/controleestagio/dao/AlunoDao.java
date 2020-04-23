@@ -60,4 +60,10 @@ public class AlunoDao {
         q.setParameter("n", nome);
         return (Aluno) q.getSingleResult();
     }
+    
+    public List<Aluno> getAlunosByOrientador(String orientadorCpf){
+        Query q = em.createQuery("select e.alunoEstagio from Estagio e where e.orientadorEstagio.cpf = :cpf");
+        q.setParameter("cpf", orientadorCpf);
+        return q.getResultList();
+    }
 }

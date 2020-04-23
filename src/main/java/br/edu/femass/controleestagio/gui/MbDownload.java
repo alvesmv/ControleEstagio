@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Souza
  */
-@Named(value = "MbDownload")
+@Named(value = "mbDownload")
 @Dependent
 public class MbDownload {
     

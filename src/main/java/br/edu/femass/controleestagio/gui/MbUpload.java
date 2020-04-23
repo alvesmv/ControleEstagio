@@ -20,7 +20,7 @@ import org.primefaces.model.UploadedFile;
  *
  * @author Souza
  */
-@Named(value = "MbUpload")
+@Named(value = "mbUpload")
 @Dependent
 public class MbUpload implements Serializable{
 

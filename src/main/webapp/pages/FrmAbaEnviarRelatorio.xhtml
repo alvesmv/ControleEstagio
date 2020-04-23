@@ -9,7 +9,7 @@
     <ui:composition template="/template/templateAluno.xhtml">
         <ui:define name="content">
             <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
-                         var="doc" value="#{mbRelatorios.docList}"
+                         var="doc" value="#{mbEnviarRelatorios.docList}"
                          emptyMessage="Nenhum relatorio enviado">
                 
                 <p:column headerText="Nome do Arquivo">
@@ -26,8 +26,8 @@
                 
                 <p:column>
                     <h:form>
-                        <p:commandButton  immediate="true" value="Baixar  " action="#{MbDownload.download(doc)}" ajax="false"/>
-                        <p:commandButton value="Excluir" action="#{mbRelatorios.excluir(doc)}" ajax="false"/>    
+                        <p:commandButton  immediate="true" value="Baixar  " action="#{mbDownload.download(doc)}" ajax="false"/>
+                        <p:commandButton value="Excluir" action="#{mbEnviarRelatorios.excluir(doc)}" ajax="false"/>    
                     </h:form>
                 </p:column>
             </p:dataTable>
@@ -35,7 +35,7 @@
                 <h:form enctype="multipart/form-data">
                     <p:fileUpload id="EnviarArquivo"
                                   label="Procurar..."
-                                  fileUploadListener="#{MbUpload.upload}"
+                                  fileUploadListener="#{mbUpload.upload}"
                                   allowTypes="/(\.|\/)(pdf)$/"
                                   sizeLimit="16000000"/>
                 </h:form>                 

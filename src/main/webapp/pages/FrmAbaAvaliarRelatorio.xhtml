@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/template/templateCoordenador.xhtml">
+        <ui:define name="content">
+            <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
+                         var="alu" value="#{mbAvaliarRelatorios.alunoList}"
+                         emptyMessage="Nenhum relatorio enviado">
+                
+                <p:column headerText="Nome do Aluno">
+                    <h:outputText value="#{alu.nome}"></h:outputText>
+                </p:column>
+                
+                <p:column headerText="Matricula">
+                    <h:outputText value="#{alu.matricula}"></h:outputText>
+                </p:column>
+                
+                <p:column headerText="Curso">
+                    <h:outputText value="#{alu.curso.nomeCurso}"></h:outputText>
+                </p:column>
+                
+                <p:column headerText="Acoes">
+                    
+                </p:column>
+            </p:dataTable>
+        </ui:define>
+    </ui:composition> 
+
+</html>
+

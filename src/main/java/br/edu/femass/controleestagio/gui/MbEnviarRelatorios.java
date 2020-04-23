@@ -6,6 +6,7 @@
 package br.edu.femass.controleestagio.gui;
 
 import br.edu.femass.controleestagio.dao.DocumentoDao;
+
 import br.edu.femass.controleestagio.model.Documento;
 import java.io.Serializable;
 import java.util.List;
@@ -19,19 +20,21 @@ import javax.inject.Named;
  *
  * @author Souza
  */
-@Named(value = "mbRelatorios")
+@Named(value = "mbEnviarRelatorios")
 @SessionScoped
 
-public class MbRelatorios implements Serializable{
+public class MbEnviarRelatorios implements Serializable{
 
     private List<Documento> docList;
+  
     private Documento doc;
     private String matricula;
+    
     
     @EJB
     DocumentoDao docDao = new DocumentoDao();
     
-    public MbRelatorios() {
+    public MbEnviarRelatorios() {
     }
     
     public String iniciar() {
@@ -39,7 +42,7 @@ public class MbRelatorios implements Serializable{
         Object o = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         matricula = o.toString();
         docList = docDao.getListaDocumentosByMatricula(matricula);
-        return "FrmAbaRelatorios";
+        return "FrmAbaEnviarRelatorio";
     }
    public String excluir(Documento d) {
         docDao.excluir(d);
