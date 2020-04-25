@@ -7,6 +7,10 @@
 
     <ui:composition template="/template/templateOrientador.xhtml">
         <ui:define name="content">
+            <div>
+                <h:outputText value="Nome: #{mbRelatorios.aluno.nome}"/><br/>
+                <h:outputText value="Matricula: #{mbRelatorios.aluno.matricula}"/><br/>
+            </div>
             <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
                          var="doc" value="#{mbRelatorios.docList}"
                          emptyMessage="Nenhum relatorio enviado">
@@ -18,7 +22,9 @@
                 <p:column headerText="Data de Envio">
                     <h:outputText value="#{doc.dataEnvio}"/>
                 </p:column>
-                
+                <p:column headerText="Status">
+                    <h:outputText value="#{doc.docStatus}"></h:outputText>
+                </p:column>
                 <p:column headerText="Tamanho">
                     <h:outputText value="#{doc.tamanho}"/>
                 </p:column>
@@ -29,6 +35,9 @@
                     </h:form>
                 </p:column>
             </p:dataTable>
+            <h:form>
+                <p:commandButton value="Voltar" action="#{mbRelatorios.voltarParaListaDeAlunos()}" ajax="false" />
+            </h:form>
         </ui:define>
     </ui:composition> 
 

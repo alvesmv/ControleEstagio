@@ -28,6 +28,7 @@ public class MbRelatorios implements Serializable{
     private List<Aluno> alunoList;
     private Documento doc;
     private String login;
+    private Aluno aluno;
     
     
     @EJB
@@ -59,10 +60,14 @@ public class MbRelatorios implements Serializable{
     }
     
     public String acessarFichaDeRelatorios(Aluno a){
+        this.aluno = a;
         docList = docDao.getListaDocumentosByMatricula(a.getMatricula());
         return "FrmFichaRelatorios";
     }
-   
+
+    public String voltarParaListaDeAlunos(){
+        return "FrmAbaAvaliarRelatorio";
+    }
     public String excluir(Documento d) {
         docDao.excluir(d);
         docList = docDao.getListaDocumentosByMatricula(login);
@@ -101,4 +106,13 @@ public class MbRelatorios implements Serializable{
     public void setLogin(String login) {
         this.login = login;
     }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+    
 }
