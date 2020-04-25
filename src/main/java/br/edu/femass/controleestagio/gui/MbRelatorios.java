@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.edu.femass.controleestagio.gui;
 
 import br.edu.femass.controleestagio.dao.AlunoDao;
@@ -21,7 +17,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author Souza
+ * @author gxrj
  */
 @Named(value = "mbRelatorios")
 @SessionScoped
@@ -62,7 +58,13 @@ public class MbRelatorios implements Serializable{
         
         return "FrmAbaAvaliarRelatorio";
     }
-   public String excluir(Documento d) {
+    
+    public String acessarFichaDeRelatorios(Aluno a){
+        this.docList = docDao.getListaDocumentosByMatricula(a.toString());
+        return "FrmFichaRelatorios";
+    }
+   
+    public String excluir(Documento d) {
         docDao.excluir(d);
         docList = docDao.getListaDocumentosByMatricula(login);
         return null;
