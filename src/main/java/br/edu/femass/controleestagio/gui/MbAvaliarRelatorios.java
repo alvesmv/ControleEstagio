@@ -18,7 +18,7 @@ import javax.faces.context.FacesContext;
  * @author gxrj
  */
 @Named(value = "mbAvaliarRelatorios")
-@Dependent
+@SessionScoped
 public class MbAvaliarRelatorios {
 
     private List<Aluno> alunoList;
