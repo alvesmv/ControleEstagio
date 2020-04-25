@@ -5,10 +5,10 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    <ui:composition template="/template/templateCoordenador.xhtml">
+    <ui:composition template="/template/templateOrientador.xhtml">
         <ui:define name="content">
             <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
-                         var="alu" value="#{mbAvaliarRelatorios.alunoList}"
+                         var="alu" value="#{mbRelatorios.alunoList}"
                          emptyMessage="Nenhum relatorio enviado">
                 
                 <p:column headerText="Nome do Aluno">
@@ -24,7 +24,9 @@
                 </p:column>
                 
                 <p:column headerText="Acoes">
-                    
+                    <h:form>
+                        <p:commandButton value="Acessar Ficha de Relatorios" action="#{mbRelatorios.acessarFichaDeRelatorios(alu)}"/>
+                    </h:form>
                 </p:column>
             </p:dataTable>
         </ui:define>

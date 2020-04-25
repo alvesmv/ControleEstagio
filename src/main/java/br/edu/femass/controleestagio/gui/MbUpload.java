@@ -3,6 +3,8 @@ package br.edu.femass.controleestagio.gui;
 import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.DocumentoDao;
 import br.edu.femass.controleestagio.model.Documento;
+import br.edu.femass.controleestagio.model.DocumentoStatus;
+import br.edu.femass.controleestagio.model.DocumentoTipo;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -60,6 +62,7 @@ public class MbUpload implements Serializable{
         this.doc.setArquivo(convertUpFileToByte(upFile));
         this.doc.setNome(upFile.getFileName());
         this.doc.setTamanho(upFile.getSize());
+        this.doc.setDocStatus(DocumentoStatus.em_analise);
         //Obtem o objeto usuario instanciado no durante o login
         Object o = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         this.doc.setAluno(alunoDB.getAlunoPorMatricula(o.toString()));
