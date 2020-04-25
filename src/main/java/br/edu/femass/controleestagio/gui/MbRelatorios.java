@@ -43,17 +43,9 @@ public class MbRelatorios implements Serializable{
         Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         login = user.getLogin();
         
-        System.out.println(login);
-        
         switch (user.getTipoDeAcesso()) {
             case aluno:
-                docList = docDao.getListaDocumentosByMatricula(login);
-                if(docList != null)
-                    for(Documento d: docList)
-                        System.out.println(d.getNome());
-                else
-                    System.out.println("Fodeu!!");
-                
+                docList = docDao.getListaDocumentosByMatricula(login); 
                 return "FrmAbaEnviarRelatorio";
             case orientador:
                 alunoList = alunoDao.getAlunosByOrientador(login);
@@ -67,7 +59,7 @@ public class MbRelatorios implements Serializable{
     }
     
     public String acessarFichaDeRelatorios(Aluno a){
-        this.docList = docDao.getListaDocumentosByMatricula(a.toString());
+        docList = docDao.getListaDocumentosByMatricula(a.getMatricula());
         return "FrmFichaRelatorios";
     }
    

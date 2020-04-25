@@ -24,7 +24,9 @@
                 </p:column>
                 
                 <p:column headerText="Acoes">
-                    <p:commandButton value="Acessar Ficha de Relatorios" action="#{mbRelatorios.acessarFichaDeRelatorios(alu)}"/>
+                    <h:form>
+                        <p:commandButton value="Acessar Ficha de Relatorios" action="#{mbRelatorios.acessarFichaDeRelatorios(alu)}"/>
+                    </h:form>
                 </p:column>
             </p:dataTable>
         </ui:define>
