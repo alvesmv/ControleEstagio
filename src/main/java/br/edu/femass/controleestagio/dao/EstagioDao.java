@@ -16,7 +16,6 @@ import javax.persistence.Query;
  *
  * @author souza
  */
-
 @Stateless
 public class EstagioDao {
 
@@ -44,5 +43,13 @@ public class EstagioDao {
         Query q = em.createQuery("select e from Estagio e where e.idEstagio = :i");
         q.setParameter("i", id);
         return q.getResultList();
+    }
+
+    /*
+    Método que retorna o número de alunos por disciplina
+     */
+    public Long getAlunoPorDisciplina() {
+        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e group by e.disciplina");
+        return (Long) q.getSingleResult();
     }
 }

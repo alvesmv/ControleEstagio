@@ -8,6 +8,8 @@ package br.edu.femass.controleestagio.model;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +28,6 @@ public class Estagio implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEstagio;
-    private boolean categoriaObrigatoria;
     @OneToOne
     private Aluno alunoEstagio;
     @ManyToOne
@@ -37,22 +38,18 @@ public class Estagio implements Serializable {
     private Date dataInicioEstagio;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date datafimEstagio;
+    @Enumerated(EnumType.STRING)
     private Status statusDoEstagio;
     private String nomeSupervisor;
     private String contatoSupervisor;
+    @Enumerated(EnumType.STRING)
+    private Disciplina disciplina;
 
     /**
-     * @return the categoriaObrigatoria
+     * @return the idEstagio
      */
-    public boolean isCategoriaObrigatoria() {
-        return categoriaObrigatoria;
-    }
-
-    /**
-     * @param categoriaObrigatoria the categoriaObrigatoria to set
-     */
-    public void setCategoriaObrigatoria(boolean categoriaObrigatoria) {
-        this.categoriaObrigatoria = categoriaObrigatoria;
+    public Long getIdEstagio() {
+        return idEstagio;
     }
 
     /**
@@ -165,6 +162,20 @@ public class Estagio implements Serializable {
      */
     public void setContatoSupervisor(String contatoSupervisor) {
         this.contatoSupervisor = contatoSupervisor;
+    }
+
+    /**
+     * @return the disciplina
+     */
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    /**
+     * @param disciplina the disciplina to set
+     */
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
     }
 
     @Override

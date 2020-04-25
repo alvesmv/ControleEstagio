@@ -38,6 +38,7 @@ public class AlunoDao {
         Query q = em.createQuery("select a from Aluno a order by a.nome");
         return q.getResultList();
     }
+
     public List<String> getListaAlunos() {
         Query q = em.createQuery("select a.nome from Aluno a order by a.nome");
         return q.getResultList();
@@ -48,27 +49,36 @@ public class AlunoDao {
         q.setParameter("n", nome);
         return q.getResultList();
     }
-    
+
     public Aluno getAlunoPorMatricula(String matricula) {
         Query q = em.createQuery("select a from Aluno a where a.matricula = :m");
         q.setParameter("m", matricula);
         return (Aluno) q.getSingleResult();
     }
-    
+
     public Aluno getAlunoByString(String nome) {
         Query q = em.createQuery("select a from Aluno a where a.nome = :n");
         q.setParameter("n", nome);
         return (Aluno) q.getSingleResult();
     }
-    
-    public List<Aluno> getAlunosByOrientador(String orientadorCpf){
+
+    public List<Aluno> getAlunosByOrientador(String orientadorCpf) {
         Query q = em.createQuery("select e.alunoEstagio from Estagio e where e.orientadorEstagio.cpf = :cpf");
         q.setParameter("cpf", orientadorCpf);
         return q.getResultList();
     }
-    
-    public List<Aluno> getAlunosComEstagio(){
+
+    public List<Aluno> getAlunosComEstagio() {
         Query q = em.createQuery("select e.alunoEstagio from Estagio e");
         return q.getResultList();
     }
+
+    /*
+    Método que retorna o número de alunos cadastrado no sistema
+     */
+    public Long getNumeroDeAlunos() {
+        Query q = em.createQuery("select COUNT(a) from Aluno a");
+        return (Long) q.getSingleResult();
+    }
+
 }

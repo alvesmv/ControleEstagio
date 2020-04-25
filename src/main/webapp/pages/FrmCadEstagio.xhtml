@@ -30,17 +30,17 @@
                         <p:outputLabel value="Nome do supervisor" />
                         <p:inputText value="#{guiEstagio.estagio.nomeSupervisor}" style="width:220px"/>
                         <p:outputLabel value="Contato do supervisor" />
-                        <p:inputMask value="#{guiEstagio.estagio.contatoSupervisor}" mask="999.999.999-99" style="width:220px"/>
+                        <p:inputMask value="#{guiEstagio.estagio.contatoSupervisor}" mask="(99) 9 9999-9999" style="width:220px"/>
                         <p:outputLabel value="Data Inicio" />
                         <p:calendar value="#{guiEstagio.estagio.dataInicioEstagio}" />
                         <p:outputLabel value="Data Termino" />
                         <p:calendar value="#{guiEstagio.estagio.datafimEstagio}" />
-                        <p:outputLabel value="Tipo de Estágio" />
-                        <p:selectOneRadio value="#{guiEstagio.estagio.categoriaObrigatoria}" unselectable="true">
-                            <f:selectItem itemLabel="Obrigatorio" itemValue="true" />
-                            <f:selectItem itemLabel="Não Obrigatorio" itemValue="false" />                
+                        <p:outputLabel for="disciplina" value="Disciplina" />
+                        <p:selectOneRadio id="disciplina" value="#{guiEstagio.estagio.disciplina}" unselectable="true">
+                            <f:selectItem itemLabel="Estágio Obrigatorio I" itemValue="Estagio_Obrigatorio_I"/>
+                            <f:selectItem itemLabel="Estágio Obrigatorio II" itemValue="Estagio_Obrigatorio_II"/>
                         </p:selectOneRadio>
-                        <p:outputLabel value="Situção" />
+                        <p:outputLabel value="Status" />
                         <p:selectOneRadio value="#{guiEstagio.estagio.statusDoEstagio}" unselectable="true">
                             <f:selectItem itemLabel="Cursando" itemValue="Cursando" />
                             <f:selectItem itemLabel="Aprovado" itemValue="Aprovado" />                

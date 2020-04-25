@@ -8,10 +8,8 @@ import br.edu.femass.controleestagio.model.Aluno;
 import br.edu.femass.controleestagio.model.Empresa;
 import br.edu.femass.controleestagio.model.Estagio;
 import br.edu.femass.controleestagio.model.Orientador;
-import br.edu.femass.controleestagio.model.Status;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -60,6 +58,9 @@ public class GuiEstagio implements Serializable {
         estagio = new Estagio();
         alterando = false;
         inicializaListas();
+        campoNomeOrientador = new String();
+        campoNomeAluno = new String();
+        campoNomeEmpresa = new String();
         return "FrmCadEstagio";
     }
 
@@ -67,22 +68,16 @@ public class GuiEstagio implements Serializable {
         estagio = e;
         alterando = true;
         inicializaListas();
+        campoNomeOrientador = estagio.getOrientadorEstagio().getNomeOrientador();
+        campoNomeAluno = estagio.getAlunoEstagio().getNome();
+        campoNomeEmpresa = estagio.getEmpresaEstagio().getNomeEmpresa();
         return "FrmCadEstagio";
-    }
-
-    public String mostraStatus() {
-        Status[] s = Status.values();
-        return Arrays.toString(s);
     }
 
     public String excluir(Estagio e) {
         daoEstagio.excluir(e);
         estagios = daoEstagio.getEstagios();
         return null;
-    }
-
-    public String voltarMenuPrincipal() {
-        return "/index";
     }
 
     public String voltar() {

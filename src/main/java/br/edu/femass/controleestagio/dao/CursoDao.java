@@ -50,4 +50,12 @@ public class CursoDao {
         q.setParameter("n", nome);
         return (Curso) q.getSingleResult();
     }
+
+    /*
+    Método que retorna o número de cursos cadastrado no sistema
+     */
+    public Long getNumeroDeCursos() {
+        Query q = em.createQuery("select count(c) from Curso c");
+        return (Long) q.getSingleResult();
+    }
 }
