@@ -40,13 +40,20 @@ public class MbRelatorios implements Serializable{
     
     public String iniciar() {
         //Obtem o objeto usuario instanciado no durante o login
-        Object o = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-        login = o.toString();
-        Usuario user = (Usuario) o;
+        Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        login = user.getLogin();
+        
+        System.out.println(login);
         
         switch (user.getTipoDeAcesso()) {
             case aluno:
                 docList = docDao.getListaDocumentosByMatricula(login);
+                if(docList != null)
+                    for(Documento d: docList)
+                        System.out.println(d.getNome());
+                else
+                    System.out.println("Fodeu!!");
+                
                 return "FrmAbaEnviarRelatorio";
             case orientador:
                 alunoList = alunoDao.getAlunosByOrientador(login);
