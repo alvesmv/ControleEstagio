@@ -5,9 +5,12 @@
  */
 package br.edu.femass.controleestagio.gui;
 
+import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.DocumentoDao;
+import br.edu.femass.controleestagio.model.Aluno;
 
 import br.edu.femass.controleestagio.model.Documento;
+import br.edu.femass.controleestagio.model.Usuario;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -20,36 +23,60 @@ import javax.inject.Named;
  *
  * @author Souza
  */
-@Named(value = "mbEnviarRelatorios")
+@Named(value = "mbRelatorios")
 @SessionScoped
 
-public class MbEnviarRelatorios implements Serializable{
+public class MbRelatorios implements Serializable{
 
     private List<Documento> docList;
-  
+    private List<Aluno> alunoList;
     private Documento doc;
-    private String matricula;
+    private String login;
     
     
     @EJB
     DocumentoDao docDao = new DocumentoDao();
+    @EJB
+    AlunoDao alunoDao = new AlunoDao();
     
-    public MbEnviarRelatorios() {
+    public MbRelatorios() {
     }
     
     public String iniciar() {
         //Obtem o objeto usuario instanciado no durante o login
         Object o = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-        matricula = o.toString();
-        docList = docDao.getListaDocumentosByMatricula(matricula);
-        return "FrmAbaEnviarRelatorio";
+        login = o.toString();
+        Usuario user = (Usuario) o;
+        
+        switch (user.getTipoDeAcesso()) {
+            case aluno:
+                docList = docDao.getListaDocumentosByMatricula(login);
+                return "FrmAbaEnviarRelatorio";
+            case orientador:
+                alunoList = alunoDao.getAlunosByOrientador(login);
+                break;
+            default:
+                alunoList = alunoDao.getAlunosComEstagio();
+                break;
+        }
+        
+        return "FrmAbaAvaliarRelatorio";
     }
    public String excluir(Documento d) {
         docDao.excluir(d);
-        docList = docDao.getListaDocumentosByMatricula(matricula);
+        docList = docDao.getListaDocumentosByMatricula(login);
         return null;
     }
 
+    public List<Aluno> getAlunoList() {
+        return alunoList;
+    }
+
+    public void setAlunoList(List<Aluno> alunoList) {
+        this.alunoList = alunoList;
+    }
+
+   
     public List<Documento> getDocList() {
         return docList;
     }
@@ -66,11 +93,11 @@ public class MbEnviarRelatorios implements Serializable{
         this.doc = doc;
     }
 
-    public String getMatricula() {
-        return matricula;
+    public String getLogin() {
+        return login;
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
+    public void setLogin(String login) {
+        this.login = login;
     }
 }

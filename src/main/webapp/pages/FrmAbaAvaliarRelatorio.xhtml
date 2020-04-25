@@ -8,7 +8,7 @@
     <ui:composition template="/template/templateCoordenador.xhtml">
         <ui:define name="content">
             <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
-                         var="alu" value="#{mbAvaliarRelatorios.alunoList}"
+                         var="alu" value="#{mbRelatorios.alunoList}"
                          emptyMessage="Nenhum relatorio enviado">
                 
                 <p:column headerText="Nome do Aluno">
@@ -24,7 +24,7 @@
                 </p:column>
                 
                 <p:column headerText="Acoes">
-                    
+                    <p:commandButton value="Acessar Ficha de Relatorios"></p:commandButton>
                 </p:column>
             </p:dataTable>
         </ui:define>
