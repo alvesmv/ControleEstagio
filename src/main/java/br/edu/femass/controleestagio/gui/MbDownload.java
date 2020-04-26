@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Souza
+ * @author gxrj
  */
 @Named(value = "mbDownload")
 @Dependent

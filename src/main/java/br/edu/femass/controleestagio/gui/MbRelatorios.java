@@ -7,13 +7,15 @@ import br.edu.femass.controleestagio.model.Aluno;
 
 import br.edu.femass.controleestagio.model.Documento;
 import br.edu.femass.controleestagio.model.Usuario;
+import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 /**
  *
@@ -29,6 +31,7 @@ public class MbRelatorios implements Serializable{
     private Documento doc;
     private String login;
     private Aluno aluno;
+    private StreamedContent conteudoTransmitido;
     
     
     @EJB
@@ -64,16 +67,26 @@ public class MbRelatorios implements Serializable{
         docList = docDao.getListaDocumentosByMatricula(a.getMatricula());
         return "FrmFichaRelatorios";
     }
-
+    
     public String voltarParaListaDeAlunos(){
         return "FrmAbaAvaliarRelatorio";
     }
+    
+    public String voltarParaFichaRelatorios(){
+        return "FrmFichaRelatorios";
+    }
+    
     public String excluir(Documento d) {
         docDao.excluir(d);
         docList = docDao.getListaDocumentosByMatricula(login);
         return null;
     }
-
+    
+    public String editAvaliacao(Documento d){
+        this.doc = d;
+        this.conteudoTransmitido = new DefaultStreamedContent(new ByteArrayInputStream(d.getArquivo()),"application/pdf");
+        return "FrmEditRelatorio";
+    }
     public List<Aluno> getAlunoList() {
         return alunoList;
     }
@@ -82,7 +95,6 @@ public class MbRelatorios implements Serializable{
         this.alunoList = alunoList;
     }
 
-   
     public List<Documento> getDocList() {
         return docList;
     }
@@ -114,5 +126,12 @@ public class MbRelatorios implements Serializable{
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
-    
+
+    public StreamedContent getConteudoTransmitido() {
+        return conteudoTransmitido;
+    }
+
+    public void setConteudoTransmitido(StreamedContent conteudoTransmitido) {
+        this.conteudoTransmitido = conteudoTransmitido;
+    }
 }
