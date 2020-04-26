@@ -85,7 +85,7 @@ public class MbRelatorios implements Serializable{
     public void salvarAlteracoes(Documento doc){
         docDao.alterar(doc);
     }
-    
+   
     public String editAvaliacao(Documento d){
         this.doc = d;
         this.conteudoTransmitido = new DefaultStreamedContent(new ByteArrayInputStream(d.getArquivo()),"application/pdf");
