@@ -31,7 +31,6 @@ public class Documento implements Serializable {
     byte[] arquivo;
     DocumentoTipo docTipo;
     DocumentoStatus docStatus;
-    String observacoes;
     
 
     public Aluno getAluno() {
@@ -96,12 +95,6 @@ public class Documento implements Serializable {
     public void setDocStatus(DocumentoStatus docStatus) {
         this.docStatus = docStatus;
     }
-
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
-    }
+    
+    
 }
