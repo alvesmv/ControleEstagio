@@ -31,7 +31,8 @@
                 
                 <p:column>
                     <h:form>
-                        <p:commandButton  immediate="true" value="Baixar  " action="#{mbDownload.download(doc)}" ajax="false"/>    
+                        <p:commandButton  immediate="true" value="Baixar  " action="#{mbDownload.download(doc)}" ajax="false"/>
+                        <p:commandButton  immediate="true" value="Detalhes  " action="#{mbRelatorios.editAvaliacao(doc)}" ajax="false"/> 
                     </h:form>
                 </p:column>
             </p:dataTable>
