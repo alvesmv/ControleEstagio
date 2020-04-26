@@ -11,6 +11,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,6 +31,7 @@ public class Usuario implements Serializable {
 
     private String login;
     private String senha;
+    @Enumerated(EnumType.STRING)
     private TipoDeAcesso tipoDeAcesso;
 
     /**
