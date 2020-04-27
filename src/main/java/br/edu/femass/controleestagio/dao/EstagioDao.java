@@ -46,10 +46,34 @@ public class EstagioDao {
     }
 
     /*
-    Método que retorna o número de alunos por disciplina
-     */
-    public Long getAlunoPorDisciplina() {
-        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e group by e.disciplina");
+    Método que retorna o número de alunos estagiando
+    */
+    public Long getAlunosEstagiando(){
+        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e");
         return (Long) q.getSingleResult();
+    }
+    
+    /*
+    Método que retorna o número de alunos por disciplina que estão estagiando
+     */
+    public List<Long> getAlunoPorDisciplina() {
+        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e group by e.disciplina");
+        return q.getResultList();
+    }
+    
+    /*
+    Método que retorna o número de alunos por curso que estão estagiando
+    */
+    public List<Long> getAlunoPorCurso(){
+        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e group by e.alunoEstagio.curso.idCurso order by e.alunoEstagio.curso.idCurso");
+        return q.getResultList();
+    }
+    
+    /*
+    Método que retorna o número de alunos por empresa
+    */
+    public List<Long> getAlunosPorEmpresa(){
+        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e group by e.empresaEstagio.idEmpresa order by e.empresaEstagio.idEmpresa");
+        return q.getResultList();
     }
 }
