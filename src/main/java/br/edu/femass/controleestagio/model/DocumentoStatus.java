@@ -1,5 +1,4 @@
 package br.edu.femass.controleestagio.model;
-
 /**
  *
  * @author gxrj

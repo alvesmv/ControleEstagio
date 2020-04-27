@@ -3,13 +3,14 @@ package br.edu.femass.controleestagio.model;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
-
 /**
  *
  * @author Souza
@@ -29,7 +30,9 @@ public class Documento implements Serializable {
     String alunoMatricula;
     @Lob
     byte[] arquivo;
+    @Enumerated(EnumType.STRING)
     DocumentoTipo docTipo;
+    @Enumerated(EnumType.STRING)
     DocumentoStatus docStatus;
     String observacoes;
     

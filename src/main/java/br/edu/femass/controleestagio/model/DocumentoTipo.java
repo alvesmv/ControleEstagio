@@ -1,9 +1,9 @@
 package br.edu.femass.controleestagio.model;
-
 /**
  *
- * @author Souza
+ * @author gxrj
  */
+
 public enum DocumentoTipo {
     relatorio, documentoCadastral;
     
