@@ -7,18 +7,23 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:pe="http://primefaces.org/ui/extensions">
 
-    <ui:composition template="/template/templateAluno.xhtml">
+    <ui:composition template="/template/templateOrientador.xhtml">
         <ui:define name="content">
             <div>
                 <h:outputText value="Nome: #{mbRelatorios.aluno.nome}"/><br/>
                 <h:outputText value="Matricula: #{mbRelatorios.aluno.matricula}"/><br/>
             </div>
-            <pe:documentViewer value="#{mbRelatorios.conteudoTransmitido}" height="450" width="60%"/><br/>
-            <p:outputLabel value="Observacoes"/>
-            <h:form>    
-                <p:inputTextarea cols="100" rows="20" autoResize="false" value="#{mbRelatorios.doc.observacoes}"/>
             
-                <p:selectOneRadio value="#{mbRelatorios.doc.docStatus}">
+            <h:form id="submissao">
+                <pe:documentViewer value="#{mbRelatorios.conteudoTransmitido}" height="450" width="60%" />
+                <div>
+                    <p:outputLabel value="Observacoes"/>
+                    <p:textEditor widgetVar="editor" value="#{mbRelatorios.doc.observacoes}" height="150" style="margin-bottom:10px; background-color: white" immediate="true" required="true"/>
+                    <p:commandButton value="Limpar Texto" type="button" onclick="PF('editor').clear();"/>      
+                </div>
+                <br/>
+                <p:outputLabel value="Status" />
+                <p:selectOneRadio id="docStatus" value="#{mbRelatorios.doc.docStatus}" unselectable="true" required="true" immediate="true">
                     <f:selectItem itemLabel="em analise" itemValue="em_analise"/>
                     <f:selectItem itemLabel="indeferido" itemValue="indeferido"/>
                     <f:selectItem itemLabel="deferido" itemValue="deferido"/>
@@ -26,7 +31,8 @@
             </h:form>
             <h:form>
                 <p:commandButton value="Voltar" action="#{mbRelatorios.voltarParaFichaRelatorios()}"/>
-                <p:commandButton value="Salvar Alteracoes" action="#{mbRelatorios.salvarAlteracoes(doc)}"/>
+                <p:commandButton value="Alterar" onclick="document.forms['submissao'].submit()"/>
+                <p:commandButton value="Salvar e Retornar" action="#{mbRelatorios.salvarAlteracoes()}"/>
             </h:form>
             
         </ui:define>

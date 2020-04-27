@@ -24,7 +24,9 @@
                 <p:column headerText="Tamanho">
                     <h:outputText value="#{doc.tamanho}"></h:outputText>
                 </p:column>
-                
+                <p:column headerText="Observacoes do Avaliador">
+                    <h:outputText value="#{doc.observacoes}"></h:outputText>
+                </p:column>
                 <p:column>
                     <h:form>
                         <p:commandButton  immediate="true" value="Baixar  " action="#{mbDownload.download(doc)}" ajax="false"/>

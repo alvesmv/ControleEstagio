@@ -82,8 +82,9 @@ public class MbRelatorios implements Serializable{
         return null;
     }
     
-    public void salvarAlteracoes(Documento doc){
+    public String salvarAlteracoes(){
         docDao.alterar(doc);
+        return voltarParaFichaRelatorios();
     }
    
     public String editAvaliacao(Documento d){
@@ -91,6 +92,7 @@ public class MbRelatorios implements Serializable{
         this.conteudoTransmitido = new DefaultStreamedContent(new ByteArrayInputStream(d.getArquivo()),"application/pdf");
         return "FrmEditRelatorio";
     }
+    
     public List<Aluno> getAlunoList() {
         return alunoList;
     }
