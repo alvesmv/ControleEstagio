@@ -28,6 +28,16 @@ public class Orientador implements Serializable {
     private String nomeOrientador;
     @ManyToOne(optional = false, cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private Usuario usuario;
+    private String cpfLogin;
+
+    /* Inicio dos Getters and Setters */
+    
+    /**
+     * @return the idOrientador
+     */
+    public Long getIdOrientador() {
+        return idOrientador;
+    }
 
     /**
      * @return the cpf
@@ -71,6 +81,22 @@ public class Orientador implements Serializable {
         this.usuario = usuario;
     }
 
+    /**
+     * @return the cpfLogin
+     */
+    public String getCpfLogin() {
+        return cpfLogin;
+    }
+
+    /**
+     * @param cpfLogin the cpfLogin to set
+     */
+    public void setCpfLogin(String cpfLogin) {
+        this.cpfLogin = cpfLogin;
+    }
+
+    /* Final dos Getters and Setters */
+    
     @Override
     public String toString() {
         return nomeOrientador;
@@ -93,4 +119,13 @@ public class Orientador implements Serializable {
         return this.getCpf().equalsIgnoreCase(other.getCpf());
     }
 
+    /*
+    O Método remove o limpaCpf tem como objetivo limpara a mascara do CPF removendo pontos e hifen
+    */
+    
+    public void limpaCpf(){
+        this.cpfLogin = this.cpf;
+        //"[^0-9]+" remove qualquer caractere que não esteja entre 0 - 9
+        this.cpfLogin = this.cpfLogin.replaceAll("[^0-9]+", "");
+    }
 }

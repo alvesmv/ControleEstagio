@@ -12,4 +12,15 @@ package br.edu.femass.controleestagio.model;
 public enum Disciplina {
 
     Estagio_Obrigatorio_I, Estagio_Obrigatorio_II;
+    
+    @Override
+    public String toString(){
+        switch(this){
+            case Estagio_Obrigatorio_I:
+                return "Estagio Obrigatorio I";
+            case Estagio_Obrigatorio_II:
+                return "Estagio Obrigatorio II";
+        }
+        return null;
+    }
 }

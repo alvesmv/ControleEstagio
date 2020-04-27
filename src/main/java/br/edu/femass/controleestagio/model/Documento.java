@@ -2,6 +2,7 @@ package br.edu.femass.controleestagio.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,32 +12,37 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+
 /**
  *
  * @author Souza
  */
 @Entity
 public class Documento implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private Aluno aluno;
-    String nome;
+    private String nome;
     @Temporal(javax.persistence.TemporalType.DATE)
-    Date dataEnvio;
-    Long tamanho;
-    String alunoMatricula;
+    private Date dataEnvio;
+    private Long tamanho;
+    private String alunoMatricula;
     @Lob
-    byte[] arquivo;
+    private byte[] arquivo;
     @Enumerated(EnumType.STRING)
-    DocumentoTipo docTipo;
+    private DocumentoTipo docTipo;
     @Enumerated(EnumType.STRING)
-    DocumentoStatus docStatus;
-    String observacoes;
-    
+    private DocumentoStatus docStatus;
+    private String observacoes;
 
+    public Long getId() {
+        return id;
+    }
+        
     public Aluno getAluno() {
         return aluno;
     }
@@ -76,6 +82,7 @@ public class Documento implements Serializable {
     public void setAlunoMatricula(String alunoMatricula) {
         this.alunoMatricula = alunoMatricula;
     }
+
     public byte[] getArquivo() {
         return arquivo;
     }
@@ -107,4 +114,29 @@ public class Documento implements Serializable {
     public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Documento other = (Documento) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+ 
 }

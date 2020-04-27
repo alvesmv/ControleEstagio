@@ -47,7 +47,7 @@ public class GuiLogin implements Serializable {
                     //O comando a seguir Add o objeto usuario na sessao
                     FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", u);
                     return "pages/FrmAreaDoOrientador.xhtml?faces-redirect=true";
-                } else if (u.getTipoDeAcesso().equals(TipoDeAcesso.coordenador)) {
+                } else if (u.getTipoDeAcesso().equals(TipoDeAcesso.coordenador) || u.getTipoDeAcesso().equals(TipoDeAcesso.admin)) {
                     //O comando a seguir Add o objeto usuario na sessao
                     FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", u);
                     return "pages/FrmAreaDoCoordenador.xhtml?faces-redirect=true";

@@ -80,8 +80,11 @@ public class GuiOrientador implements Serializable {
             orientador.setUsuario(usuario);
             orientadorDao.alterar(orientador);
         } else {
-            usuario.setLogin(orientador.getCpf());
-            usuario.setSenha(orientador.getCpf());
+            //remove . e - do CPF
+            orientador.limpaCpf();
+            //Cria um usuário para o orientador com login CPF e senha CPF sem . e -
+            usuario.setLogin(orientador.getCpfLogin());
+            usuario.setSenha(orientador.getCpfLogin());
             usuario.setTipoDeAcesso(tipoDeAcesso);
             usuarioDao.inserir(usuario);
             orientador.setUsuario(usuario);
