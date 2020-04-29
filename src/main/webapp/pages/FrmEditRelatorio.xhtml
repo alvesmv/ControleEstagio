@@ -9,32 +9,43 @@
 
     <ui:composition template="/template/templateOrientador.xhtml">
         <ui:define name="content">
-            <div>
-                <h:outputText value="Nome: #{mbRelatorios.aluno.nome}"/><br/>
-                <h:outputText value="Matricula: #{mbRelatorios.aluno.matricula}"/><br/>
-            </div>
-            
-            <h:form id="submissao">
-                <pe:documentViewer value="#{mbRelatorios.conteudoTransmitido}" height="450" width="60%" />
-                <div>
-                    <p:outputLabel value="Observacoes"/>
-                    <p:textEditor widgetVar="editor" value="#{mbRelatorios.doc.observacoes}" height="150" style="margin-bottom:10px; background-color: white" immediate="true" required="true"/>
-                    <p:commandButton value="Limpar Texto" type="button" onclick="PF('editor').clear();"/>      
-                </div>
-                <br/>
-                <p:outputLabel value="Status" />
-                <p:selectOneRadio id="docStatus" value="#{mbRelatorios.doc.docStatus}" unselectable="true" required="true" immediate="true">
-                    <f:selectItem itemLabel="em analise" itemValue="em_analise"/>
-                    <f:selectItem itemLabel="indeferido" itemValue="indeferido"/>
-                    <f:selectItem itemLabel="deferido" itemValue="deferido"/>
-                </p:selectOneRadio>
-            </h:form>
+
             <h:form>
-                <p:commandButton value="Voltar" action="#{mbRelatorios.voltarParaFichaRelatorios()}"/>
-                <p:commandButton value="Alterar" onclick="document.forms['submissao'].submit()"/>
-                <p:commandButton value="Salvar e Retornar" action="#{mbRelatorios.salvarAlteracoes()}"/>
+                <br/>
+
+                <p:fieldset legend="Aluno" style="margin-bottom:20px">
+                    <h:panelGrid columns="4">
+                        <h:outputText value="Nome: #{mbRelatorios.aluno.nome}"/>
+                        <h:outputText value="Matricula: #{mbRelatorios.aluno.matricula}"/>
+                        <h:outputText value="Curso: #{mbRelatorios.aluno.curso.nomeCurso}"/>
+                        <h:outputText value="E-mail: #{mbRelatorios.aluno.email}"/>
+                    </h:panelGrid>
+                </p:fieldset>
+
+                <pe:documentViewer value="#{mbRelatorios.conteudoTransmitido}" height="500" width="100%" />
+
+                <p:fieldset legend="Observações">
+                    <p:textEditor widgetVar="editor" value="#{mbRelatorios.doc.observacoes}" height="150" style="margin-bottom:10px;
+                                  background-color: white" immediate="true" required="true"/>
+                </p:fieldset>
+
+                <br/>
+
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Status" />
+                    <p:selectOneRadio id="docStatus" value="#{mbRelatorios.doc.docStatus}" unselectable="true" required="true" immediate="true">
+                        <f:selectItem itemLabel="Em Analise" itemValue="em_analise"/>
+                        <f:selectItem itemLabel="Indeferido" itemValue="indeferido"/>
+                        <f:selectItem itemLabel="Deferido" itemValue="deferido"/>
+                    </p:selectOneRadio>
+                </h:panelGrid>
+
+                <div style="margin-top:5%; justify-content: center; align-items: center; display: flex">    
+                    <p:commandButton value="Voltar" action="#{mbRelatorios.voltarParaFichaRelatorios()}"/>
+                    <p:commandButton value="Salvar e Retornar" action="#{mbRelatorios.salvarAlteracoes()}"/>
+                </div>
             </h:form>
-            
+
         </ui:define>
     </ui:composition> 
 

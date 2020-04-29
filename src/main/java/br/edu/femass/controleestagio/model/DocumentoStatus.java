@@ -11,12 +11,15 @@ public enum DocumentoStatus {
     @Override
     public String toString() {
         switch (this) {
-            case em_analise:
-                return "em analise";
-            case indeferido:
-                return "indeferido";
-            case deferido:
-                return "deferido;";
+            case em_analise: {
+                return "Em Analise";
+            }
+            case indeferido: {
+                return "Indeferido";
+            }
+            case deferido: {
+                return "Deferido";
+            }
         }
         return null;
     }
