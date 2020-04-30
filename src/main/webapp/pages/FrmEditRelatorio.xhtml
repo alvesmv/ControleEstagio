@@ -30,15 +30,15 @@
                 </p:fieldset>
 
                 <br/>
-
-                <h:panelGrid columns="2">
-                    <p:outputLabel value="Status" />
-                    <p:selectOneRadio id="docStatus" value="#{mbRelatorios.doc.docStatus}" unselectable="true" required="true" immediate="true">
-                        <f:selectItem itemLabel="Em Analise" itemValue="em_analise"/>
-                        <f:selectItem itemLabel="Indeferido" itemValue="indeferido"/>
-                        <f:selectItem itemLabel="Deferido" itemValue="deferido"/>
-                    </p:selectOneRadio>
-                </h:panelGrid>
+                <p:fieldset legend="Status">
+                    <h:panelGrid columns="2">
+                        <p:selectOneRadio id="docStatus" value="#{mbRelatorios.doc.docStatus}" unselectable="true" required="true" immediate="true">
+                            <f:selectItem itemLabel="Em Analise" itemValue="em_analise"/>
+                            <f:selectItem itemLabel="Indeferido" itemValue="indeferido"/>
+                            <f:selectItem itemLabel="Deferido" itemValue="deferido"/>
+                        </p:selectOneRadio>
+                    </h:panelGrid>
+                </p:sfieldset>
 
                 <div style="margin-top:5%; justify-content: center; align-items: center; display: flex">    
                     <p:commandButton value="Voltar" action="#{mbRelatorios.voltarParaFichaRelatorios()}"/>
