@@ -73,7 +73,7 @@ public class LoginWS {
                         case aluno: 
                             AlunoWS alunoWS = new AlunoWS();
                             Aluno aluno = alunoDao.getAlunoPorMatricula(login);
-                            List<Estagio> estagio = estagioDao.getEstagios(login);
+                            
                             alunoWS.setNome(aluno.getNome());
                             alunoWS.setMatricula(aluno.getMatricula());
                             alunoWS.setCurso(aluno.getCurso().getNomeCurso());
@@ -81,8 +81,7 @@ public class LoginWS {
                             alunoWS.setDisciplina("em manutencao");
                             alunoWS.setOrientador("em manutencao");
                             alunoWS.setEmpresa("em manutencao");
-                            return alunoWS; /* Retorna o obj usuario caso quem logue seja aluno*/
- /* Retorna o obj usuario caso quem logue seja aluno*/
+                            return alunoWS; 
                         default:
                             return null;
                     }
