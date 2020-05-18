@@ -45,4 +45,10 @@ public class UsuarioDao {
         return q.getResultList();
     }
     
+    public Usuario getUsuario(String login) {
+        Query q = em.createQuery("select u from Usuario u where u.login = :l");
+        q.setParameter("l", login);
+        return (Usuario) q.getSingleResult();
+    }
+    
 }
