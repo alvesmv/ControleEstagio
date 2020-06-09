@@ -3,6 +3,7 @@ package br.edu.femass.controleestagio.gui;
 
 import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.DocumentoDao;
+import br.edu.femass.controleestagio.dao.EstagioDao;
 import br.edu.femass.controleestagio.model.Aluno;
 
 import br.edu.femass.controleestagio.model.Documento;
@@ -28,6 +29,7 @@ public class MbRelatorios implements Serializable{
 
     private List<Documento> docList;
     private List<Aluno> alunoList;
+    
     private Documento doc;
     private String login;
     private Aluno aluno; //Alterar Aluno para estágio
@@ -39,6 +41,9 @@ public class MbRelatorios implements Serializable{
     //Alterar Aluno para estágio
     @EJB
     AlunoDao alunoDao = new AlunoDao();
+    
+    @EJB
+    EstagioDao estagioDao = new EstagioDao();
     
     public MbRelatorios() {
     }
