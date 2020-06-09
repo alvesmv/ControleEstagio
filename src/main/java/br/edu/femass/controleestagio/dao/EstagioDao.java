@@ -5,7 +5,9 @@
  */
 package br.edu.femass.controleestagio.dao;
 
+import br.edu.femass.controleestagio.model.Aluno;
 import br.edu.femass.controleestagio.model.Estagio;
+import br.edu.femass.controleestagio.model.Status;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -44,7 +46,13 @@ public class EstagioDao {
         q.setParameter("i", id);
         return q.getResultList();
     }
-
+    
+    public Estagio getEstagioAtivoPorAluno(Aluno aluno){
+        Query q = em.createQuery("select e from Estagio e where e.alunoEstagio = :a and e.statusDoEstagio = :c");
+        q.setParameter("c", Status.Cursando);
+        q.setParameter("a", aluno);
+        return (Estagio) q.getSingleResult();
+    }
     /*
     Método que retorna o número de alunos estagiando
     */

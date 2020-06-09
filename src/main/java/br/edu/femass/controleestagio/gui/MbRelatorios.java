@@ -30,12 +30,13 @@ public class MbRelatorios implements Serializable{
     private List<Aluno> alunoList;
     private Documento doc;
     private String login;
-    private Aluno aluno;
+    private Aluno aluno; //Alterar Aluno para estágio
     private StreamedContent conteudoTransmitido;
     
     
     @EJB
     DocumentoDao docDao = new DocumentoDao();
+    //Alterar Aluno para estágio
     @EJB
     AlunoDao alunoDao = new AlunoDao();
     
@@ -49,19 +50,21 @@ public class MbRelatorios implements Serializable{
         
         switch (user.getTipoDeAcesso()) {
             case aluno:
+                /*Possivelmente será alterado após trocar a relação Documento-Aluno por Documento-Estagio*/
                 docList = docDao.getListaDocumentosByMatricula(login); 
                 return "FrmAbaEnviarRelatorio";
             case orientador:
                 alunoList = alunoDao.getAlunosByOrientador(login);
                 break;
-            default:
+            case coordenador:
+            case admin:
                 alunoList = alunoDao.getAlunosComEstagio();
                 break;
         }
         
         return "FrmAbaAvaliarRelatorio";
     }
-    
+    //Alterar após trocar Documento-Aluno por Aluno-Estagio
     public String acessarFichaDeRelatorios(Aluno a){
         this.aluno = a;
         docList = docDao.getListaDocumentosByMatricula(a.getMatricula());

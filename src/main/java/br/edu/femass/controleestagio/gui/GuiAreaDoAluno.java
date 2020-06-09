@@ -20,6 +20,6 @@ public class GuiAreaDoAluno implements Serializable {
         return "FrmAbaDadosDoEstagio";
     }
     public String irAbaRelatorios(){
-        return "FrmAbaRelatorios";
+        return "FrmAbaEnviarRelatorios";
     }
 }

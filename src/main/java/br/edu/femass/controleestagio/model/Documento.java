@@ -25,7 +25,7 @@ public class Documento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private Aluno aluno;
+    private Estagio estagio;
     private String nome;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataEnvio;
@@ -43,12 +43,12 @@ public class Documento implements Serializable {
         return id;
     }
         
-    public Aluno getAluno() {
-        return aluno;
+    public Estagio getEstagio() {
+        return estagio;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public void setEstagio(Estagio estagio) {
+        this.estagio = estagio;
     }
 
     public String getNome() {
@@ -133,10 +133,7 @@ public class Documento implements Serializable {
             return false;
         }
         final Documento other = (Documento) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.id, other.id);
     }
  
 }
