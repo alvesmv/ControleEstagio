@@ -84,33 +84,33 @@ public class EstagioDao {
     /*
     Método que retorna uma lista de estágio ativos referentes ao orientador e a disciplina estágio I
     */
-    public List<Estagio> getListEstagioIByOrientador(Orientador o){
-        Query q = em.createQuery("select e from Estagio where e.disciplina = :d and e.statusDoEstagio = :c and e.orientadorEstagio = :o");
+    public List<Estagio> getListEstagioIByOrientador(String cpfOrientador){
+        Query q = em.createQuery("select e from Estagio where e.disciplina = :d and e.statusDoEstagio = :c and e.orientadorEstagio.cpfLogin = :cpf");
         q.setParameter("c", Status.Cursando);
         q.setParameter("d", Disciplina.Estagio_Obrigatorio_I);
-        q.setParameter("o", o);
+        q.setParameter("cpf", cpfOrientador);
         return q.getResultList();
     }
     
     /*
     Método que retorna uma lista de estágio ativos referentes ao orientador e a disciplina estágio II
     */
-    public List<Estagio> getListEstagioIIByOrientador(Orientador o){
-        Query q = em.createQuery("select e from Estagio where e.disciplina = :d and e.statusDoEstagio = :c and e.orientadorEstagio = :o");
+    public List<Estagio> getListEstagioIIByOrientador(String cpfOrientador){
+        Query q = em.createQuery("select e from Estagio where e.disciplina = :d and e.statusDoEstagio = :c and e.orientadorEstagio.cpfLogin = :cpf");
         q.setParameter("c", Status.Cursando);
         q.setParameter("d", Disciplina.Estagio_Obrigatorio_II);
-        q.setParameter("o", o);
+        q.setParameter("cpf", cpfOrientador);
         return q.getResultList();
     }
     
     /*
     Método que retorna uma lista de estágios concluídos (aprovados e reporvados) pelo orientador
     */
-    public List<Estagio> getListEstagiosConcluidosByOrientador(Orientador o){
-        Query q = em.createQuery("select e from Estagio where e.statusDoEstagio = :a or e.statusDoEstagio = :r and e.orientadorEstagio = :o");
+    public List<Estagio> getListEstagiosConcluidosByOrientador(String cpfOrientador){
+        Query q = em.createQuery("select e from Estagio where e.statusDoEstagio = :a or e.statusDoEstagio = :r and e.orientadorEstagio.cpfLogin = :cpf");
         q.setParameter("a", Status.Aprovado);
         q.setParameter("a", Status.Reprovado);
-        q.setParameter("o", o);
+        q.setParameter("cpf", cpfOrientador);
         return q.getResultList();
     }
     

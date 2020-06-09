@@ -68,7 +68,7 @@ public class AlunoDao {
         return q.getResultList();
     }
 
-    
+   
     public List<Aluno> getAlunosComEstagio() {
         Query q = em.createQuery("select e.alunoEstagio from Estagio e");
         return q.getResultList();

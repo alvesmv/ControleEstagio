@@ -7,6 +7,7 @@ import br.edu.femass.controleestagio.dao.EstagioDao;
 import br.edu.femass.controleestagio.model.Aluno;
 
 import br.edu.femass.controleestagio.model.Documento;
+import br.edu.femass.controleestagio.model.Estagio;
 import br.edu.femass.controleestagio.model.Usuario;
 import java.io.ByteArrayInputStream;
 import java.io.Serializable;
@@ -29,7 +30,11 @@ public class MbRelatorios implements Serializable{
 
     private List<Documento> docList;
     private List<Aluno> alunoList;
-    
+    private List <Estagio> listaEstagioI;
+    private List <Estagio> listaEstagioII;
+    private List <Estagio> listaEstagiosConcluidos;
+    private List <Estagio> listaEstagioNaoObrigatorio;
+    private List <Estagio> listaEstagiosAtivosPorAluno;
     private Documento doc;
     private String login;
     private Aluno aluno; //Alterar Aluno para estágio
@@ -60,10 +65,16 @@ public class MbRelatorios implements Serializable{
                 return "FrmAbaEnviarRelatorio";
             case orientador:
                 alunoList = alunoDao.getAlunosByOrientador(login);
+                listaEstagioI = estagioDao.getListEstagioIByOrientador(login);
+                listaEstagioII = estagioDao.getListEstagioIIByOrientador(login);
+                listaEstagiosConcluidos = estagioDao.getListEstagiosConcluidosByOrientador(login);
                 break;
             case coordenador:
             case admin:
                 alunoList = alunoDao.getAlunosComEstagio();
+                listaEstagioI = estagioDao.getListEstagioI();
+                listaEstagioII = estagioDao.getListEstagioII();
+                listaEstagiosConcluidos = estagioDao.getListEstagiosConcluidos();
                 break;
         }
         
@@ -109,6 +120,46 @@ public class MbRelatorios implements Serializable{
         this.alunoList = alunoList;
     }
 
+    public List<Estagio> getListaEstagioI() {
+        return listaEstagioI;
+    }
+
+    public void setListaEstagioI(List<Estagio> listaEstagioI) {
+        this.listaEstagioI = listaEstagioI;
+    }
+
+    public List<Estagio> getListaEstagioII() {
+        return listaEstagioII;
+    }
+
+    public void setListaEstagioII(List<Estagio> listaEstagioII) {
+        this.listaEstagioII = listaEstagioII;
+    }
+
+    public List<Estagio> getListaEstagiosConcluidos() {
+        return listaEstagiosConcluidos;
+    }
+
+    public void setListaEstagiosConcluidos(List<Estagio> listaEstagiosConcluidos) {
+        this.listaEstagiosConcluidos = listaEstagiosConcluidos;
+    }
+
+    public List<Estagio> getListaEstagioNaoObrigatorio() {
+        return listaEstagioNaoObrigatorio;
+    }
+
+    public void setListaEstagioNaoObrigatorio(List<Estagio> listaEstagioNaoObrigatorio) {
+        this.listaEstagioNaoObrigatorio = listaEstagioNaoObrigatorio;
+    }
+
+    public List<Estagio> getListaEstagiosAtivosPorAluno() {
+        return listaEstagiosAtivosPorAluno;
+    }
+
+    public void setListaEstagiosAtivosPorAluno(List<Estagio> listaEstagiosAtivosPorAluno) {
+        this.listaEstagiosAtivosPorAluno = listaEstagiosAtivosPorAluno;
+    }
+    
     public List<Documento> getDocList() {
         return docList;
     }
