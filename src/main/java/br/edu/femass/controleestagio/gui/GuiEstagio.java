@@ -74,6 +74,7 @@ public class GuiEstagio implements Serializable {
         return "FrmCadEstagio";
     }
 
+    
     public String excluir(Estagio e) {
         daoEstagio.excluir(e);
         estagios = daoEstagio.getEstagios();

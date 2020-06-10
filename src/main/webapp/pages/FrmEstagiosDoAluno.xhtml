@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/template/templateAluno.xhtml">
+        <ui:define name="content">
+            <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
+                         var="est" value="#{mbRelatorios.listaEstagiosAtivosPorAluno}"
+                                         emptyMessage="Nenhum relatorio enviado">
+                <p:column headerText="Empresa">
+                    <h:outputText value="#{est.empresaEstagio.nomeEmpresa}"/>
+                </p:column>
+                <p:column headerText="Dsiciplina">
+                    <h:outputText value="#{est.disciplina}"/>
+                </p:column>
+                <p:column headerText="Orientador">
+                    <h:outputText value="#{est.orientadorEstagio.nomeOrientador}"/>
+                </p:column>
+                <p:column headerText="Data Inicio">
+                    <h:outputText value="#{est.dataInicioEstagio}"/>
+                </p:column>
+                <p:column headerText="Empresa">
+                    <h:outputText value="#{est.empresaEstagio.nomeEmpresa}"/>
+                </p:column>
+                 <p:column headerText="Acoes">
+                                    <h:form>
+                                        <p:commandButton value="Acessar upload para Relatorios" action="#{mbRelatorios.enviarRelatorios(est)}"/>
+                                    </h:form>
+                                </p:column>
+            </p:dataTable>
+        </ui:define>
+    </ui:composition> 
+</html>

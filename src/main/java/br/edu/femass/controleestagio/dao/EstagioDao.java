@@ -49,6 +49,13 @@ public class EstagioDao {
         q.setParameter("a", aluno);
         return (Estagio) q.getSingleResult();
     }
+    
+    public List<Estagio> getEstagiosAtivosPorAluno(String matricula){
+        Query q = em.createQuery("select e from Estagio e where e.alunoEstagio.matricula =:m  and e.statusDoEstagio = :c");
+        q.setParameter("c", Status.Cursando);
+        q.setParameter("m", matricula);
+        return q.getResultList();
+    }
 
     /*
     Método que retorna uma lista de estágios concluídos (aprovados e reporvados)
@@ -116,25 +123,25 @@ public class EstagioDao {
     /*
     Método que retorna o número total de alunos estagiando
     */
-    /*public Long getAlunosEstagiando(){
+    public Long getAlunosEstagiando(){
         Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e where e.statusDoEstagio = :c");
         q.setParameter("c", Status.Cursando);
         return (Long) q.getSingleResult();
-    } */
+    } 
     
     /*
     Método que retorna o número de alunos que estão estagiando por curso
     */
-    /*public List<Long> getAlunoPorCurso(){
+    public List<Long> getAlunoPorCurso(){
         Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e group by e.alunoEstagio.curso.idCurso order by e.alunoEstagio.curso.idCurso");
         return q.getResultList();
-    }*/
+    }
     
     /*
     Método que retorna o número de alunos por empresa
     */
-    /*public List<Long> getAlunosPorEmpresa(){
+    public List<Long> getAlunosPorEmpresa(){
         Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e group by e.empresaEstagio.idEmpresa order by e.empresaEstagio.idEmpresa");
         return q.getResultList();
-    }*/
+    }
 }

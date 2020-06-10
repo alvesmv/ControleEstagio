@@ -6,6 +6,7 @@ import br.edu.femass.controleestagio.dao.EstagioDao;
 import br.edu.femass.controleestagio.model.Aluno;
 import br.edu.femass.controleestagio.model.Documento;
 import br.edu.femass.controleestagio.model.DocumentoStatus;
+import br.edu.femass.controleestagio.model.Estagio;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,6 +36,9 @@ public class MbUpload implements Serializable{
     AlunoDao alunoDB;
     @EJB
     EstagioDao estagioDao;
+    
+    Estagio estagio;
+    
     public MbUpload(){
         doc = new Documento();  
         docDao = new DocumentoDao();
@@ -82,4 +86,12 @@ public class MbUpload implements Serializable{
             docDao.inserir(this.doc);
         }
     }   
+
+    public Estagio getEstagio() {
+        return estagio;
+    }
+
+    public void setEstagio(Estagio estagio) {
+        this.estagio = estagio;
+    }    
 }

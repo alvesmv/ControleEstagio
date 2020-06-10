@@ -37,7 +37,8 @@ public class MbRelatorios implements Serializable{
     private List <Estagio> listaEstagiosAtivosPorAluno;
     private Documento doc;
     private String login;
-    private Aluno aluno; //Alterar Aluno para estágio
+
+    private Estagio estagio;
     private StreamedContent conteudoTransmitido;
     
     
@@ -61,10 +62,11 @@ public class MbRelatorios implements Serializable{
         switch (user.getTipoDeAcesso()) {
             case aluno:
                 /*Possivelmente será alterado após trocar a relação Documento-Aluno por Documento-Estagio*/
-                docList = docDao.getListaDocumentosByMatricula(login); 
-                return "FrmAbaEnviarRelatorio";
+                listaEstagiosAtivosPorAluno = estagioDao.getEstagiosAtivosPorAluno(login);
+                
+                return "FrmEstagiosDoAluno";
             case orientador:
-                alunoList = alunoDao.getAlunosByOrientador(login);
+                alunoList = alunoDao.getAlunosByOrientador(login); // excluir esta linha
                 listaEstagioI = estagioDao.getListEstagioIByOrientador(login);
                 listaEstagioII = estagioDao.getListEstagioIIByOrientador(login);
                 listaEstagiosConcluidos = estagioDao.getListEstagiosConcluidosByOrientador(login);
@@ -80,11 +82,16 @@ public class MbRelatorios implements Serializable{
         
         return "FrmAbaAvaliarRelatorio";
     }
-    //Alterar após trocar Documento-Aluno por Aluno-Estagio
-    public String acessarFichaDeRelatorios(Aluno a){
-        this.aluno = a;
-        docList = docDao.getListaDocumentosByMatricula(a.getMatricula());
+   
+    public String acessarFichaDeRelatorios(Estagio e){
+        this.estagio = e;
+        docList = docDao.getListaDocumentosByEstagio(e);
         return "FrmFichaRelatorios";
+    }
+    
+    public String enviarRelatorios(Estagio e){
+        docList = docDao.getListaDocumentosByEstagio(e);
+        return "FrmEnviarRelatorio";
     }
     
     public String voltarParaListaDeAlunos(){
@@ -102,7 +109,9 @@ public class MbRelatorios implements Serializable{
     }
     
     public String salvarAlteracoes(){
+        System.out.println("Buceta");
         docDao.alterar(doc);
+        System.out.println("Cabeluda");
         return voltarParaFichaRelatorios();
     }
    
@@ -184,12 +193,12 @@ public class MbRelatorios implements Serializable{
         this.login = login;
     }
 
-    public Aluno getAluno() {
-        return aluno;
+    public Estagio getEstagio() {
+        return estagio;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public void setEstagio(Estagio estagio) {
+        this.estagio = estagio;
     }
 
     public StreamedContent getConteudoTransmitido() {
