@@ -184,12 +184,11 @@ public class GuiAluno implements Serializable {
     }
     
     private Curso getCursoSelecionado() {
-        for (Curso c : cursos) {
-            if (c.getNomeCurso().equals(campoCursoNome)) {
-                return c;
-            }
-        }
-        return null;
-    }
+        Curso c = daoCurso.getCursoByString(campoCursoNome);
     
+        if(c != null)
+            return c;
+        else
+            return null;
+    }
 }
