@@ -6,6 +6,7 @@
 package br.edu.femass.controleestagio.dao;
 
 import br.edu.femass.controleestagio.model.Estagio;
+import br.edu.femass.controleestagio.wsmodel.EstagioWS;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -75,5 +76,15 @@ public class EstagioDao {
     public List<Long> getAlunosPorEmpresa(){
         Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e group by e.empresaEstagio.idEmpresa order by e.empresaEstagio.idEmpresa");
         return q.getResultList();
+    }
+    
+    /*
+    Método que retorna para o webservice EstagioRest os dados do EstagioWS
+    */
+    public EstagioWS getEstagioWS(Long idAluno){
+        Query q = em.createQuery("select new EstagioWS(e.idEstagio, e.alunoEstagio.nome, e.alunoEstagio.matricula, e.orientadorEstagio.nomeOrientador,"
+                + " e.empresaEstagio.nomeEmpresa, e.disciplina, e.statusDoEstagio) from Estagio e where e.alunoEstagio.idAluno = :idAluno");
+        q.setParameter("idAluno", idAluno);
+        return (EstagioWS) q.getSingleResult();
     }
 }

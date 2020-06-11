@@ -5,6 +5,7 @@
  */
 package br.edu.femass.controleestagio.model;
 
+import br.edu.femass.controleestagio.enums.TipoDeAcesso;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

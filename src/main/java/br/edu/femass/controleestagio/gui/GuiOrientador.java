@@ -8,7 +8,7 @@ package br.edu.femass.controleestagio.gui;
 import br.edu.femass.controleestagio.dao.OrientadorDao;
 import br.edu.femass.controleestagio.dao.UsuarioDao;
 import br.edu.femass.controleestagio.model.Orientador;
-import br.edu.femass.controleestagio.model.TipoDeAcesso;
+import br.edu.femass.controleestagio.enums.TipoDeAcesso;
 import br.edu.femass.controleestagio.model.Usuario;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;

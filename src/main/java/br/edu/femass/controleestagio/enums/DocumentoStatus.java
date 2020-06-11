@@ -1,4 +1,4 @@
-package br.edu.femass.controleestagio.model;
+package br.edu.femass.controleestagio.enums;
 
 /**
  *

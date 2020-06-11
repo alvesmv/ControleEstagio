@@ -1,5 +1,7 @@
 package br.edu.femass.controleestagio.model;
 
+import br.edu.femass.controleestagio.enums.DocumentoStatus;
+import br.edu.femass.controleestagio.enums.DocumentoTipo;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
