@@ -13,7 +13,6 @@ import javax.ws.rs.PathParam;
 //Dependencias dos atributos
 import br.edu.femass.controleestagio.dao.UsuarioDao;
 import br.edu.femass.controleestagio.dao.AlunoDao;
-import br.edu.femass.controleestagio.dao.EstagioDao;
 import br.edu.femass.controleestagio.model.Aluno;
 import br.edu.femass.controleestagio.model.Usuario;
 import br.edu.femass.controleestagio.wsmodel.AlunoWS;
