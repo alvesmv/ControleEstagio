@@ -9,7 +9,6 @@ import br.edu.femass.controleestagio.model.Empresa;
 import br.edu.femass.controleestagio.model.Estagio;
 import br.edu.femass.controleestagio.model.Orientador;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -26,13 +25,6 @@ public class GuiEstagio implements Serializable {
     private List<Estagio> estagios;
     private Estagio estagio;
     private Boolean alterando;
-
-    private List<Orientador> orientadores;
-    private List<Aluno> alunos;
-    private List<Empresa> empresas;
-    private List<String> listaDeOrientadores;
-    private List<String> listaDeAlunos;
-    private List<String> listaDeEmpresas;
     private String campoNomeOrientador;
     private String campoNomeAluno;
     private String campoNomeEmpresa;
@@ -57,7 +49,6 @@ public class GuiEstagio implements Serializable {
     public String incluir() {
         estagio = new Estagio();
         alterando = false;
-        inicializaListas();
         campoNomeOrientador = new String();
         campoNomeAluno = new String();
         campoNomeEmpresa = new String();
@@ -67,7 +58,6 @@ public class GuiEstagio implements Serializable {
     public String alterar(Estagio e) {
         estagio = e;
         alterando = true;
-        inicializaListas();
         campoNomeOrientador = estagio.getOrientadorEstagio().getNomeOrientador();
         campoNomeAluno = estagio.getAlunoEstagio().getNome();
         campoNomeEmpresa = estagio.getEmpresaEstagio().getNomeEmpresa();
@@ -100,9 +90,6 @@ public class GuiEstagio implements Serializable {
         return iniciar();
     }
 
-    /**
-     * @return the estagios
-     */
     public List<Estagio> getEstagios() {
         return estagios;
     }
@@ -114,9 +101,6 @@ public class GuiEstagio implements Serializable {
         this.estagios = estagios;
     }
 
-    /**
-     * @return the estagio
-     */
     public Estagio getEstagio() {
         return estagio;
     }
@@ -128,93 +112,24 @@ public class GuiEstagio implements Serializable {
         this.estagio = estagio;
     }
 
-    /**
-     * @return the orientadores
-     */
-    public List<Orientador> getOrientadores() {
+    public List<Orientador> getListaDeOrientadores() {
+        List<Orientador> orientadores = orientadorDao.getOrientadores();
+        
         return orientadores;
     }
 
-    /**
-     * @param orientadores the orientadores to set
-     */
-    public void setOrientadores(List<Orientador> orientadores) {
-        this.orientadores = orientadores;
+    public List<Aluno> getListaDeAlunos() {
+        List<Aluno> alunos = alunoDao.getAlunos();
+       
+        return alunos; 
     }
 
-    /**
-     * @return the alunos
-     */
-    public List<Aluno> getAlunos() {
-        return alunos;
-    }
-
-    /**
-     * @param alunos the alunos to set
-     */
-    public void setAlunos(List<Aluno> alunos) {
-        this.alunos = alunos;
-    }
-
-    /**
-     * @return the empresas
-     */
-    public List<Empresa> getEmpresas() {
+    public List<Empresa> getListaDeEmpresas() {
+        List<Empresa> empresas = empresaDao.getEmpresas();
+       
         return empresas;
     }
 
-    /**
-     * @param empresas the empresas to set
-     */
-    public void setEmpresas(List<Empresa> empresas) {
-        this.empresas = empresas;
-    }
-
-    /**
-     * @return the listaDeOrientadores
-     */
-    public List<String> getListaDeOrientadores() {
-        return listaDeOrientadores;
-    }
-
-    /**
-     * @param listaDeOrientadores the listaDeOrientadores to set
-     */
-    public void setListaDeOrientadores(List<String> listaDeOrientadores) {
-        this.listaDeOrientadores = listaDeOrientadores;
-    }
-
-    /**
-     * @return the listaDeAlunos
-     */
-    public List<String> getListaDeAlunos() {
-        return listaDeAlunos;
-    }
-
-    /**
-     * @param listaDeAlunos the listaDeAlunos to set
-     */
-    public void setListaDeAlunos(List<String> listaDeAlunos) {
-        this.listaDeAlunos = listaDeAlunos;
-    }
-
-    /**
-     * @return the listaDeEmpresas
-     */
-    public List<String> getListaDeEmpresas() {
-        return listaDeEmpresas;
-    }
-
-    /**
-     * @param listaDeEmpresas the listaDeEmpresas to set
-     */
-    public void setListaDeEmpresas(List<String> listaDeEmpresas) {
-        this.listaDeEmpresas = listaDeEmpresas;
-    }
-
-    /**
-     * @return the campoNomeOrientador
-     */
     public String getCampoNomeOrientador() {
         return campoNomeOrientador;
     }
@@ -226,23 +141,14 @@ public class GuiEstagio implements Serializable {
         this.campoNomeOrientador = campoNomeOrientador;
     }
 
-    /**
-     * @return the campoNomeAluno
-     */
     public String getCampoNomeAluno() {
         return campoNomeAluno;
     }
 
-    /**
-     * @param campoNomeAluno the campoNomeAluno to set
-     */
     public void setCampoNomeAluno(String campoNomeAluno) {
         this.campoNomeAluno = campoNomeAluno;
     }
 
-    /**
-     * @return the campoNomeAluno
-     */
     public String getCampoNomeEmpresa() {
         return campoNomeEmpresa;
     }
@@ -254,53 +160,21 @@ public class GuiEstagio implements Serializable {
         this.campoNomeEmpresa = campoNomeEmpresa;
     }
 
-    private void inicializaListas() {
-        listaDeOrientadores = new ArrayList<>();
-        listaDeAlunos = new ArrayList<>();
-        listaDeEmpresas = new ArrayList<>();
-        //Retorna a lista de itens para a selecao do combobox do FrmCadEstagio
-        try {
-            orientadores = orientadorDao.getOrientadores();
-            listaDeOrientadores = orientadorDao.getListaOrientadores();
-        } catch (Exception e) {
-            listaDeOrientadores = null;
-        }
-        try {
-            alunos = alunoDao.getAlunos();
-            listaDeAlunos = alunoDao.getListaAlunos();
-        } catch (Exception e) {
-            listaDeAlunos = null;
-        }
-        try {
-            empresas = empresaDao.getEmpresas();
-            listaDeEmpresas = empresaDao.getListaEmpresas();
-        } catch (Exception e) {
-            listaDeEmpresas = null;
-        }
-    }
-
     private Empresa getEmpresaSelecionada() {
         Empresa e = empresaDao.getEmpresa(campoNomeEmpresa);
-            if (e != null)
-                return e;
-            else
-                return null;
+            
+        return e;    
     }
 
     private Aluno getAlunoSelecionado() {
         Aluno a = alunoDao.getAlunoByString(campoNomeAluno);
          
-        if(a!=null)
-            return a;
-        else
-            return null;
+        return a;
     }
 
     private Orientador getOrientadorSelecionado() {
         Orientador o = orientadorDao.getOrientadorByName(campoNomeOrientador);
-        if(o!=null)
-            return o;
-        else
-            return null;
+        
+        return o;
     }
 }

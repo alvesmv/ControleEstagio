@@ -15,13 +15,11 @@ import br.edu.femass.controleestagio.dao.UsuarioDao;
 import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.EstagioDao;
 import br.edu.femass.controleestagio.model.Aluno;
-import br.edu.femass.controleestagio.model.Estagio;
 import br.edu.femass.controleestagio.model.Usuario;
 import br.edu.femass.controleestagio.wsmodel.AlunoWS;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -41,10 +39,7 @@ public class LoginWS {
     UsuarioDao userDao;
     @EJB
     AlunoDao alunoDao;
-    @EJB
-    EstagioDao estagioDao;
 
-   
     public LoginWS() {
     }
     
@@ -78,9 +73,6 @@ public class LoginWS {
                             alunoWS.setMatricula(aluno.getMatricula());
                             alunoWS.setCurso(aluno.getCurso().getNomeCurso());
                             alunoWS.setEmail(aluno.getEmail());
-                            alunoWS.setDisciplina("em manutencao");
-                            alunoWS.setOrientador("em manutencao");
-                            alunoWS.setEmpresa("em manutencao");
                             return alunoWS; 
                         default:
                             return null;

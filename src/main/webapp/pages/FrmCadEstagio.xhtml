@@ -15,17 +15,17 @@
                         <p:outputLabel value="Aluno" />
                         <p:selectOneMenu value="#{guiEstagio.campoNomeAluno}" dynamic="true" style="width:210px">
                             <f:selectItem itemLabel="Selecione o Aluno" itemValue="" />
-                            <f:selectItems value="#{guiEstagio.alunos}" />  
+                            <f:selectItems value="#{guiEstagio.getListaDeAlunos()}" />  
                         </p:selectOneMenu>
                         <p:outputLabel value="Orientador" />
                         <p:selectOneMenu value="#{guiEstagio.campoNomeOrientador}" dynamic="true" style="width:210px">
                             <f:selectItem itemLabel="Selecione o Orientador" itemValue="" />
-                            <f:selectItems value="#{guiEstagio.orientadores}" />  
+                            <f:selectItems value="#{guiEstagio.getListaDeOrientadores()}" />  
                         </p:selectOneMenu>
                         <p:outputLabel value="Empresa" />
                         <p:selectOneMenu value="#{guiEstagio.campoNomeEmpresa}" dynamic="true" style="width:210px">
                             <f:selectItem itemLabel="Selecione a Empresa" itemValue="" />
-                            <f:selectItems value="#{guiEstagio.empresas}" />  
+                            <f:selectItems value="#{guiEstagio.getListaDeEmpresas()}" />  
                         </p:selectOneMenu>
                         <p:outputLabel value="Nome do supervisor" />
                         <p:inputText value="#{guiEstagio.estagio.nomeSupervisor}" style="width:220px"/>

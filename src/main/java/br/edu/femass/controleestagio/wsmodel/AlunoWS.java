@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.femass.controleestagio.wsmodel;
 
 /**
  *
- * @author souza
+ * @author gxrj
  */
 public class AlunoWS {
     
@@ -15,9 +10,6 @@ public class AlunoWS {
     private String nome;
     private String curso;
     private String email;
-    private String disciplina;
-    private String orientador;
-    private String empresa;
     
 
     public String getMatricula() {
@@ -51,32 +43,4 @@ public class AlunoWS {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getDisciplina() {
-        return disciplina;
-    }
-
-    public void setDisciplina(String disciplina) {
-        this.disciplina = disciplina;
-    }
-
-    public String getOrientador() {
-        return orientador;
-    }
-
-    public void setOrientador(String orientador) {
-        this.orientador = orientador;
-    }
-
-    public String getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(String empresa) {
-        this.empresa = empresa;
-    }
-    
-    
-    
-    
 }

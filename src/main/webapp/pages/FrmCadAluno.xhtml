@@ -24,7 +24,7 @@ and open the template in the editor.
                         <p:outputLabel value="Curso" />
                         <p:selectOneMenu value="#{guiAluno.campoCursoNome}" dynamic="true" style="width:210px">
                             <f:selectItem itemLabel="Selecione o Curso" itemValue="" />
-                            <f:selectItems value="#{guiAluno.listaDeCursos}" />
+                            <f:selectItems value="#{guiAluno.getListaDeCursos()}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="E-mail" />
                         <p:inputText value="#{guiAluno.aluno.email}" style="width:220px"/>

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.femass.controleestagio.gui;
 
 import br.edu.femass.controleestagio.dao.AlunoDao;
@@ -15,7 +10,6 @@ import br.edu.femass.controleestagio.model.Usuario;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -32,9 +26,6 @@ public class GuiAluno implements Serializable {
     private List<Aluno> alunos;
     private Aluno aluno;
     private Boolean alterando;
-    
-    private List<String> listaDeCursos;
-    private List<Curso> cursos;
     private String campoCursoNome;
     private Usuario usuario;
     
@@ -56,7 +47,6 @@ public class GuiAluno implements Serializable {
     public String incluir() {
         aluno = new Aluno();
         alterando = false;
-        inicializaListaDeCurso();
         usuario = new Usuario();
         campoCursoNome = new String();
         return "FrmCadAluno";
@@ -65,7 +55,6 @@ public class GuiAluno implements Serializable {
     public String alterar(Aluno a) {
         aluno = a;
         alterando = true;
-        inicializaListaDeCurso();
         this.setCampoCursoNome(aluno.getCurso().getNomeCurso());
         return "FrmCadAluno";
     }
@@ -100,9 +89,6 @@ public class GuiAluno implements Serializable {
         return iniciar();
     }
 
-    /**
-     * @return the alunos
-     */
     public List<Aluno> getAlunos() {
         return alunos;
     }
@@ -114,9 +100,6 @@ public class GuiAluno implements Serializable {
         this.alunos = alunos;
     }
 
-    /**
-     * @return the aluno
-     */
     public Aluno getAluno() {
         return aluno;
     }
@@ -128,23 +111,6 @@ public class GuiAluno implements Serializable {
         this.aluno = aluno;
     }
 
-    /**
-     * @return the listaDeCursos
-     */
-    public List<String> getListaDeCursos() {
-        return listaDeCursos;
-    }
-
-    /**
-     * @param listaDeCursos the listaDeCursos to set
-     */
-    public void setListaDeCursos(List<String> listaDeCursos) {
-        this.listaDeCursos = listaDeCursos;
-    }
-
-    /**
-     * @return the campoCursoNome
-     */
     public String getCampoCursoNome() {
         return campoCursoNome;
     }
@@ -156,39 +122,13 @@ public class GuiAluno implements Serializable {
         this.campoCursoNome = campoCursoNome;
     }
 
-    /**
-     * @return the cursos
-     */
-    public List<Curso> getCursos() {
+    public List<Curso> getListaDeCursos() {
+        List<Curso> cursos = daoCurso.getCursos();
         return cursos;
-    }
-
-    /**
-     * @param cursos the cursos to set
-     */
-    public void setCursos(List<Curso> cursos) {
-        this.cursos = cursos;
-    }
-    
-    private void inicializaListaDeCurso() {
-        listaDeCursos = new ArrayList<>();
-        //Retorna a lista de itens para a selecao do combobox do FrmCadAluno
-        try {
-            cursos = daoCurso.getCursos();
-            for (Curso c : cursos) {
-                listaDeCursos.add(c.getNomeCurso());
-            }
-        } catch (Exception e) {
-            listaDeCursos = null;
-        }
     }
     
     private Curso getCursoSelecionado() {
         Curso c = daoCurso.getCursoByString(campoCursoNome);
-    
-        if(c != null)
-            return c;
-        else
-            return null;
+        return c;
     }
 }
