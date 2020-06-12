@@ -44,6 +44,11 @@ public class EmpresaDao {
         q.setParameter("n", nome);
         return q.getResultList();
     }
+    public Empresa getEmpresa(String nome) {
+        Query q = em.createQuery("select e from Empresa e where e.nomeEmpresa = :n");
+        q.setParameter("n", nome);
+        return (Empresa) q.getSingleResult();
+    }
 
     public List<String> getListaEmpresas() {
         Query q = em.createQuery("select e from Empresa e order by e.nomeEmpresa");

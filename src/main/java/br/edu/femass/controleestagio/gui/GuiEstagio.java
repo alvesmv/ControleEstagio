@@ -74,6 +74,7 @@ public class GuiEstagio implements Serializable {
         return "FrmCadEstagio";
     }
 
+    
     public String excluir(Estagio e) {
         daoEstagio.excluir(e);
         estagios = daoEstagio.getEstagios();
@@ -279,30 +280,27 @@ public class GuiEstagio implements Serializable {
     }
 
     private Empresa getEmpresaSelecionada() {
-        for (Empresa e : empresas) {
-            if (e.getNomeEmpresa().equals(campoNomeEmpresa)) {
+        Empresa e = empresaDao.getEmpresa(campoNomeEmpresa);
+            if (e != null)
                 return e;
-            }
-        }
-        return null;
+            else
+                return null;
     }
 
     private Aluno getAlunoSelecionado() {
-        for (Aluno a : alunos) {
-            if (a.getNome().equals(campoNomeAluno)) {
-                return a;
-            }
-        }
-        return null;
+        Aluno a = alunoDao.getAlunoByString(campoNomeAluno);
+         
+        if(a!=null)
+            return a;
+        else
+            return null;
     }
 
     private Orientador getOrientadorSelecionado() {
-        for (Orientador o : orientadores) {
-            if (o.getNomeOrientador().equals(campoNomeOrientador)) {
-                return o;
-            }
-        }
-        return null;
+        Orientador o = orientadorDao.getOrientadorByName(campoNomeOrientador);
+        if(o!=null)
+            return o;
+        else
+            return null;
     }
-
 }

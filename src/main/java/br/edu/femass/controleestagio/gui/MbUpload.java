@@ -2,6 +2,8 @@ package br.edu.femass.controleestagio.gui;
 
 import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.DocumentoDao;
+import br.edu.femass.controleestagio.dao.EstagioDao;
+import br.edu.femass.controleestagio.model.Aluno;
 import br.edu.femass.controleestagio.model.Documento;
 import br.edu.femass.controleestagio.enums.DocumentoStatus;
 import br.edu.femass.controleestagio.enums.DocumentoTipo;
@@ -14,6 +16,7 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
@@ -31,6 +34,11 @@ public class MbUpload implements Serializable{
     DocumentoDao docDao;
     @EJB
     AlunoDao alunoDB;
+    @EJB
+    EstagioDao estagioDao;
+    
+    Estagio estagio;
+    
     public MbUpload(){
         doc = new Documento();  
         docDao = new DocumentoDao();
@@ -66,15 +74,28 @@ public class MbUpload implements Serializable{
         //this.doc.setDocTipo(DocumentoTipo.relatorio);
         //Obtem o objeto usuario instanciado no durante o login
         Object o = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-        this.doc.setAluno(alunoDB.getAlunoPorMatricula(o.toString()));
+        Aluno aluno = alunoDB.getAlunoPorMatricula(o.toString());
+        this.doc.setEstagio(estagioDao.getEstagioAtivoPorAluno(aluno)); // setAluno() alterado para setEstagio()
         //Estabelece o valor do atributo que auxilia na busca de documentos por matricula
-        this.doc.setAlunoMatricula(this.doc.getAluno().getMatricula());
+        this.doc.setAlunoMatricula(aluno.getMatricula());
         
-        if(doc.getArquivo() == null)
-            System.out.println("Arquivo nao convertido!!!!!!!!!");
+        if(doc.getArquivo() == null){
+            FacesContext context = FacesContext.getCurrentInstance();
+       
+            context.addMessage(null, new FacesMessage("Erro! Arquivo não convertido") );
+        
+        }
         //Caso contrário, flush no DB
         else{
             docDao.inserir(this.doc);
         }
     }   
+
+    public Estagio getEstagio() {
+        return estagio;
+    }
+
+    public void setEstagio(Estagio estagio) {
+        this.estagio = estagio;
+    }    
 }

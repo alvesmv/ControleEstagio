@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.femass.controleestagio.dao;
 
 import br.edu.femass.controleestagio.model.Documento;
+import br.edu.femass.controleestagio.model.Estagio;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -58,4 +54,13 @@ public class DocumentoDao {
         return q.getResultList();
     }
     
+    /*
+        O método abaixo considera a mudança de Documento-Aluno para Dcoumento-Estágio,
+    basta colocar um estágio ativo no parâmetro
+    */
+    public List<Documento> getListaDocumentosByEstagio(Estagio e){
+        Query q = em.createQuery("select d from Documento d where d.estagio = :e");
+        q.setParameter("e", e);
+        return q.getResultList();
+    }
 }

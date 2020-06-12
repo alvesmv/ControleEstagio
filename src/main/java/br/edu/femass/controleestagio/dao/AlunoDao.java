@@ -68,6 +68,7 @@ public class AlunoDao {
         return q.getResultList();
     }
 
+   
     public List<Aluno> getAlunosComEstagio() {
         Query q = em.createQuery("select e.alunoEstagio from Estagio e");
         return q.getResultList();
@@ -75,7 +76,7 @@ public class AlunoDao {
 
     /*
     Método que retorna o número de alunos cadastrado no sistema
-     */
+    */
     public Long getNumeroDeAlunos() {
         Query q = em.createQuery("select COUNT(a) from Aluno a");
         return (Long) q.getSingleResult();

@@ -7,28 +7,110 @@
 
     <ui:composition template="/template/templateOrientador.xhtml">
         <ui:define name="content">
-            <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
-                         var="alu" value="#{mbRelatorios.alunoList}"
-                         emptyMessage="Nenhum relatorio enviado">
-                
-                <p:column headerText="Nome do Aluno">
-                    <h:outputText value="#{alu.nome}"></h:outputText>
-                </p:column>
-                
-                <p:column headerText="Matricula">
-                    <h:outputText value="#{alu.matricula}"></h:outputText>
-                </p:column>
-                
-                <p:column headerText="Curso">
-                    <h:outputText value="#{alu.curso.nomeCurso}"></h:outputText>
-                </p:column>
-                
-                <p:column headerText="Acoes">
-                    <h:form>
-                        <p:commandButton value="Acessar Ficha de Relatorios" action="#{mbRelatorios.acessarFichaDeRelatorios(alu)}"/>
-                    </h:form>
-                </p:column>
-            </p:dataTable>
+            <h:form>
+                <p:tabView>
+                    <p:tab title="Estágio I">
+                        <p:panelGrid columns="1">
+                            <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
+                                         var="est" value="#{mbRelatorios.listaEstagioI}"
+                                         emptyMessage="Nenhum relatorio enviado">
+
+                                <p:column headerText="Nome do Aluno">
+                                    <h:outputText value="#{est.alunoEstagio.nome}"></h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Matricula">
+                                    <h:outputText value="#{est.alunoEstagio.matricula}"></h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Curso">
+                                    <h:outputText value="#{est.alunoEstagio.curso.nomeCurso}"></h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Acoes">    
+                                        <p:commandButton value="Acessar Ficha de Relatorios" action="#{mbRelatorios.acessarFichaDeRelatorios(est)}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:panelGrid>
+                    </p:tab>
+                    <p:tab title="Estágio II">
+                        <p:panelGrid columns="1">
+                            <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
+                                         var="est" value="#{mbRelatorios.listaEstagioII}"
+                                         emptyMessage="Nenhum relatorio enviado">
+
+                                <p:column headerText="Nome do Aluno">
+                                    <h:outputText value="#{est.alunoEstagio.nome}"></h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Matricula">
+                                    <h:outputText value="#{est.alunoEstagio.matricula}"></h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Curso">
+                                    <h:outputText value="#{est.alunoEstagio.curso.nomeCurso}"></h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Acoes">
+                                        <p:commandButton value="Acessar Ficha de Relatorios" action="#{mbRelatorios.acessarFichaDeRelatorios(est)}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:panelGrid>
+                    </p:tab>
+                    <p:tab title="Estágios não-obrigatórios">
+                        <p:panelGrid columns="1">
+                            <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
+                                         var="est" value="#{mbRelatorios.listaEstagioNaoObrigatorio}"
+                                         emptyMessage="Em construçãso">
+
+                                <p:column headerText="Nome do Aluno">
+                                    <h:outputText value="#{est.alunoEstagio.nome}"></h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Matricula">
+                                    <h:outputText value="#{est.alunoEstagio.matricula}"></h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Curso">
+                                    <h:outputText value="#{est.alunoEstagio.curso.nomeCurso}"></h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Situação">
+                                    <h:outputText value="#{est.statusDoEstagio}"></h:outputText>
+                                </p:column>
+                            </p:dataTable>
+                        </p:panelGrid>
+                    </p:tab>
+                    <p:tab title="Estágios concluídos">
+                        <p:panelGrid columns="1">
+                            <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
+                                         var="est" value="#{mbRelatorios.listaEstagiosConcluidos}"
+                                         emptyMessage="Nenhum relatorio enviado">
+
+                                <p:column headerText="Nome do Aluno">
+                                    <h:outputText value="#{est.alunoEstagio.nome}"></h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Matricula">
+                                    <h:outputText value="#{est.alunoEstagio.matricula}"></h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Curso">
+                                    <h:outputText value="#{est.alunoEstagio.curso.nomeCurso}"></h:outputText>
+                                </p:column>
+                                
+                                <p:column headerText="Situação">
+                                    <h:outputText value="#{est.statusDoEstagio}"></h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Acoes">
+                                        <p:commandButton value="Acessar Ficha de Relatorios" action="#{mbRelatorios.acessarFichaDeRelatorios(est)}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:panelGrid>
+                    </p:tab>
+                </p:tabView>
+            </h:form>
         </ui:define>
     </ui:composition> 
 

@@ -15,10 +15,10 @@
 
                 <p:fieldset legend="Aluno" style="margin-bottom:20px">
                     <h:panelGrid columns="2">
-                        <h:outputText value="Nome: #{mbRelatorios.aluno.nome}"/>
-                        <h:outputText value="Matricula: #{mbRelatorios.aluno.matricula}"/>
-                        <h:outputText value="Curso: #{mbRelatorios.aluno.curso.nomeCurso}"/>
-                        <h:outputText value="E-mail: #{mbRelatorios.aluno.email}"/>
+                        <h:outputText value="Nome: #{mbRelatorios.estagio.alunoEstagio.nome}"/>
+                        <h:outputText value="Matricula: #{mbRelatorios.estagio.alunoEstagio.matricula}"/>
+                        <h:outputText value="Curso: #{mbRelatorios.estagio.alunoEstagio.curso.nomeCurso}"/>
+                        <h:outputText value="E-mail: #{mbRelatorios.estagio.alunoEstagio.email}"/>
                     </h:panelGrid>
                 </p:fieldset>
 
@@ -39,8 +39,8 @@
                     </h:panelGrid>
                 </p:fieldset>
                 <div style="margin-top:5%; justify-content: center; align-items: center; display: flex">    
-                    <p:commandButton value="Voltar" action="#{mbRelatorios.voltarParaFichaRelatorios()}"/>
-                    <p:commandButton value="Salvar e Retornar" action="#{mbRelatorios.salvarAlteracoes()}"/>
+                    <p:commandButton value="Voltar" action="#{mbRelatorios.voltarParaFichaRelatorios()}" ajax="false"/>
+                    <p:commandButton value="Salvar e Retornar" action="#{mbRelatorios.salvarAlteracoes()}" ajax="false"/>
                 </div>
             </h:form>
 
