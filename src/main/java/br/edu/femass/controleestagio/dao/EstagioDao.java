@@ -1,7 +1,7 @@
 package br.edu.femass.controleestagio.dao;
 
 import br.edu.femass.controleestagio.model.Aluno;
-import br.edu.femass.controleestagio.model.Disciplina;
+import br.edu.femass.controleestagio.enums.Disciplina;
 import br.edu.femass.controleestagio.model.Estagio;
 import br.edu.femass.controleestagio.enums.Status;
 import br.edu.femass.controleestagio.wsmodel.EstagioWS;
