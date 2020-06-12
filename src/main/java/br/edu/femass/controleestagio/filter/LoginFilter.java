@@ -5,7 +5,7 @@
  */
 package br.edu.femass.controleestagio.filter;
 
-import br.edu.femass.controleestagio.gui.GuiLogin;
+import br.edu.femass.controleestagio.bean.MbLogin;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.Filter;
@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginFilter implements Filter {
 
     @Inject
-    private GuiLogin guilogin;
+    private MbLogin guilogin;
    
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

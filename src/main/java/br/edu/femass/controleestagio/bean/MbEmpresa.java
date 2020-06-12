@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.femass.controleestagio.gui;
+package br.edu.femass.controleestagio.bean;
 
 import br.edu.femass.controleestagio.dao.EmpresaDao;
 import br.edu.femass.controleestagio.model.Empresa;
@@ -19,7 +19,7 @@ import javax.inject.Named;
  */
 @Named(value = "guiEmpresa")
 @SessionScoped
-public class GuiEmpresa implements Serializable {
+public class MbEmpresa implements Serializable {
 
     private List<Empresa> empresas;
     private Empresa empresa;
@@ -28,7 +28,7 @@ public class GuiEmpresa implements Serializable {
     @EJB
     EmpresaDao empresaDao;
 
-    public GuiEmpresa() {
+    public MbEmpresa() {
 
     }
 

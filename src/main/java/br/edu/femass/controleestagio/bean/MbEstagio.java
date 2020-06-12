@@ -1,4 +1,4 @@
-package br.edu.femass.controleestagio.gui;
+package br.edu.femass.controleestagio.bean;
 
 import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.EmpresaDao;
@@ -20,7 +20,7 @@ import javax.enterprise.context.SessionScoped;
  */
 @Named(value = "guiEstagio")
 @SessionScoped
-public class GuiEstagio implements Serializable {
+public class MbEstagio implements Serializable {
 
     private List<Estagio> estagios;
     private Estagio estagio;
@@ -38,7 +38,7 @@ public class GuiEstagio implements Serializable {
     @EJB
     EmpresaDao empresaDao = new EmpresaDao();
 
-    public GuiEstagio() {
+    public MbEstagio() {
     }
 
     public String iniciar() {

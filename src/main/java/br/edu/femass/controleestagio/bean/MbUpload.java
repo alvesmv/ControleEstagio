@@ -1,4 +1,4 @@
-package br.edu.femass.controleestagio.gui;
+package br.edu.femass.controleestagio.bean;
 
 import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.DocumentoDao;

@@ -1,4 +1,4 @@
-package br.edu.femass.controleestagio.gui;
+package br.edu.femass.controleestagio.bean;
 
 import br.edu.femass.controleestagio.dao.UsuarioDao;
 import br.edu.femass.controleestagio.enums.TipoDeAcesso;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  */
 @Named(value = "guiLogin")
 @SessionScoped
-public class GuiLogin implements Serializable {
+public class MbLogin implements Serializable {
 
     private List<Usuario> usuarios;
     private Usuario usuario = new Usuario();
@@ -26,7 +26,7 @@ public class GuiLogin implements Serializable {
     @EJB
     UsuarioDao usuarioDao;
 
-    public GuiLogin() {
+    public MbLogin() {
 
     }
 

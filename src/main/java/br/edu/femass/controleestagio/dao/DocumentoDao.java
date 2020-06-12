@@ -63,4 +63,9 @@ public class DocumentoDao {
         q.setParameter("e", e);
         return q.getResultList();
     }
+    public List<Documento> getListaDocumentosByIdEstagio(String idEstagio){
+        Query q = em.createQuery("select d from Documento d where d.estagio.idEstagio = :id");
+        q.setParameter("id", idEstagio);
+        return q.getResultList();
+    }
 }

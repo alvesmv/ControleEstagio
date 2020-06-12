@@ -1,5 +1,5 @@
 
-package br.edu.femass.controleestagio.gui;
+package br.edu.femass.controleestagio.bean;
 
 import java.io.Serializable;
 import javax.inject.Named;
@@ -11,7 +11,7 @@ import javax.enterprise.context.Dependent;
  */
 @Named(value = "guiAreaDoAluno")
 @Dependent
-public class GuiAreaDoAluno implements Serializable {
+public class MbAreaDoAluno implements Serializable {
 
     public String irAbaInicial(){
         return "FrmAreaDoAluno";

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.femass.controleestagio.wsmodel;
 
 import br.edu.femass.controleestagio.enums.Disciplina;
@@ -22,14 +17,59 @@ public class EstagioWS {
     private Disciplina disciplina;
     private Status statusEstagio;
 
-    public EstagioWS(Long idEstagio, String nomeAluno, String matriculaAluno, String nomeOrientador, String nomeEmpresa, Disciplina disciplina, Status statusEstagio) {
+    public Long getIdEstagio() {
+        return idEstagio;
+    }
+
+    public void setIdEstagio(Long idEstagio) {
         this.idEstagio = idEstagio;
+    }
+
+    public String getNomeAluno() {
+        return nomeAluno;
+    }
+
+    public void setNomeAluno(String nomeAluno) {
         this.nomeAluno = nomeAluno;
+    }
+
+    public String getMatriculaAluno() {
+        return matriculaAluno;
+    }
+
+    public void setMatriculaAluno(String matriculaAluno) {
         this.matriculaAluno = matriculaAluno;
+    }
+
+    public String getNomeOrientador() {
+        return nomeOrientador;
+    }
+
+    public void setNomeOrientador(String nomeOrientador) {
         this.nomeOrientador = nomeOrientador;
+    }
+
+    public String getNomeEmpresa() {
+        return nomeEmpresa;
+    }
+
+    public void setNomeEmpresa(String nomeEmpresa) {
         this.nomeEmpresa = nomeEmpresa;
+    }
+
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
+    }
+
+    public Status getStatusEstagio() {
+        return statusEstagio;
+    }
+
+    public void setStatusEstagio(Status statusEstagio) {
         this.statusEstagio = statusEstagio;
     }
-    
 }

@@ -1,4 +1,4 @@
-package br.edu.femass.controleestagio.gui;
+package br.edu.femass.controleestagio.bean;
 
 import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.CursoDao;
@@ -21,7 +21,7 @@ import javax.inject.Named;
  */
 @Named(value = "guiAluno")
 @SessionScoped
-public class GuiAluno implements Serializable {
+public class MbAluno implements Serializable {
     
     private List<Aluno> alunos;
     private Aluno aluno;
@@ -36,7 +36,7 @@ public class GuiAluno implements Serializable {
     @EJB
     UsuarioDao usuarioDao = new UsuarioDao();
     
-    public GuiAluno() {
+    public MbAluno() {
     }
     
     public String iniciar() {

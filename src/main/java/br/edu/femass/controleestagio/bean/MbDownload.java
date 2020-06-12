@@ -1,4 +1,4 @@
-package br.edu.femass.controleestagio.gui;
+package br.edu.femass.controleestagio.bean;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Named;

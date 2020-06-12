@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.femass.controleestagio.gui;
+package br.edu.femass.controleestagio.bean;
 
 import br.edu.femass.controleestagio.dao.OrientadorDao;
 import br.edu.femass.controleestagio.dao.UsuarioDao;
@@ -24,7 +24,7 @@ import javax.inject.Named;
  */
 @Named(value = "guiOrientador")
 @SessionScoped
-public class GuiOrientador implements Serializable {
+public class MbOrientador implements Serializable {
 
     private List<Orientador> orientadores;
     private Orientador orientador;
@@ -37,7 +37,7 @@ public class GuiOrientador implements Serializable {
     @EJB
     UsuarioDao usuarioDao = new UsuarioDao();
 
-    public GuiOrientador() {
+    public MbOrientador() {
     }
 
     public String iniciar() {
