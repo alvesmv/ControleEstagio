@@ -5,9 +5,8 @@ import br.edu.femass.controleestagio.dao.DocumentoDao;
 import br.edu.femass.controleestagio.dao.EstagioDao;
 import br.edu.femass.controleestagio.model.Aluno;
 import br.edu.femass.controleestagio.model.Documento;
-import br.edu.femass.controleestagio.model.DocumentoStatus;
-import br.edu.femass.controleestagio.model.Estagio;
-
+import br.edu.femass.controleestagio.enums.DocumentoStatus;
+import br.edu.femass.controleestagio.enums.DocumentoTipo;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;

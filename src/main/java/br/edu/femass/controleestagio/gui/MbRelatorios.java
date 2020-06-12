@@ -5,7 +5,6 @@ import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.DocumentoDao;
 import br.edu.femass.controleestagio.dao.EstagioDao;
 import br.edu.femass.controleestagio.model.Aluno;
-
 import br.edu.femass.controleestagio.model.Documento;
 import br.edu.femass.controleestagio.model.Estagio;
 import br.edu.femass.controleestagio.model.Usuario;

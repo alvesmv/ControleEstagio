@@ -10,7 +10,7 @@ import br.edu.femass.controleestagio.dao.CursoDao;
 import br.edu.femass.controleestagio.dao.UsuarioDao;
 import br.edu.femass.controleestagio.model.Aluno;
 import br.edu.femass.controleestagio.model.Curso;
-import br.edu.femass.controleestagio.model.TipoDeAcesso;
+import br.edu.femass.controleestagio.enums.TipoDeAcesso;
 import br.edu.femass.controleestagio.model.Usuario;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;

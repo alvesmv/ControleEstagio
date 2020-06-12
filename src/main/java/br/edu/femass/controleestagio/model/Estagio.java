@@ -1,5 +1,7 @@
 package br.edu.femass.controleestagio.model;
 
+import br.edu.femass.controleestagio.enums.Disciplina;
+import br.edu.femass.controleestagio.enums.Status;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.femass.controleestagio.model;
+package br.edu.femass.controleestagio.enums;
 
 /**
  *
