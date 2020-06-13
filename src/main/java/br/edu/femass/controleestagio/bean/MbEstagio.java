@@ -4,6 +4,7 @@ import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.EmpresaDao;
 import br.edu.femass.controleestagio.dao.EstagioDao;
 import br.edu.femass.controleestagio.dao.OrientadorDao;
+import br.edu.femass.controleestagio.enums.Status;
 import br.edu.femass.controleestagio.model.Aluno;
 import br.edu.femass.controleestagio.model.Empresa;
 import br.edu.femass.controleestagio.model.Estagio;
@@ -83,10 +84,20 @@ public class MbEstagio implements Serializable {
         if (alterando) {
             daoEstagio.alterar(estagio);
         } else {
+            estagio.setStatusDoEstagio(Status.Cursando);
             daoEstagio.inserir(estagio);
         }
 
         return iniciar();
+    }
+
+    public String avaliarEstagio(Estagio e) {
+        estagio = e;
+        alterando = true;
+        campoNomeOrientador = estagio.getOrientadorEstagio().getNomeOrientador();
+        campoNomeAluno = estagio.getAlunoEstagio().getNome();
+        campoNomeEmpresa = estagio.getEmpresaEstagio().getNomeEmpresa();
+        return "FrmAvaliarEstagio";
     }
 
     public List<Estagio> getEstagios() {

@@ -40,6 +40,7 @@
                     <p:column >
                         <p:commandButton title="Alterar" action="#{mbEstagio.alterar(est)}" ajax="false" icon="ui-icon-pencil"/>
                         <p:commandButton title="Excluir" action="#{mbEstagio.excluir(est)}" ajax="false" icon="ui-icon-trash"/>
+                        <p:commandButton title="Avaliar" action="#{mbEstagio.avaliarEstagio(est)}" ajax="false" icon="ui-icon-check"/>
                     </p:column>
                     <f:facet name="footer">
                         <p:commandButton value="Incluir" action="#{mbEstagio.incluir()}" ajax="false" />

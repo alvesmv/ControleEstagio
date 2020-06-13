@@ -1,4 +1,9 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -13,30 +18,29 @@
                 <h:form>
                     <h:panelGrid columns="2">
                         <p:outputLabel value="Aluno" />
-                        <p:selectOneMenu value="#{mbEstagio.campoNomeAluno}" dynamic="true" style="width:210px">
-                            <f:selectItem itemLabel="Selecione o Aluno" itemValue="" />
-                            <f:selectItems value="#{mbEstagio.getListaDeAlunos()}" />  
-                        </p:selectOneMenu>
+                        <p:inputText value="#{mbEstagio.campoNomeAluno}" style="width:200px" disabled="true"/>
                         <p:outputLabel value="Orientador" />
-                        <p:selectOneMenu value="#{mbEstagio.campoNomeOrientador}" dynamic="true" style="width:210px">
-                            <f:selectItem itemLabel="Selecione o Orientador" itemValue="" />
-                            <f:selectItems value="#{mbEstagio.getListaDeOrientadores()}" />  
-                        </p:selectOneMenu>
+                        <p:inputText value="#{mbEstagio.campoNomeOrientador}" style="width:200px" disabled="true"/>
                         <p:outputLabel value="Empresa" />
-                        <p:selectOneMenu value="#{mbEstagio.campoNomeEmpresa}" dynamic="true" style="width:210px">
-                            <f:selectItem itemLabel="Selecione a Empresa" itemValue="" />
-                            <f:selectItems value="#{mbEstagio.getListaDeEmpresas()}" />  
-                        </p:selectOneMenu>
+                        <p:inputText value="#{mbEstagio.campoNomeEmpresa}" style="width:200px" disabled="true"/>
                         <p:outputLabel value="Nome do supervisor" />
-                        <p:inputText value="#{mbEstagio.estagio.nomeSupervisor}" style="width:220px"/>
+                        <p:inputText value="#{mbEstagio.estagio.nomeSupervisor}" style="width:200px" disabled="true"/>
                         <p:outputLabel value="Contato do supervisor" />
-                        <p:inputMask value="#{mbEstagio.estagio.contatoSupervisor}" mask="(99) 9 9999-9999" style="width:220px"/>
+                        <p:inputMask value="#{mbEstagio.estagio.contatoSupervisor}" mask="(99) 9 9999-9999" style="width:200px" disabled="true"/>
                         <p:outputLabel value="Data Inicio" />
-                        <p:calendar value="#{mbEstagio.estagio.dataInicioEstagio}" />
+                        <p:calendar value="#{mbEstagio.estagio.dataInicioEstagio}" disabled="true"/>
+                        <p:outputLabel value="Data Termino" />
+                        <p:calendar value="#{mbEstagio.estagio.datafimEstagio}"/>
                         <p:outputLabel for="disciplina" value="Disciplina" />
-                        <p:selectOneRadio id="disciplina" value="#{mbEstagio.estagio.disciplina}" unselectable="true">
+                        <p:selectOneRadio id="disciplina" value="#{mbEstagio.estagio.disciplina}" unselectable="true" disabled="true">
                             <f:selectItem itemLabel="Estágio Obrigatorio I" itemValue="Estagio_Obrigatorio_I"/>
                             <f:selectItem itemLabel="Estágio Obrigatorio II" itemValue="Estagio_Obrigatorio_II"/>
+                        </p:selectOneRadio>
+                        <p:outputLabel value="Status" />
+                        <p:selectOneRadio value="#{mbEstagio.estagio.statusDoEstagio}">
+                            <f:selectItem itemLabel="Cursando" itemValue="Cursando" />
+                            <f:selectItem itemLabel="Aprovado" itemValue="Aprovado" />                
+                            <f:selectItem itemLabel="Reprovado" itemValue="Reprovado" />                
                         </p:selectOneRadio>
                     </h:panelGrid>
 
@@ -52,4 +56,3 @@
     </ui:composition>
 
 </html>
-

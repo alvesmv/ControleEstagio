@@ -15,11 +15,17 @@ and open the template in the editor.
         <ui:define name="content">
 
             <h:form>
-                <p:tabView>
+                <p:tabView style ="margin-top:2%; justify-content: center; align-items: center;">
                     <p:tab title="Alunos">
                         <p:panelGrid columns="1">
                             <p:dataTable style="margin-top:2%; justify-content: center; align-items: center;"
                                          var="userAluno" value="#{mbUsuario.alunos}" emptyMessage="Nenhum usuário aluno cadastrado">
+                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Pesquisar:"/>
+                                        <p:inputText id="globalFilter" onkeyup="PF('alunoFiltro').filter()" style="width: 150px" placeholder="Aluno"/>
+                                    </p:outputPanel>
+                                </f:facet>
                                 <p:column headerText="Nome" filterBy="#{userAluno.nome}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{userAluno.nome}">
                                     <h:outputText value="#{userAluno.nome}"/>
                                 </p:column>
