@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
@@ -18,26 +18,26 @@ and open the template in the editor.
                 <h:form>
                     <h:panelGrid columns="2">
                         <p:outputLabel value="Nome da Empresa" />
-                        <p:inputText value="#{guiEmpresa.empresa.nomeEmpresa}" style="width:220px"/>
+                        <p:inputText value="#{mbEmpresa.empresa.nomeEmpresa}" style="width:220px"/>
                         <p:outputLabel value="CNPJ" />
-                        <p:inputMask value="#{guiEmpresa.empresa.cnpj}" mask="99.999.999/9999-99" style="width:220px"/>
+                        <p:inputMask value="#{mbEmpresa.empresa.cnpj}" mask="99.999.999/9999-99" style="width:220px"/>
                         <p:outputLabel value="Contato do RH" />
-                        <p:inputText value="#{guiEmpresa.empresa.contatoDoRH}" style="width:220px"/>
+                        <p:inputText value="#{mbEmpresa.empresa.contatoDoRH}" style="width:220px"/>
                         <p:outputLabel value="E-mail" />
-                        <p:inputText value="#{guiEmpresa.empresa.email}" style="width:220px"/>
+                        <p:inputText value="#{mbEmpresa.empresa.email}" style="width:220px"/>
                         <p:outputLabel value="Rua" />
-                        <p:inputText value="#{guiEmpresa.empresa.rua}" style="width:220px"/>
+                        <p:inputText value="#{mbEmpresa.empresa.rua}" style="width:220px"/>
                         <p:outputLabel value="Número" />
-                        <p:inputText value="#{guiEmpresa.empresa.numero}" style="width:220px"/>
+                        <p:inputText value="#{mbEmpresa.empresa.numero}" style="width:220px"/>
                         <p:outputLabel value="Complemento" />
-                        <p:inputText value="#{guiEmpresa.empresa.complemento}" style="width:220px"/>
+                        <p:inputText value="#{mbEmpresa.empresa.complemento}" style="width:220px"/>
                         <p:outputLabel value="CEP" />
-                        <p:inputMask value="#{guiEmpresa.empresa.cep}" mask="99999-999" style="width:220px"/>
+                        <p:inputMask value="#{mbEmpresa.empresa.cep}" mask="99999-999" style="width:220px"/>
                     </h:panelGrid>
-                    
+
                     <div style="margin-top:5%; justify-content: center; align-items: center; display: flex"> 
-                        <p:commandButton value="Gravar" action="#{guiEmpresa.gravar()}" ajax="false" />
-                        <p:commandButton value="Voltar" action="#{guiEmpresa.voltar()}" ajax="false" />
+                        <p:commandButton value="Gravar" action="#{mbEmpresa.gravar()}" ajax="false" />
+                        <p:commandButton value="Voltar" action="#{mbEmpresa.voltar()}" ajax="false" />
                     </div>
                 </h:form>
             </div>

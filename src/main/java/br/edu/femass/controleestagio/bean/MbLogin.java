@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author souza
  */
-@Named(value = "guiLogin")
+@Named
 @SessionScoped
 public class MbLogin implements Serializable {
 

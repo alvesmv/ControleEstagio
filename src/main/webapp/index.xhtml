@@ -4,14 +4,16 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
+
     <h:head>
         <title>Controle Estágio</title>
         <h:outputStylesheet library="css" name="default.css"/>
     </h:head>
+
     <h:body>
         <h:body style="width: 100%; max-width: 1120px; height: 100vh; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
             <h:form style="margin: auto;" >
@@ -22,11 +24,11 @@ and open the template in the editor.
                         <p:graphicImage url="/resources/imagens/logo.png" />
                         <h:panelGrid columns="2" cellpadding="5">
                             <p:outputLabel value="Login" />
-                            <p:inputText value="#{guiLogin.usuario.login}" />
+                            <p:inputText value="#{mbLogin.usuario.login}" />
                             <p:outputLabel value="Senha" />
-                            <p:password value="#{guiLogin.usuario.senha}" />
+                            <p:password value="#{mbLogin.usuario.senha}" />
                             <p:outputLabel />
-                            <p:commandButton value="Entrar" action="#{guiLogin.entrar()}" update="growl-mensagem" ajax="true" />
+                            <p:commandButton value="Entrar" action="#{mbLogin.entrar()}" update="growl-mensagem" ajax="true" />
                         </h:panelGrid>
                     </h:panelGrid>
                 </p:panel>

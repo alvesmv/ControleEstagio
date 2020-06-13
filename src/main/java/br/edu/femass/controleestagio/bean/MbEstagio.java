@@ -18,7 +18,7 @@ import javax.enterprise.context.SessionScoped;
  *
  * @author souza
  */
-@Named(value = "guiEstagio")
+@Named
 @SessionScoped
 public class MbEstagio implements Serializable {
 
@@ -64,7 +64,6 @@ public class MbEstagio implements Serializable {
         return "FrmCadEstagio";
     }
 
-    
     public String excluir(Estagio e) {
         daoEstagio.excluir(e);
         estagios = daoEstagio.getEstagios();
@@ -114,19 +113,19 @@ public class MbEstagio implements Serializable {
 
     public List<Orientador> getListaDeOrientadores() {
         List<Orientador> orientadores = orientadorDao.getOrientadores();
-        
+
         return orientadores;
     }
 
     public List<Aluno> getListaDeAlunos() {
         List<Aluno> alunos = alunoDao.getAlunos();
-       
-        return alunos; 
+
+        return alunos;
     }
 
     public List<Empresa> getListaDeEmpresas() {
         List<Empresa> empresas = empresaDao.getEmpresas();
-       
+
         return empresas;
     }
 
@@ -162,19 +161,19 @@ public class MbEstagio implements Serializable {
 
     private Empresa getEmpresaSelecionada() {
         Empresa e = empresaDao.getEmpresa(campoNomeEmpresa);
-            
-        return e;    
+
+        return e;
     }
 
     private Aluno getAlunoSelecionado() {
         Aluno a = alunoDao.getAlunoByString(campoNomeAluno);
-         
+
         return a;
     }
 
     private Orientador getOrientadorSelecionado() {
         Orientador o = orientadorDao.getOrientadorByName(campoNomeOrientador);
-        
+
         return o;
     }
 }

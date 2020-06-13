@@ -1,4 +1,3 @@
-
 package br.edu.femass.controleestagio.bean;
 
 import br.edu.femass.controleestagio.dao.AlunoDao;
@@ -22,47 +21,46 @@ import org.primefaces.model.StreamedContent;
  *
  * @author gxrj
  */
-@Named(value = "mbRelatorios")
+@Named
 @SessionScoped
 
-public class MbRelatorios implements Serializable{
+public class MbRelatorios implements Serializable {
 
     private List<Documento> docList;
     private List<Aluno> alunoList;
-    private List <Estagio> listaEstagioI;
-    private List <Estagio> listaEstagioII;
-    private List <Estagio> listaEstagiosConcluidos;
-    private List <Estagio> listaEstagioNaoObrigatorio;
-    private List <Estagio> listaEstagiosAtivosPorAluno;
+    private List<Estagio> listaEstagioI;
+    private List<Estagio> listaEstagioII;
+    private List<Estagio> listaEstagiosConcluidos;
+    private List<Estagio> listaEstagioNaoObrigatorio;
+    private List<Estagio> listaEstagiosAtivosPorAluno;
     private Documento doc;
     private String login;
 
     private Estagio estagio;
     private StreamedContent conteudoTransmitido;
-    
-    
+
     @EJB
     DocumentoDao docDao = new DocumentoDao();
     //Alterar Aluno para estágio
     @EJB
     AlunoDao alunoDao = new AlunoDao();
-    
+
     @EJB
     EstagioDao estagioDao = new EstagioDao();
-    
+
     public MbRelatorios() {
     }
-    
+
     public String iniciar() {
         //Obtem o objeto usuario instanciado no durante o login
         Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         login = user.getLogin();
-        
+
         switch (user.getTipoDeAcesso()) {
             case aluno:
                 /*Possivelmente será alterado após trocar a relação Documento-Aluno por Documento-Estagio*/
                 listaEstagiosAtivosPorAluno = estagioDao.getEstagiosAtivosPorAluno(login);
-                
+
                 return "FrmEstagiosDoAluno";
             case orientador:
                 alunoList = alunoDao.getAlunosByOrientador(login); // excluir esta linha
@@ -78,48 +76,48 @@ public class MbRelatorios implements Serializable{
                 listaEstagiosConcluidos = estagioDao.getListEstagiosConcluidos();
                 break;
         }
-        
+
         return "FrmAbaAvaliarRelatorio";
     }
-   
-    public String acessarFichaDeRelatorios(Estagio e){
+
+    public String acessarFichaDeRelatorios(Estagio e) {
         this.estagio = e;
         docList = docDao.getListaDocumentosByEstagio(e);
         return "FrmFichaRelatorios";
     }
-    
-    public String enviarRelatorios(Estagio e){
+
+    public String enviarRelatorios(Estagio e) {
         docList = docDao.getListaDocumentosByEstagio(e);
         return "FrmEnviarRelatorio";
     }
-    
-    public String voltarParaListaDeAlunos(){
+
+    public String voltarParaListaDeAlunos() {
         return "FrmAbaAvaliarRelatorio";
     }
-    
-    public String voltarParaFichaRelatorios(){
+
+    public String voltarParaFichaRelatorios() {
         return "FrmFichaRelatorios";
     }
-    
+
     public String excluir(Documento d) {
         docDao.excluir(d);
         docList = docDao.getListaDocumentosByMatricula(login);
         return null;
     }
-    
-    public String salvarAlteracoes(){
+
+    public String salvarAlteracoes() {
         System.out.println("Buceta");
         docDao.alterar(doc);
         System.out.println("Cabeluda");
         return voltarParaFichaRelatorios();
     }
-   
-    public String editAvaliacao(Documento d){
+
+    public String editAvaliacao(Documento d) {
         this.doc = d;
-        this.conteudoTransmitido = new DefaultStreamedContent(new ByteArrayInputStream(d.getArquivo()),"application/pdf");
+        this.conteudoTransmitido = new DefaultStreamedContent(new ByteArrayInputStream(d.getArquivo()), "application/pdf");
         return "FrmEditRelatorio";
     }
-    
+
     public List<Aluno> getAlunoList() {
         return alunoList;
     }
@@ -167,7 +165,7 @@ public class MbRelatorios implements Serializable{
     public void setListaEstagiosAtivosPorAluno(List<Estagio> listaEstagiosAtivosPorAluno) {
         this.listaEstagiosAtivosPorAluno = listaEstagiosAtivosPorAluno;
     }
-    
+
     public List<Documento> getDocList() {
         return docList;
     }

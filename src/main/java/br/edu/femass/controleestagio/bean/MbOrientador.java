@@ -22,7 +22,7 @@ import javax.inject.Named;
  *
  * @author dumas
  */
-@Named(value = "guiOrientador")
+@Named
 @SessionScoped
 public class MbOrientador implements Serializable {
 
