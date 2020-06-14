@@ -16,7 +16,7 @@ and open the template in the editor.
             
             <h:form>
                 <p:dataTable style="margin-top:2%; justify-content: center; align-items: center;"
-                             var="cur" value="#{guiCurso.cursos}" widgetVar="cursoFiltro" emptyMessage="Nenhum curso cadastrado">
+                             var="cur" value="#{mbCurso.cursos}" widgetVar="cursoFiltro" emptyMessage="Nenhum curso cadastrado">
                     <f:facet name="header">
                         <p:outputPanel>
                             <h:outputText value="Pesquisar:" />
@@ -29,11 +29,11 @@ and open the template in the editor.
                         <h:outputText value="#{cur.nomeCurso}" />
                     </p:column>
                     <p:column >
-                        <p:commandButton title="Alterar" action="#{guiCurso.alterar(cur)}" ajax="false" icon="ui-icon-pencil"/>
-                        <p:commandButton title="Excluir" action="#{guiCurso.excluir(cur)}" ajax="false" icon="ui-icon-trash"/>
+                        <p:commandButton title="Alterar" action="#{mbCurso.alterar(cur)}" ajax="false" icon="ui-icon-pencil"/>
+                        <p:commandButton title="Excluir" action="#{mbCurso.excluir(cur)}" ajax="false" icon="ui-icon-trash"/>
                     </p:column>
                     <f:facet name="footer">
-                        <p:commandButton value="Incluir" action="#{guiCurso.incluir()}" ajax="false" />
+                        <p:commandButton value="Incluir" action="#{mbCurso.incluir()}" ajax="false" />
                     </f:facet>
                 </p:dataTable>
             </h:form> 

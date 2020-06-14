@@ -13,35 +13,35 @@
                 <h:form>
                     <h:panelGrid columns="2">
                         <p:outputLabel value="Aluno" />
-                        <p:selectOneMenu value="#{guiEstagio.campoNomeAluno}" dynamic="true" style="width:210px">
+                        <p:selectOneMenu value="#{mbEstagio.campoNomeAluno}" dynamic="true" style="width:210px">
                             <f:selectItem itemLabel="Selecione o Aluno" itemValue="" />
-                            <f:selectItems value="#{guiEstagio.getListaDeAlunos()}" />  
+                            <f:selectItems value="#{mbEstagio.getListaDeAlunos()}" />  
                         </p:selectOneMenu>
                         <p:outputLabel value="Orientador" />
-                        <p:selectOneMenu value="#{guiEstagio.campoNomeOrientador}" dynamic="true" style="width:210px">
+                        <p:selectOneMenu value="#{mbEstagio.campoNomeOrientador}" dynamic="true" style="width:210px">
                             <f:selectItem itemLabel="Selecione o Orientador" itemValue="" />
-                            <f:selectItems value="#{guiEstagio.getListaDeOrientadores()}" />  
+                            <f:selectItems value="#{mbEstagio.getListaDeOrientadores()}" />  
                         </p:selectOneMenu>
                         <p:outputLabel value="Empresa" />
-                        <p:selectOneMenu value="#{guiEstagio.campoNomeEmpresa}" dynamic="true" style="width:210px">
+                        <p:selectOneMenu value="#{mbEstagio.campoNomeEmpresa}" dynamic="true" style="width:210px">
                             <f:selectItem itemLabel="Selecione a Empresa" itemValue="" />
-                            <f:selectItems value="#{guiEstagio.getListaDeEmpresas()}" />  
+                            <f:selectItems value="#{mbEstagio.getListaDeEmpresas()}" />  
                         </p:selectOneMenu>
                         <p:outputLabel value="Nome do supervisor" />
-                        <p:inputText value="#{guiEstagio.estagio.nomeSupervisor}" style="width:220px"/>
+                        <p:inputText value="#{mbEstagio.estagio.nomeSupervisor}" style="width:220px"/>
                         <p:outputLabel value="Contato do supervisor" />
-                        <p:inputMask value="#{guiEstagio.estagio.contatoSupervisor}" mask="(99) 9 9999-9999" style="width:220px"/>
+                        <p:inputMask value="#{mbEstagio.estagio.contatoSupervisor}" mask="(99) 9 9999-9999" style="width:220px"/>
                         <p:outputLabel value="Data Inicio" />
-                        <p:calendar value="#{guiEstagio.estagio.dataInicioEstagio}" />
+                        <p:calendar value="#{mbEstagio.estagio.dataInicioEstagio}" />
                         <p:outputLabel value="Data Termino" />
-                        <p:calendar value="#{guiEstagio.estagio.datafimEstagio}" />
+                        <p:calendar value="#{mbEstagio.estagio.datafimEstagio}" />
                         <p:outputLabel for="disciplina" value="Disciplina" />
-                        <p:selectOneRadio id="disciplina" value="#{guiEstagio.estagio.disciplina}" unselectable="true">
+                        <p:selectOneRadio id="disciplina" value="#{mbEstagio.estagio.disciplina}" unselectable="true">
                             <f:selectItem itemLabel="Estágio Obrigatorio I" itemValue="Estagio_Obrigatorio_I"/>
                             <f:selectItem itemLabel="Estágio Obrigatorio II" itemValue="Estagio_Obrigatorio_II"/>
                         </p:selectOneRadio>
                         <p:outputLabel value="Status" />
-                        <p:selectOneRadio value="#{guiEstagio.estagio.statusDoEstagio}" unselectable="true">
+                        <p:selectOneRadio value="#{mbEstagio.estagio.statusDoEstagio}" unselectable="true">
                             <f:selectItem itemLabel="Cursando" itemValue="Cursando" />
                             <f:selectItem itemLabel="Aprovado" itemValue="Aprovado" />                
                             <f:selectItem itemLabel="Reprovado" itemValue="Reprovado" />                
@@ -49,8 +49,8 @@
                     </h:panelGrid>
 
                     <div style="margin-top:5%; justify-content: center; align-items: center; display: flex"> 
-                        <p:commandButton value="Gravar" action="#{guiEstagio.gravar()}" ajax="false" />
-                        <p:commandButton value="Voltar" action="#{guiEstagio.voltar()}" ajax="false" />
+                        <p:commandButton value="Gravar" action="#{mbEstagio.gravar()}" ajax="false" />
+                        <p:commandButton value="Voltar" action="#{mbEstagio.voltar()}" ajax="false" />
                     </div>
 
                 </h:form>
