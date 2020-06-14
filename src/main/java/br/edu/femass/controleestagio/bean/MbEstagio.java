@@ -102,17 +102,11 @@ public class MbEstagio implements Serializable {
             System.out.println("Não é possível mudar o status desse estágio pois aluno já possuí outro estágio ativo");
             context.addMessage(null, new FacesMessage("Não é possível mudar o status desse estágio pois aluno já possuí outro estágio ativo") );
 
-        if (alterando) {
-            daoEstagio.alterar(estagio);
-        } else {
-            estagio.setStatusDoEstagio(Status.Cursando);
-            daoEstagio.inserir(estagio);
-
-        }
-        else{
+        }else{
             if (alterando) {
                 daoEstagio.alterar(estagio);
             } else {
+                estagio.setStatusDoEstagio(Status.Cursando);
                 daoEstagio.inserir(estagio);
             }
         }
