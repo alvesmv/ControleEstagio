@@ -2,7 +2,7 @@ package br.edu.femass.controleestagio.wsmodel;
 
 /**
  *
- * @author Souza
+ * @author gxrj
  */
 public class DocumentoWS {
     

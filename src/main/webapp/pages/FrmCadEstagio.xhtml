@@ -33,6 +33,8 @@
                         <p:inputMask value="#{mbEstagio.estagio.contatoSupervisor}" mask="(99) 9 9999-9999" style="width:220px"/>
                         <p:outputLabel value="Data Inicio" />
                         <p:calendar value="#{mbEstagio.estagio.dataInicioEstagio}" />
+                        <p:outputLabel value="Data Termino" />
+                        <p:calendar value="#{mbEstagio.estagio.datafimEstagio}" />
                         <p:outputLabel for="disciplina" value="Disciplina" />
                         <p:selectOneRadio id="disciplina" value="#{mbEstagio.estagio.disciplina}" unselectable="true">
                             <f:selectItem itemLabel="Estágio Obrigatorio I" itemValue="Estagio_Obrigatorio_I"/>

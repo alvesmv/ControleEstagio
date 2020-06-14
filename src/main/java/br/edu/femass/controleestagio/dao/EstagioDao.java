@@ -57,6 +57,13 @@ public class EstagioDao {
         q.setParameter("m", matricula);
         return q.getResultList();
     }
+    
+    public Long getQtdeEstagiosAtivosPorMatricula(String matricula){
+        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e where e.alunoEstagio.matricula = :m and e.statusDoEstagio = :c");
+        q.setParameter("m", matricula);
+        q.setParameter("c", Status.Cursando);
+        return (Long) q.getSingleResult();
+    } 
 
     /*
     Método que retorna uma lista de estágios concluídos (aprovados e reporvados)
@@ -149,10 +156,10 @@ public class EstagioDao {
     /*
     Método que retorna para o webservice EstagioRest os dados do EstagioWS
     */
-    public EstagioWS getEstagioWS(Long idAluno){
+    public List<EstagioWS> getListaDeEstagioWS(Long idAluno){
         Query q = em.createQuery("select new EstagioWS(e.idEstagio, e.alunoEstagio.nome, e.alunoEstagio.matricula, e.orientadorEstagio.nomeOrientador,"
                 + " e.empresaEstagio.nomeEmpresa, e.disciplina, e.statusDoEstagio) from Estagio e where e.alunoEstagio.idAluno = :idAluno");
         q.setParameter("idAluno", idAluno);
-        return (EstagioWS) q.getSingleResult();
+        return q.getResultList();
     }
 }

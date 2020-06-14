@@ -4,21 +4,26 @@ import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.EmpresaDao;
 import br.edu.femass.controleestagio.dao.EstagioDao;
 import br.edu.femass.controleestagio.dao.OrientadorDao;
+import br.edu.femass.controleestagio.dao.DocumentoDao;
 import br.edu.femass.controleestagio.enums.Status;
 import br.edu.femass.controleestagio.model.Aluno;
 import br.edu.femass.controleestagio.model.Empresa;
 import br.edu.femass.controleestagio.model.Estagio;
 import br.edu.femass.controleestagio.model.Orientador;
+import br.edu.femass.controleestagio.model.Documento;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author souza
  */
+
 @Named
 @SessionScoped
 public class MbEstagio implements Serializable {
@@ -38,6 +43,8 @@ public class MbEstagio implements Serializable {
     OrientadorDao orientadorDao = new OrientadorDao();
     @EJB
     EmpresaDao empresaDao = new EmpresaDao();
+    @EJB
+    DocumentoDao docDao = new DocumentoDao();
 
     public MbEstagio() {
     }
@@ -66,6 +73,13 @@ public class MbEstagio implements Serializable {
     }
 
     public String excluir(Estagio e) {
+        List<Documento> docList = docDao.getListaDocumentosByEstagio(e);
+        
+        for(Documento doc : docList)
+        {
+            docDao.excluir(doc);
+        }
+        
         daoEstagio.excluir(e);
         estagios = daoEstagio.getEstagios();
         return null;
@@ -80,14 +94,29 @@ public class MbEstagio implements Serializable {
         estagio.setAlunoEstagio(getAlunoSelecionado());
         estagio.setEmpresaEstagio(getEmpresaSelecionada());
         estagio.setOrientadorEstagio(getOrientadorSelecionado());
+        
+        Long qtdeEstagiosAtivos = daoEstagio.getQtdeEstagiosAtivosPorMatricula(estagio.getAlunoEstagio().getMatricula());
+        //Garante que aluno esteja cursando apenas um estágio por vez
+        if( qtdeEstagiosAtivos  >= 2 || qtdeEstagiosAtivos == 1 && estagio.getStatusDoEstagio().equals(Status.Cursando)){
+            FacesContext context = FacesContext.getCurrentInstance();
+            System.out.println("Não é possível mudar o status desse estágio pois aluno já possuí outro estágio ativo");
+            context.addMessage(null, new FacesMessage("Não é possível mudar o status desse estágio pois aluno já possuí outro estágio ativo") );
 
         if (alterando) {
             daoEstagio.alterar(estagio);
         } else {
             estagio.setStatusDoEstagio(Status.Cursando);
             daoEstagio.inserir(estagio);
-        }
 
+        }
+        else{
+            if (alterando) {
+                daoEstagio.alterar(estagio);
+            } else {
+                daoEstagio.inserir(estagio);
+            }
+        }
+        
         return iniciar();
     }
 
