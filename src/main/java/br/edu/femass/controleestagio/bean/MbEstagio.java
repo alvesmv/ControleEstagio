@@ -23,7 +23,8 @@ import javax.faces.context.FacesContext;
  *
  * @author souza
  */
-@Named(value = "mbEstagio")
+
+@Named
 @SessionScoped
 public class MbEstagio implements Serializable {
 
@@ -71,7 +72,6 @@ public class MbEstagio implements Serializable {
         return "FrmCadEstagio";
     }
 
-    
     public String excluir(Estagio e) {
         List<Documento> docList = docDao.getListaDocumentosByEstagio(e);
         
@@ -101,6 +101,13 @@ public class MbEstagio implements Serializable {
             FacesContext context = FacesContext.getCurrentInstance();
             System.out.println("Não é possível mudar o status desse estágio pois aluno já possuí outro estágio ativo");
             context.addMessage(null, new FacesMessage("Não é possível mudar o status desse estágio pois aluno já possuí outro estágio ativo") );
+
+        if (alterando) {
+            daoEstagio.alterar(estagio);
+        } else {
+            estagio.setStatusDoEstagio(Status.Cursando);
+            daoEstagio.inserir(estagio);
+
         }
         else{
             if (alterando) {
@@ -111,6 +118,15 @@ public class MbEstagio implements Serializable {
         }
         
         return iniciar();
+    }
+
+    public String avaliarEstagio(Estagio e) {
+        estagio = e;
+        alterando = true;
+        campoNomeOrientador = estagio.getOrientadorEstagio().getNomeOrientador();
+        campoNomeAluno = estagio.getAlunoEstagio().getNome();
+        campoNomeEmpresa = estagio.getEmpresaEstagio().getNomeEmpresa();
+        return "FrmAvaliarEstagio";
     }
 
     public List<Estagio> getEstagios() {
@@ -137,19 +153,19 @@ public class MbEstagio implements Serializable {
 
     public List<Orientador> getListaDeOrientadores() {
         List<Orientador> orientadores = orientadorDao.getOrientadores();
-        
+
         return orientadores;
     }
 
     public List<Aluno> getListaDeAlunos() {
         List<Aluno> alunos = alunoDao.getAlunos();
-       
-        return alunos; 
+
+        return alunos;
     }
 
     public List<Empresa> getListaDeEmpresas() {
         List<Empresa> empresas = empresaDao.getEmpresas();
-       
+
         return empresas;
     }
 
@@ -185,19 +201,19 @@ public class MbEstagio implements Serializable {
 
     private Empresa getEmpresaSelecionada() {
         Empresa e = empresaDao.getEmpresa(campoNomeEmpresa);
-            
-        return e;    
+
+        return e;
     }
 
     private Aluno getAlunoSelecionado() {
         Aluno a = alunoDao.getAlunoByString(campoNomeAluno);
-         
+
         return a;
     }
 
     private Orientador getOrientadorSelecionado() {
         Orientador o = orientadorDao.getOrientadorByName(campoNomeOrientador);
-        
+
         return o;
     }
 }

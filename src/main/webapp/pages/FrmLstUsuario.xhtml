@@ -15,11 +15,11 @@ and open the template in the editor.
         <ui:define name="content">
 
             <h:form>
-                <p:tabView>
+                <p:tabView style ="margin-top:2%; justify-content: center; align-items: center;">
                     <p:tab title="Alunos">
                         <p:panelGrid columns="1">
                             <p:dataTable style="margin-top:2%; justify-content: center; align-items: center;"
-                                         var="userAluno" value="#{usuarioBean.alunos}" emptyMessage="Nenhum usuário aluno cadastrado">
+                                         var="userAluno" value="#{mbUsuario.alunos}" emptyMessage="Nenhum usuário aluno cadastrado">
                                 <p:column headerText="Nome" filterBy="#{userAluno.nome}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{userAluno.nome}">
                                     <h:outputText value="#{userAluno.nome}"/>
                                 </p:column>
@@ -30,7 +30,7 @@ and open the template in the editor.
                                     <h:outputText value="#{userAluno.curso.nomeCurso}"/>
                                 </p:column>
                                 <p:column>
-                                    <p:commandButton title="Alterar" action="#{usuarioBean.alterarSenha(userAluno)}" ajax="false" icon="ui-icon-pencil"/>
+                                    <p:commandButton title="Alterar" action="#{mbUsuario.alterarSenha(userAluno)}" ajax="false" icon="ui-icon-pencil"/>
                                 </p:column>
                             </p:dataTable>
                         </p:panelGrid>
@@ -39,7 +39,7 @@ and open the template in the editor.
                     <p:tab title="Docentes">
                         <p:panelGrid columns="1">
                             <p:dataTable style="margin-top:2%; justify-content: center; align-items: center;"
-                                         var="userOrientador" value="#{usuarioBean.orientadores}" emptyMessage="Nenhum usuário orientador cadastrado">
+                                         var="userOrientador" value="#{mbUsuario.orientadores}" emptyMessage="Nenhum usuário orientador cadastrado">
                                 <p:column headerText="Nome" filterBy="#{userOrientador.nomeOrientador}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{userOrientador.nomeOrientador}">
                                     <h:outputText value="#{userOrientador.nomeOrientador}" />
                                 </p:column>
@@ -50,7 +50,7 @@ and open the template in the editor.
                                     <h:outputText value="#{userOrientador.usuario.tipoDeAcesso}"/>
                                 </p:column>
                                 <p:column>
-                                    <p:commandButton title="Alterar" action="#{usuarioBean.alterarSenha(userOrientador)}" ajax="false" icon="ui-icon-pencil"/>
+                                    <p:commandButton title="Alterar" action="#{mbUsuario.alterarSenha(userOrientador)}" ajax="false" icon="ui-icon-pencil"/>
                                 </p:column>
                             </p:dataTable>
                         </p:panelGrid>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
@@ -13,7 +13,7 @@
                              paginator="true" rows="10" paginatorPosition="bottom"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="10,20,30"
-                             var="alu" value="#{guiAluno.alunos}" widgetVar="alunoFiltro" emptyMessage="Nenhum aluno cadastrado">
+                             var="alu" value="#{mbAluno.alunos}" widgetVar="alunoFiltro" emptyMessage="Nenhum aluno cadastrado">
                     <f:facet name="header">
                         <p:outputPanel>
                             <h:outputText value="Pesquisar:"/>
@@ -36,11 +36,11 @@
                         <h:outputText value="#{alu.celular}" />
                     </p:column>               
                     <p:column >
-                        <p:commandButton title="Alterar" action="#{guiAluno.alterar(alu)}" ajax="false" icon="ui-icon-pencil"/>
-                        <p:commandButton title="Excluir" action="#{guiAluno.excluir(alu)}" ajax="false" icon="ui-icon-trash"/>
+                        <p:commandButton title="Alterar" action="#{mbAluno.alterar(alu)}" ajax="false" icon="ui-icon-pencil"/>
+                        <p:commandButton title="Excluir" action="#{mbAluno.excluir(alu)}" ajax="false" icon="ui-icon-trash"/>
                     </p:column>
                     <f:facet name="footer">
-                        <p:commandButton value="Incluir" action="#{guiAluno.incluir()}" ajax="false" />
+                        <p:commandButton value="Incluir" action="#{mbAluno.incluir()}" ajax="false" />
                     </f:facet>
                 </p:dataTable>           
             </h:form>            

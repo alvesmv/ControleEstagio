@@ -17,16 +17,16 @@ and open the template in the editor.
                 <h:form>
                     <h:panelGrid columns="2">
                         <p:outputLabel value="Nome" />
-                        <p:inputText value="#{usuarioBean.nome}" disabled="true"/>
+                        <p:inputText value="#{mbUsuario.nome}" disabled="true"/>
                         <p:outputLabel value="Login" />
-                        <p:inputText value="#{usuarioBean.login}" disabled="true"/>
+                        <p:inputText value="#{mbUsuario.login}" disabled="true"/>
                         <p:outputLabel value="Senha"/>
-                        <p:password value="#{usuarioBean.usuario.senha}"/>
+                        <p:password value="#{mbUsuario.usuario.senha}"/>
                     </h:panelGrid>
 
                     <div style="margin-top:5%; justify-content: center; align-items: center; display: flex">    
-                        <p:commandButton value="Gravar" action="#{usuarioBean.gravar()}" ajax="false" />
-                        <p:commandButton value="Voltar" action="#{usuarioBean.voltar()}" ajax="false" />
+                        <p:commandButton value="Gravar" action="#{mbUsuario.gravar()}" ajax="false" />
+                        <p:commandButton value="Voltar" action="#{mbUsuario.voltar()}" ajax="false" />
                     </div>
                 </h:form>
 

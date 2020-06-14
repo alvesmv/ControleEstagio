@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
@@ -16,7 +16,7 @@ and open the template in the editor.
 
             <h:form>
                 <p:dataTable style="margin-top:2%; justify-content: center; align-items: center;"
-                             var="ori" value="#{guiOrientador.orientadores}" widgetVar="orientadorFiltro" emptyMessage="Nenhum orientador cadastrado">
+                             var="ori" value="#{mbOrientador.orientadores}" widgetVar="orientadorFiltro" emptyMessage="Nenhum orientador cadastrado">
                     <f:facet name="header">
                         <p:outputPanel>
                             <h:outputText value="Pesquisar:" />
@@ -31,11 +31,11 @@ and open the template in the editor.
                         <h:outputText value="#{ori.cpf}" />
                     </p:column>
                     <p:column >
-                        <p:commandButton title="Alterar" action="#{guiOrientador.alterar(ori)}" ajax="false" icon="ui-icon-pencil"/>
-                        <p:commandButton title="Excluir" action="#{guiOrientador.excluir(ori)}" ajax="false" icon="ui-icon-trash"/>
+                        <p:commandButton title="Alterar" action="#{mbOrientador.alterar(ori)}" ajax="false" icon="ui-icon-pencil"/>
+                        <p:commandButton title="Excluir" action="#{mbOrientador.excluir(ori)}" ajax="false" icon="ui-icon-trash"/>
                     </p:column>
                     <f:facet name="footer">
-                        <p:commandButton value="Incluir" action="#{guiOrientador.incluir()}" ajax="false" />
+                        <p:commandButton value="Incluir" action="#{mbOrientador.incluir()}" ajax="false" />
                     </f:facet>
                 </p:dataTable>
 

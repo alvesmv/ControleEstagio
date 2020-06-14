@@ -19,7 +19,7 @@ import javax.inject.Named;
  */
 @Named
 @SessionScoped
-public class UsuarioBean implements Serializable {
+public class MbUsuario implements Serializable {
 
     private List<Aluno> alunos;
     private List<Orientador> orientadores;
@@ -40,7 +40,7 @@ public class UsuarioBean implements Serializable {
     @EJB
     OrientadorDao orientadorDao = new OrientadorDao();
 
-    public UsuarioBean() {
+    public MbUsuario() {
 
     }
 

@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
@@ -13,42 +13,42 @@ and open the template in the editor.
 
     <ui:composition template="/template/templateCoordenador.xhtml">
         <ui:define name="content">
-            
+
             <div style="margin-top:5%; justify-content: center; align-items: center; display: flex; border-radius: 6px; border-color: #2694e8">
                 <h:form>
                     <h:panelGrid columns="2">
                         <p:outputLabel value="Nome" />
-                        <p:inputText value="#{guiAluno.aluno.nome}" style="width:220px"/>
+                        <p:inputText value="#{mbAluno.aluno.nome}" style="width:220px"/>
                         <p:outputLabel value="Matricula" />
-                        <p:inputText value="#{guiAluno.aluno.matricula}" style="width:220px"/>
+                        <p:inputText value="#{mbAluno.aluno.matricula}" style="width:220px"/>
                         <p:outputLabel value="Curso" />
-                        <p:selectOneMenu value="#{guiAluno.campoCursoNome}" dynamic="true" style="width:210px">
+                        <p:selectOneMenu value="#{mbAluno.campoCursoNome}" dynamic="true" style="width:210px">
                             <f:selectItem itemLabel="Selecione o Curso" itemValue="" />
-                            <f:selectItems value="#{guiAluno.getListaDeCursos()}" />
+                            <f:selectItems value="#{mbAluno.getListaDeCursos()}" />
                         </p:selectOneMenu>
                         <p:outputLabel value="E-mail" />
-                        <p:inputText value="#{guiAluno.aluno.email}" style="width:220px"/>
+                        <p:inputText value="#{mbAluno.aluno.email}" style="width:220px"/>
                         <p:outputLabel value="Telefone" />
-                        <p:inputMask value="#{guiAluno.aluno.telefone}" mask="(99)9999-9999" style="width:220px"/>
+                        <p:inputMask value="#{mbAluno.aluno.telefone}" mask="(99)9999-9999" style="width:220px"/>
                         <p:outputLabel value="Celular" />
-                        <p:inputMask value="#{guiAluno.aluno.celular}" mask="(99)99999-9999" style="width:220px"/>
+                        <p:inputMask value="#{mbAluno.aluno.celular}" mask="(99)99999-9999" style="width:220px"/>
                         <p:outputLabel value="Logradouro" />
-                        <p:inputText value="#{guiAluno.aluno.logradouro}" style="width:220px"/>
+                        <p:inputText value="#{mbAluno.aluno.logradouro}" style="width:220px"/>
                         <p:outputLabel value="Número" />
-                        <p:inputText value="#{guiAluno.aluno.numero}" style="width:220px"/>
+                        <p:inputText value="#{mbAluno.aluno.numero}" style="width:220px"/>
                         <p:outputLabel value="Complemento" />
-                        <p:inputText value="#{guiAluno.aluno.complemento}" style="width:220px"/>
+                        <p:inputText value="#{mbAluno.aluno.complemento}" style="width:220px"/>
                         <p:outputLabel value="Bairro" />
-                        <p:inputText value="#{guiAluno.aluno.bairro}" style="width:220px"/>
+                        <p:inputText value="#{mbAluno.aluno.bairro}" style="width:220px"/>
                         <p:outputLabel value="Cidade" />
-                        <p:inputText value="#{guiAluno.aluno.cidade}" style="width:220px"/>
+                        <p:inputText value="#{mbAluno.aluno.cidade}" style="width:220px"/>
                         <p:outputLabel value="CEP" />
-                        <p:inputMask value="#{guiAluno.aluno.cep}" mask="99999-999" style="width:220px"/>
+                        <p:inputMask value="#{mbAluno.aluno.cep}" mask="99999-999" style="width:220px"/>
                     </h:panelGrid>
 
                     <div style="margin-top:5%; justify-content: center; align-items: center; display: flex">
-                        <p:commandButton value="Gravar" action="#{guiAluno.gravar()}" ajax="false" />
-                        <p:commandButton value="Voltar" action="#{guiAluno.voltar()}" ajax="false" />
+                        <p:commandButton value="Gravar" action="#{mbAluno.gravar()}" ajax="false" />
+                        <p:commandButton value="Voltar" action="#{mbAluno.voltar()}" ajax="false" />
                     </div>
                 </h:form>
             </div>              

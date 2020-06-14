@@ -12,18 +12,18 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gxrj
  */
-@Named(value = "mbDownload")
+@Named
 @Dependent
 public class MbDownload {
-    
-    public void download(Documento doc) throws FileNotFoundException, IOException{
+
+    public void download(Documento doc) throws FileNotFoundException, IOException {
         //Captura o response
         HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         //Preapara o conteúdo do response
         response.setContentType("application/pdf");
-        response.setHeader("Content-disposition","attachment;filename=" + doc.getNome());
+        response.setHeader("Content-disposition", "attachment;filename=" + doc.getNome());
         //Escreve o conteudo de doc no response
         response.getOutputStream().write(doc.getArquivo());
-        FacesContext.getCurrentInstance().responseComplete(); 
-    }    
+        FacesContext.getCurrentInstance().responseComplete();
+    }
 }

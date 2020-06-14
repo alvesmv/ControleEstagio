@@ -6,7 +6,6 @@ import br.edu.femass.controleestagio.dao.EstagioDao;
 import br.edu.femass.controleestagio.model.Aluno;
 import br.edu.femass.controleestagio.model.Documento;
 import br.edu.femass.controleestagio.enums.DocumentoStatus;
-import br.edu.femass.controleestagio.enums.DocumentoTipo;
 import br.edu.femass.controleestagio.model.Estagio;
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,9 +25,9 @@ import org.primefaces.model.UploadedFile;
  *
  * @author Souza
  */
-@Named(value = "mbUpload")
+@Named
 @Dependent
-public class MbUpload implements Serializable{
+public class MbUpload implements Serializable {
 
     Documento doc;
     @EJB
@@ -37,24 +36,24 @@ public class MbUpload implements Serializable{
     AlunoDao alunoDB;
     @EJB
     EstagioDao estagioDao;
-    
+
     Estagio estagio;
-    
-    public MbUpload(){
-        doc = new Documento();  
+
+    public MbUpload() {
+        doc = new Documento();
         docDao = new DocumentoDao();
         alunoDB = new AlunoDao();
     }
-    
+
     //O metodo abaixo converte o UpFile do primefaces para um array de bytes
-    public byte[] convertUpFileToByte(UploadedFile uf){
-  
-            System.setProperty("file.encoding", "UTF-8");
-            File novoArq = new File(uf.getFileName());
-            FileInputStream in;
-            byte[] blob = uf.getContents();
-  
-        try{
+    public byte[] convertUpFileToByte(UploadedFile uf) {
+
+        System.setProperty("file.encoding", "UTF-8");
+        File novoArq = new File(uf.getFileName());
+        FileInputStream in;
+        byte[] blob = uf.getContents();
+
+        try {
             in = new FileInputStream(novoArq);
             in.read(blob);      //lê o conteúdo do FileInputStream e joga tudo em blob
             in.close();
@@ -64,8 +63,8 @@ public class MbUpload implements Serializable{
         }
         return blob;
     }
-        
-    public void upload(FileUploadEvent event){
+
+    public void upload(FileUploadEvent event) {
         UploadedFile upFile = event.getFile();
         //Transforma o FileInputStream em bytes[]; 
         this.doc.setArquivo(convertUpFileToByte(upFile));
@@ -79,18 +78,17 @@ public class MbUpload implements Serializable{
         this.doc.setEstagio(estagioDao.getEstagioAtivoPorAluno(aluno)); // setAluno() alterado para setEstagio()
         //Estabelece o valor do atributo que auxilia na busca de documentos por matricula
         this.doc.setAlunoMatricula(aluno.getMatricula());
-        
-        if(doc.getArquivo() == null){
+
+        if (doc.getArquivo() == null) {
             FacesContext context = FacesContext.getCurrentInstance();
-       
-            context.addMessage(null, new FacesMessage("Erro! Arquivo não convertido") );
-        
-        }
-        //Caso contrário, flush no DB
-        else{
+
+            context.addMessage(null, new FacesMessage("Erro! Arquivo não convertido"));
+
+        } //Caso contrário, flush no DB
+        else {
             docDao.inserir(this.doc);
         }
-    }   
+    }
 
     public Estagio getEstagio() {
         return estagio;
@@ -98,5 +96,5 @@ public class MbUpload implements Serializable{
 
     public void setEstagio(Estagio estagio) {
         this.estagio = estagio;
-    }    
+    }
 }

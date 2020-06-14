@@ -17,7 +17,8 @@ import javax.inject.Named;
  *
  * @author dumas
  */
-@Named(value = "mbCurso")
+
+@Named
 @SessionScoped
 public class MbCurso implements Serializable {
 

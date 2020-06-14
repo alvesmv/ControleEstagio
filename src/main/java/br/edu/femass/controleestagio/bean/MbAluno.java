@@ -19,31 +19,31 @@ import javax.inject.Named;
  *
  * @author dumas
  */
-@Named(value = "guiAluno")
+@Named
 @SessionScoped
 public class MbAluno implements Serializable {
-    
+
     private List<Aluno> alunos;
     private Aluno aluno;
     private Boolean alterando;
     private String campoCursoNome;
     private Usuario usuario;
-    
+
     @EJB
     AlunoDao alunoDao;
     @EJB
     CursoDao daoCurso = new CursoDao();
     @EJB
     UsuarioDao usuarioDao = new UsuarioDao();
-    
+
     public MbAluno() {
     }
-    
+
     public String iniciar() {
         alunos = alunoDao.getAlunos();
         return "FrmLstAluno";
     }
-    
+
     public String incluir() {
         aluno = new Aluno();
         alterando = false;
@@ -51,30 +51,30 @@ public class MbAluno implements Serializable {
         campoCursoNome = new String();
         return "FrmCadAluno";
     }
-    
+
     public String alterar(Aluno a) {
         aluno = a;
         alterando = true;
         this.setCampoCursoNome(aluno.getCurso().getNomeCurso());
         return "FrmCadAluno";
     }
-    
+
     public String voltarMenuPrincipal() {
         return "/index";
     }
-    
+
     public String voltar() {
         return "FrmLstAluno";
     }
-    
+
     public String excluir(Aluno a) {
         alunoDao.excluir(a);
         alunos = alunoDao.getAlunos();
         return null;
     }
-    
+
     public String gravar() throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        
+
         aluno.setCurso(getCursoSelecionado());
         if (alterando) {
             alunoDao.alterar(aluno);
@@ -126,7 +126,7 @@ public class MbAluno implements Serializable {
         List<Curso> cursos = daoCurso.getCursos();
         return cursos;
     }
-    
+
     private Curso getCursoSelecionado() {
         Curso c = daoCurso.getCursoByString(campoCursoNome);
         return c;
