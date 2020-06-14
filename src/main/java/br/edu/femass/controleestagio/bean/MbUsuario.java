@@ -2,6 +2,7 @@ package br.edu.femass.controleestagio.bean;
 
 import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.OrientadorDao;
+import br.edu.femass.controleestagio.enums.TipoDeAcesso;
 import br.edu.femass.controleestagio.model.Aluno;
 import br.edu.femass.controleestagio.model.Orientador;
 import br.edu.femass.controleestagio.model.Usuario;
@@ -11,6 +12,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -28,12 +30,12 @@ public class MbUsuario implements Serializable {
     private Orientador orientador;
     private String nome;
     private String login;
+    private TipoDeAcesso tipoGravar;
     /*
-    Valore para tipo gravar:
-        true - aluno
-        false - orientador
-    */
-    private Boolean tipoGravar;
+    true - painel do admin
+    false - barra de menu
+     */
+    private Boolean origem;
 
     @EJB
     AlunoDao alunoDao = new AlunoDao();
@@ -50,6 +52,9 @@ public class MbUsuario implements Serializable {
         return "FrmLstUsuario";
     }
 
+    /*
+    Método para alterar senha pelo painel do coordenador ou admin
+     */
     public String alterarSenha(Object objSelecionado) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         usuario = new Usuario();
         nome = new String();
@@ -61,15 +66,59 @@ public class MbUsuario implements Serializable {
             usuario = aluno.getUsuario();
             nome = aluno.getNome();
             login = aluno.getUsuario().getLogin();
-            tipoGravar = true;
+            tipoGravar = TipoDeAcesso.aluno;
         } else if (objSelecionado instanceof Orientador) {
             orientador = new Orientador();
             orientador = (Orientador) objSelecionado;
             usuario = orientador.getUsuario();
             nome = orientador.getNomeOrientador();
             login = orientador.getUsuario().getLogin();
-            tipoGravar = false;
+            switch (usuario.getTipoDeAcesso()) {
+                case orientador:
+                    tipoGravar = TipoDeAcesso.orientador;
+                    break;
+                case coordenador:
+                    tipoGravar = TipoDeAcesso.coordenador;
+                    break;
+            }
         }
+        origem = true;
+        usuario.setSenha("");
+        return "FrmAlterarSenha";
+    }
+
+    /*
+    Método para alterar senha pela barra de menu
+     */
+    public String alteraSenhaMenu() throws NoSuchAlgorithmException, UnsupportedEncodingException {
+
+        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        switch (usuario.getTipoDeAcesso()) {
+            case aluno:
+                aluno = alunoDao.getAluno(usuario.getIdUsuario());
+                nome = aluno.getNome();
+                login = aluno.getUsuario().getLogin();
+                tipoGravar = TipoDeAcesso.aluno;
+                break;
+            case orientador:
+                orientador = orientadorDao.getOrientador(usuario.getIdUsuario());
+                nome = orientador.getNomeOrientador();
+                login = orientador.getUsuario().getLogin();
+                tipoGravar = TipoDeAcesso.orientador;
+                break;
+            case coordenador:
+                orientador = orientadorDao.getOrientador(usuario.getIdUsuario());
+                nome = orientador.getNomeOrientador();
+                login = orientador.getUsuario().getLogin();
+                tipoGravar = TipoDeAcesso.coordenador;
+                break;
+            case admin:
+                nome = usuario.getNomeDeExibicao();
+                login = usuario.getLogin();
+                tipoGravar = TipoDeAcesso.admin;
+                break;
+        }
+        origem = false;
         usuario.setSenha("");
         return "FrmAlterarSenha";
     }
@@ -79,14 +128,45 @@ public class MbUsuario implements Serializable {
     }
 
     public String gravar() {
-        if (tipoGravar) {
-            aluno.setUsuario(usuario);
-            alunoDao.alterar(aluno);
-        } else {
-            orientador.setUsuario(usuario);
-            orientadorDao.alterar(orientador);
+        switch (tipoGravar) {
+            case aluno:
+                aluno.setUsuario(usuario);
+                alunoDao.alterar(aluno);
+                break;
+            case orientador:
+                orientador.setUsuario(usuario);
+                orientadorDao.alterar(orientador);
+                break;
+            case coordenador:
+                orientador.setUsuario(usuario);
+                orientadorDao.alterar(orientador);
+                break;
+            case admin:
+                break;
         }
-        return iniciar();
+        if (origem) {
+            return iniciar();
+        } else {
+            return home();
+        }
+    }
+
+    /*
+    Método que leva o usuário para sua página inicial
+     */
+    private String home() {
+
+        switch (usuario.getTipoDeAcesso()) {
+            case aluno:
+                return "FrmAreaDoAluno";
+            case orientador:
+                return "FrmAreaDoOrientador";
+            case coordenador:
+                return "FrmAreaDoCoordenador";
+            case admin:
+                return "FrmAreaDoCoordenador";
+        }
+        return null;
     }
 
     public List<Aluno> getAlunos() {

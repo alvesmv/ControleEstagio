@@ -44,15 +44,24 @@ public class OrientadorDao {
         q.setParameter("n", nome);
         return q.getResultList();
     }
-    
+
     public Orientador getOrientadorByName(String nome) {
         Query q = em.createQuery("select o from Orientador o where o.nomeOrientador = :n");
         q.setParameter("n", nome);
         return (Orientador) q.getSingleResult();
     }
-    
+
     public List<String> getListaOrientadores() {
         Query q = em.createQuery("select o.nomeOrientador from Orientador o order by o.nomeOrientador");
         return q.getResultList();
+    }
+
+    /*
+    Método que retorna o Aluno com base na id do usuário do Aluno
+     */
+    public Orientador getOrientador(Long idOrientador) {
+        Query q = em.createQuery("Select o from Orientador o where o.usuario.idUsuario = :idOrientador");
+        q.setParameter("idOrientador", idOrientador);
+        return (Orientador) q.getSingleResult();
     }
 }

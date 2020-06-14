@@ -81,5 +81,14 @@ public class AlunoDao {
         Query q = em.createQuery("select COUNT(a) from Aluno a");
         return (Long) q.getSingleResult();
     }
+    
+    /*
+    Método que retorna o Aluno com base na id do usuário do Aluno
+    */
+    public Aluno getAluno(Long idAluno){
+        Query q = em.createQuery("Select a from Aluno a where a.usuario.idUsuario = :idAluno");
+        q.setParameter("idAluno", idAluno);
+        return (Aluno) q.getSingleResult();
+    }
 
 }
