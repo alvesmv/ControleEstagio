@@ -60,6 +60,7 @@ public class MbEstagio implements Serializable {
         campoNomeOrientador = new String();
         campoNomeAluno = new String();
         campoNomeEmpresa = new String();
+        estagio.setStatusDoEstagio(Status.Cursando);
         return "FrmCadEstagio";
     }
 
