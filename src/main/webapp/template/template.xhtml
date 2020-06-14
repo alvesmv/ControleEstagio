@@ -14,23 +14,30 @@
     <h:body>
 
         <div id="top">
-            <ui:insert name="top">              
+            <ui:insert name="top">
                 <h:form>
                     <p:menubar>
-                        <p:submenu label="Cadastro">
+                        <p:menuitem value="Inicio" action="#{mbTemplate.home()}" icon="ui-icon-home"/>
+                        <p:submenu label="Aluno" rendered="#{mbTemplate.menuAluno()}">
+                            <p:menuitem class="item" value="Dados do Estagio" action="#{mbAreaDoAluno.irAbaDadosDoEstagio()}" ajax="false" />
+                            <p:menuitem class="item" value="Relatorios" action="#{mbRelatorios.iniciar()}" ajax="false" />
+                        </p:submenu>
+                        <p:submenu label="Cadastro" rendered="#{mbTemplate.menuCadastro()}">
                             <p:menuitem class="item" value="Aluno" action="#{mbAluno.iniciar()}" ajax="false" />
+                            <p:menuitem class="item" value="Curso" action="#{mbCurso.iniciar()}" ajax="false" />
                             <p:menuitem class="item" value="Empresa" action="#{mbEmpresa.iniciar()}" ajax="false" />
                             <p:menuitem class="item" value="Orientador" action="#{mbOrientador.iniciar()}" ajax="false" />
+                            <p:menuitem class="item" value="Usuário" action="#{mbUsuario.iniciar()}" ajax="false" />
                         </p:submenu>
-                        <p:submenu label="Academico">
-                            <p:menuitem class="item" value="Curso" action="#{mbCurso.iniciar()}" ajax="false" />
+                        <p:submenu label="Academico" rendered="#{mbTemplate.menuAcademico()}">
                             <p:menuitem class="item" value="Estágio" action="#{mbEstagio.iniciar()}" ajax="false" />
                             <p:menuitem class="item" value="Relatorios" action="#{mbRelatorios.iniciar()}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Conta">
-
+                            <p:menuitem class="item" value="Alterar Senha" ajax="false" />
                         </p:submenu>
-                        <f:facet name="options">            
+                        <f:facet name="options">
+                            <p:outputLabel value="#{mbTemplate.exibiUsuario()}  "/>
                             <p:commandButton value="Logout" action="#{mbLogin.logoff()}" icon="ui-icon-extlink" ajax="false"/>
                         </f:facet>
                     </p:menubar>

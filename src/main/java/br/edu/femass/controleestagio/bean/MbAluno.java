@@ -81,6 +81,7 @@ public class MbAluno implements Serializable {
         } else {
             usuario.setLogin(aluno.getMatricula());
             usuario.setSenha(aluno.getMatricula());
+            usuario.setNomeDeExibicao(aluno.getNome());
             usuario.setTipoDeAcesso(TipoDeAcesso.aluno);
             usuarioDao.inserir(usuario);
             aluno.setUsuario(usuario);

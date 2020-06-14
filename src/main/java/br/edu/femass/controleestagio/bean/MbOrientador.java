@@ -85,6 +85,7 @@ public class MbOrientador implements Serializable {
             //Cria um usuário para o orientador com login CPF e senha CPF sem . e -
             usuario.setLogin(orientador.getCpfLogin());
             usuario.setSenha(orientador.getCpfLogin());
+            usuario.setNomeDeExibicao(orientador.getNomeOrientador());
             usuario.setTipoDeAcesso(tipoDeAcesso);
             usuarioDao.inserir(usuario);
             orientador.setUsuario(usuario);

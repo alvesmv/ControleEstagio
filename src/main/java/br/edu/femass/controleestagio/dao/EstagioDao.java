@@ -123,7 +123,7 @@ public class EstagioDao {
     public List<Estagio> getListEstagiosConcluidosByOrientador(String cpfOrientador){
         Query q = em.createQuery("select e from Estagio e where e.statusDoEstagio = :a or e.statusDoEstagio = :r and e.orientadorEstagio.cpfLogin = :cpf");
         q.setParameter("a", Status.Aprovado);
-        q.setParameter("a", Status.Reprovado);
+        q.setParameter("r", Status.Reprovado);
         q.setParameter("cpf", cpfOrientador);
         return q.getResultList();
     }

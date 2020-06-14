@@ -34,6 +34,14 @@ public class Usuario implements Serializable {
     private String senha;
     @Enumerated(EnumType.STRING)
     private TipoDeAcesso tipoDeAcesso;
+    private String nomeDeExibicao;
+
+    /**
+     * @return the idUsuario
+     */
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
 
     /**
      * @return the login
@@ -77,6 +85,20 @@ public class Usuario implements Serializable {
      */
     public void setTipoDeAcesso(TipoDeAcesso tipoDeAcesso) {
         this.tipoDeAcesso = tipoDeAcesso;
+    }
+
+    /**
+     * @return the nomeDeExibicao
+     */
+    public String getNomeDeExibicao() {
+        return nomeDeExibicao;
+    }
+
+    /**
+     * @param nomeDeExibicao the nomeDeExibicao to set
+     */
+    public void setNomeDeExibicao(String nomeDeExibicao) {
+        this.nomeDeExibicao = nomeDeExibicao;
     }
 
     private String cifra(String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException {

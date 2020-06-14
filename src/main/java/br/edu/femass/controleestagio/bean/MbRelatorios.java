@@ -63,7 +63,7 @@ public class MbRelatorios implements Serializable {
 
                 return "FrmEstagiosDoAluno";
             case orientador:
-                alunoList = alunoDao.getAlunosByOrientador(login); // excluir esta linha
+                //alunoList = alunoDao.getAlunosByOrientador(login); // excluir esta linha
                 listaEstagioI = estagioDao.getListEstagioIByOrientador(login);
                 listaEstagioII = estagioDao.getListEstagioIIByOrientador(login);
                 listaEstagiosConcluidos = estagioDao.getListEstagiosConcluidosByOrientador(login);
