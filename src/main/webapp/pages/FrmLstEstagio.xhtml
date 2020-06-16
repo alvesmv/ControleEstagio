@@ -25,6 +25,9 @@
                     <p:column headerText="Aluno" filterBy="#{est.alunoEstagio}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{est.alunoEstagio.nome}">
                         <h:outputText value="#{est.alunoEstagio}" />
                     </p:column>
+                    <p:column headerText="Curso" filterBy="#{est.alunoEstagio}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{est.alunoEstagio.curso.nomeCurso}">
+                        <h:outputText value="#{est.alunoEstagio.curso}" />
+                    </p:column>
                     <p:column headerText="Orientador" filterBy="#{est.orientadorEstagio}" filterMatchMode="contains" filterStyle="display:none;" sortBy="#{est.orientadorEstagio.nomeOrientador}">
                         <h:outputText value="#{est.orientadorEstagio}"  />
                     </p:column>
@@ -33,6 +36,9 @@
                     </p:column>
                     <p:column headerText="Disciplina" sortBy="#{est.disciplina}">
                         <h:outputText value="#{est.disciplina.toString()}" />
+                    </p:column>
+                    <p:column headerText="Tipo" sortBy="#{est.tipoEstagio}">
+                        <h:outputText value="#{est.tipoEstagio.toString()}" />
                     </p:column>
                     <p:column headerText="Situação" sortBy="#{est.statusDoEstagio}">
                         <h:outputText value="#{est.statusDoEstagio}"/>

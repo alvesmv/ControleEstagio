@@ -27,14 +27,20 @@
                             <f:selectItem itemLabel="Selecione a Empresa" itemValue="" />
                             <f:selectItems value="#{mbEstagio.getListaDeEmpresas()}" />  
                         </p:selectOneMenu>
+                        <p:outputLabel value="Tipo de estágio" />
+                        <p:selectOneMenu value="#{mbEstagio.estagio.tipoEstagio}" style="width:210px">
+                            <f:selectItem itemLabel="Selecione o tipo" itemValue="" />
+                            <f:selectItem itemLabel="Trabalho" itemValue="trabalho" />  
+                            <f:selectItem itemLabel="Trabalho voluntario" itemValue="trabalho_voluntario" />  
+                            <f:selectItem itemLabel="MEI" itemValue="mei" />  
+                            <f:selectItem itemLabel="Estágio" itemValue="estagio" />  
+                        </p:selectOneMenu>
                         <p:outputLabel value="Nome do supervisor" />
                         <p:inputText value="#{mbEstagio.estagio.nomeSupervisor}" style="width:220px"/>
                         <p:outputLabel value="Contato do supervisor" />
                         <p:inputMask value="#{mbEstagio.estagio.contatoSupervisor}" mask="(99) 9 9999-9999" style="width:220px"/>
                         <p:outputLabel value="Data Inicio" />
                         <p:calendar value="#{mbEstagio.estagio.dataInicioEstagio}" />
-                        <p:outputLabel value="Data Termino" />
-                        <p:calendar value="#{mbEstagio.estagio.datafimEstagio}" />
                         <p:outputLabel for="disciplina" value="Disciplina" />
                         <p:selectOneRadio id="disciplina" value="#{mbEstagio.estagio.disciplina}" unselectable="true">
                             <f:selectItem itemLabel="Estágio Obrigatorio I" itemValue="Estagio_Obrigatorio_I"/>

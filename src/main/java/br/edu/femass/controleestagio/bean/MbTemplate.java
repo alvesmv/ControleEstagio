@@ -105,4 +105,25 @@ public class MbTemplate implements Serializable {
                 return false;
         }
     }
+
+    /*
+    Método que define quais os usuários podem visualizar o menu Estatísticas
+     */
+    public boolean menuEstatistica() {
+
+        //Obtem o objeto usuario instanciado no durante o login
+        Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+
+        switch (user.getTipoDeAcesso()) {
+            case orientador:
+                return true;
+            case coordenador:
+                return true;
+            case admin:
+                return true;
+            default:
+                return false;
+        }
+
+    }
 }

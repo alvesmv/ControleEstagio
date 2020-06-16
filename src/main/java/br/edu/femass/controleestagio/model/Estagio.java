@@ -2,6 +2,7 @@ package br.edu.femass.controleestagio.model;
 
 import br.edu.femass.controleestagio.enums.Disciplina;
 import br.edu.femass.controleestagio.enums.Status;
+import br.edu.femass.controleestagio.enums.TipoEstagio;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -41,6 +42,8 @@ public class Estagio implements Serializable {
     private String contatoSupervisor;
     @Enumerated(EnumType.STRING)
     private Disciplina disciplina;
+    @Enumerated(EnumType.STRING)
+    private TipoEstagio tipoEstagio;
 
     /**
      * @return the idEstagio
@@ -174,6 +177,21 @@ public class Estagio implements Serializable {
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
     }
+
+    /**
+     * @return the tipoEstagio
+     */
+    public TipoEstagio getTipoEstagio() {
+        return tipoEstagio;
+    }
+
+    /**
+     * @param tipoEstagio the tipoEstagio to set
+     */
+    public void setTipoEstagio(TipoEstagio tipoEstagio) {
+        this.tipoEstagio = tipoEstagio;
+    }
+    
 
     @Override
     public int hashCode() {
