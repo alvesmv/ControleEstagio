@@ -24,7 +24,6 @@ public class App extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(br.edu.femass.controleestagio.webservice.EstagioRest.class);
         resources.add(br.edu.femass.controleestagio.webservice.Filter.class);
         resources.add(br.edu.femass.controleestagio.webservice.LoginWS.class);
     }

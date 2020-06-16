@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.femass.controleestagio.bean;
 
 import br.edu.femass.controleestagio.dao.CursoDao;
@@ -36,7 +31,7 @@ public class MbEstatisticas implements Serializable {
     EstagioDao estagioDao;
     @EJB
     CursoDao cursoDao;
-
+    
     @PostConstruct
     public void init() {
         criaGraficoAlunoCurso();
@@ -45,7 +40,7 @@ public class MbEstatisticas implements Serializable {
         criaGraficoAlunoCuroEstagioII();
     }
 
-    public String iniciar() {
+    public String iniciar() { 
         return "FrmEstatisticas";
     }
 

@@ -95,7 +95,7 @@ public class MbEstagio implements Serializable {
         estagio.setAlunoEstagio(getAlunoSelecionado());
         estagio.setEmpresaEstagio(getEmpresaSelecionada());
         estagio.setOrientadorEstagio(getOrientadorSelecionado());
-        
+        //Refatorar trecho abaixo
         Long qtdeEstagiosAtivos = daoEstagio.getQtdeEstagiosAtivosPorMatricula(estagio.getAlunoEstagio().getMatricula());
         if(estagio.getIdEstagio() != daoEstagio.getEstagioAtivoPorAluno(estagio.getAlunoEstagio()).getIdEstagio() 
                 && estagio.getStatusDoEstagio().equals(Status.Cursando))
@@ -155,7 +155,7 @@ public class MbEstagio implements Serializable {
     }
 
     public List<Aluno> getListaDeAlunos() {
-        List<Aluno> alunos = alunoDao.getAlunos();
+        List<Aluno> alunos = alunoDao.getAlunosSemEstagioAtivo();
 
         return alunos;
     }

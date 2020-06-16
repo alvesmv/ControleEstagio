@@ -5,6 +5,7 @@
  */
 package br.edu.femass.controleestagio.dao;
 
+import br.edu.femass.controleestagio.enums.Status;
 import br.edu.femass.controleestagio.model.Aluno;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -71,6 +72,18 @@ public class AlunoDao {
    
     public List<Aluno> getAlunosComEstagio() {
         Query q = em.createQuery("select e.alunoEstagio from Estagio e");
+        return q.getResultList();
+    }
+    
+    public List<Aluno> getAlunosComEstagioAtivo() {
+        Query q = em.createQuery("select e.alunoEstagio from Estagio e and e.statusDoEstagio = :status");
+        q.setParameter("status", Status.Cursando);
+        return q.getResultList();
+    }
+    
+    public List<Aluno> getAlunosSemEstagioAtivo() {
+        Query q = em.createQuery("select e.alunoEstagio from Estagio e and e.statusDoEstagio != :status");
+        q.setParameter("status", Status.Cursando);
         return q.getResultList();
     }
 
