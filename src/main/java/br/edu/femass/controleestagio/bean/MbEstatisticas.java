@@ -45,7 +45,7 @@ public class MbEstatisticas implements Serializable {
         criaGraficoAlunoCuroEstagioII();
     }
 
-    public String inicio() {
+    public String iniciar() {
         return "FrmEstatisticas";
     }
 

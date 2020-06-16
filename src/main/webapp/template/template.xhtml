@@ -32,9 +32,8 @@
                         <p:submenu label="Academico" rendered="#{mbTemplate.menuAcademico()}">
                             <p:menuitem class="item" value="Estágio" action="#{mbEstagio.iniciar()}" ajax="false" />
                             <p:menuitem class="item" value="Relatorios" action="#{mbRelatorios.iniciar()}" ajax="false" />
-                            <p:menuitem class="item" value="Estatisticas" action="#{mbEstatisticas.iniciar()}" ajax="false" />
                         </p:submenu>
-                        <p:menuitem class="item" value="Estatísticas" action="#{mbEstatisticas.inicio()}" ajax="false" rendered="#{mbTemplate.menuEstatistica()}"/>
+                        <p:menuitem class="item" value="Estatísticas" action="#{mbEstatisticas.iniciar()}" ajax="false" rendered="#{mbTemplate.menuEstatistica()}"/>
                         <p:submenu label="Conta">
                             <p:menuitem class="item" value="Alterar Senha" action="#{mbUsuario.alteraSenhaMenu()}" ajax="false" />
                         </p:submenu>
