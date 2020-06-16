@@ -159,12 +159,22 @@ public class EstagioDao {
     }
     
     /*
-    Método que retorna para o webservice EstagioRest os dados do EstagioWS
+    Método que retorna para o webservice EstagioRest uma lista de EstagioWS
     */
     public List<EstagioWS> getListaDeEstagioWS(Long idAluno){
-        Query q = em.createQuery("select new EstagioWS(e.idEstagio, e.alunoEstagio.nome, e.alunoEstagio.matricula, e.orientadorEstagio.nomeOrientador,"
+        Query q = em.createQuery("select new br.edu.femass.controleestagio.wsmodel.EstagioWS(e.idEstagio, e.alunoEstagio.nome, e.alunoEstagio.matricula, e.orientadorEstagio.nomeOrientador,"
                 + " e.empresaEstagio.nomeEmpresa, e.disciplina, e.statusDoEstagio) from Estagio e where e.alunoEstagio.idAluno = :idAluno");
         q.setParameter("idAluno", idAluno);
         return q.getResultList();
+    }
+    
+    /*
+    Método que retorna para o webservice EstagioRest os dados do EstagioWS
+    */
+    public EstagioWS getEstagioWS(Long idAluno){
+        Query q = em.createQuery("select new br.edu.femass.controleestagio.wsmodel.EstagioWS(e.idEstagio, e.alunoEstagio.nome, e.alunoEstagio.matricula, e.orientadorEstagio.nomeOrientador,"
+                + " e.empresaEstagio.nomeEmpresa, e.disciplina, e.statusDoEstagio) from Estagio e where e.alunoEstagio.idAluno = :idAluno");
+        q.setParameter("idAluno", idAluno);
+        return (EstagioWS) q.getSingleResult();
     }
 }

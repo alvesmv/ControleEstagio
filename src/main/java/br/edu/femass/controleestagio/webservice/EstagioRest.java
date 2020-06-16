@@ -19,7 +19,7 @@ import javax.ws.rs.core.UriInfo;
  * @author dumas
  */
 @Named
-@Path("estagio")
+@Path("/estagio")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class EstagioRest {
@@ -31,11 +31,18 @@ public class EstagioRest {
     EstagioDao estagioDao;
     
     @GET
-    @Path("buscarestagio")
-    public List<EstagioWS> buscarEstagio(@PathParam("idAluno")Long idAluno){
+    @Path("lista/{idAluno}")
+    public List<EstagioWS> buscarListaDeEstagios(@PathParam("idAluno")Long idAluno){
         List<EstagioWS> estagios = estagioDao.getListaDeEstagioWS(idAluno);
         
         return estagios;
     }
     
+    @GET
+    @Path("ativo/{idAluno}")
+    public EstagioWS buscarEstagioAtivo(@PathParam("idAluno")Long idAluno){
+        EstagioWS estagios = estagioDao.getEstagioWS(idAluno);
+        
+        return estagios;
+    } 
 }

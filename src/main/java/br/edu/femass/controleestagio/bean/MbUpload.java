@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -71,6 +72,7 @@ public class MbUpload implements Serializable {
         this.doc.setNome(upFile.getFileName());
         this.doc.setTamanho(upFile.getSize());
         this.doc.setDocStatus(DocumentoStatus.em_analise);
+        this.doc.setDataEnvio(new Date());
         //this.doc.setDocTipo(DocumentoTipo.relatorio);
         //Obtem o objeto usuario instanciado no durante o login
         Object o = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
