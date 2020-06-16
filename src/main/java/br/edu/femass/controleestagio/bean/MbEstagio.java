@@ -98,10 +98,11 @@ public class MbEstagio implements Serializable {
         
         Long qtdeEstagiosAtivos = daoEstagio.getQtdeEstagiosAtivosPorMatricula(estagio.getAlunoEstagio().getMatricula());
         //Garante que aluno esteja cursando apenas um estágio por vez
-        if( qtdeEstagiosAtivos  >= 2 || qtdeEstagiosAtivos == 1 && estagio.getStatusDoEstagio().equals(Status.Cursando)){
-            FacesContext context = FacesContext.getCurrentInstance();
-            System.out.println("Não é possível mudar o status desse estágio pois aluno já possuí outro estágio ativo");
-            context.addMessage(null, new FacesMessage("Não é possível mudar o status desse estágio pois aluno já possuí outro estágio ativo") );
+        if( qtdeEstagiosAtivos  >= 1) 
+            if(estagio.getIdEstagio() != daoEstagio.getEstagioAtivoPorAluno(estagio.getAlunoEstagio()).getIdEstagio() && estagio.getStatusDoEstagio().equals(Status.Cursando)){
+                FacesContext context = FacesContext.getCurrentInstance();
+                System.out.println("Não é possível mudar o status desse estágio pois aluno já possuí outro estágio ativo");
+                context.addMessage(null, new FacesMessage("Não é possível mudar o status desse estágio pois aluno já possuí outro estágio ativo") );
 
         }else{
             if (alterando) {
