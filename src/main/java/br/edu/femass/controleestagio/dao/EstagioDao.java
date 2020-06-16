@@ -43,138 +43,170 @@ public class EstagioDao {
         q.setParameter("i", id);
         return q.getResultList();
     }
-    
-    public Estagio getEstagioAtivoPorAluno(Aluno aluno){
+
+    public Estagio getEstagioAtivoPorAluno(Aluno aluno) {
         Query q = em.createQuery("select e from Estagio e where e.alunoEstagio =:a  and e.statusDoEstagio = :c");
         q.setParameter("c", Status.Cursando);
         q.setParameter("a", aluno);
         return (Estagio) q.getSingleResult();
     }
-    
-    public List<Estagio> getEstagiosAtivosPorAluno(String matricula){
+
+    public List<Estagio> getEstagiosAtivosPorAluno(String matricula) {
         Query q = em.createQuery("select e from Estagio e where e.alunoEstagio.matricula =:m  and e.statusDoEstagio = :c");
         q.setParameter("c", Status.Cursando);
         q.setParameter("m", matricula);
         return q.getResultList();
     }
-    
-    public Long getQtdeEstagiosAtivosPorMatricula(String matricula){
+
+    public Long getQtdeEstagiosAtivosPorMatricula(String matricula) {
         Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e where e.alunoEstagio.matricula = :m and e.statusDoEstagio = :c");
         q.setParameter("m", matricula);
         q.setParameter("c", Status.Cursando);
         return (Long) q.getSingleResult();
-    } 
+    }
 
     /*
     Método que retorna uma lista de estágios concluídos (aprovados e reporvados)
-    */
-    public List<Estagio> getListEstagiosConcluidos(){
+     */
+    public List<Estagio> getListEstagiosConcluidos() {
         Query q = em.createQuery("select e from Estagio e where e.statusDoEstagio = :a  or e.statusDoEstagio = :r");
         q.setParameter("a", Status.Aprovado);
         q.setParameter("r", Status.Reprovado);
-        
+
         /* O trecho abaixo pode substituir o código acima enquanto houver apenas 3 status (aprovado, reprovado e cursando)
         Query q = em.createQuery("select e from Estagio e where e.statusDoEstagio != :c");
         q.setParameter("c", Status.Cursando);
-        */
+         */
         return q.getResultList();
     }
-    
+
     /*
     Método que retorna uma lista de estágio ativos referentes a disciplina estágio I
-    */
-    public List<Estagio> getListEstagioI(){
+     */
+    public List<Estagio> getListEstagioI() {
         Query q = em.createQuery("select e from Estagio e where e.disciplina =:d  and e.statusDoEstagio = :c");
         q.setParameter("c", Status.Cursando);
         q.setParameter("d", Disciplina.Estagio_Obrigatorio_I);
         return q.getResultList();
     }
-    
+
     /*
     Método que retorna uma lista de estágio ativos referentes a disciplina estágio II
-    */
-    public List<Estagio> getListEstagioII(){
+     */
+    public List<Estagio> getListEstagioII() {
         Query q = em.createQuery("select e from Estagio e where e.disciplina =:d  and e.statusDoEstagio = :c");
         q.setParameter("c", Status.Cursando);
         q.setParameter("d", Disciplina.Estagio_Obrigatorio_II);
         return q.getResultList();
     }
-    
+
     /*
     Método que retorna uma lista de estágio ativos referentes ao orientador e a disciplina estágio I
-    */
-    public List<Estagio> getListEstagioIByOrientador(String cpfOrientador){
+     */
+    public List<Estagio> getListEstagioIByOrientador(String cpfOrientador) {
         Query q = em.createQuery("select e from Estagio e where e.disciplina = :d and e.statusDoEstagio = :c and e.orientadorEstagio.cpfLogin = :cpf");
         q.setParameter("c", Status.Cursando);
         q.setParameter("d", Disciplina.Estagio_Obrigatorio_I);
         q.setParameter("cpf", cpfOrientador);
         return q.getResultList();
     }
-    
+
     /*
     Método que retorna uma lista de estágio ativos referentes ao orientador e a disciplina estágio II
-    */
-    public List<Estagio> getListEstagioIIByOrientador(String cpfOrientador){
+     */
+    public List<Estagio> getListEstagioIIByOrientador(String cpfOrientador) {
         Query q = em.createQuery("select e from Estagio e where e.disciplina = :d and e.statusDoEstagio = :c and e.orientadorEstagio.cpfLogin = :cpf");
         q.setParameter("c", Status.Cursando);
         q.setParameter("d", Disciplina.Estagio_Obrigatorio_II);
         q.setParameter("cpf", cpfOrientador);
         return q.getResultList();
     }
-    
+
     /*
     Método que retorna uma lista de estágios concluídos (aprovados e reporvados) pelo orientador
-    */
-    public List<Estagio> getListEstagiosConcluidosByOrientador(String cpfOrientador){
+     */
+    public List<Estagio> getListEstagiosConcluidosByOrientador(String cpfOrientador) {
         Query q = em.createQuery("select e from Estagio e where e.statusDoEstagio = :a or e.statusDoEstagio = :r and e.orientadorEstagio.cpfLogin = :cpf");
         q.setParameter("a", Status.Aprovado);
         q.setParameter("r", Status.Reprovado);
         q.setParameter("cpf", cpfOrientador);
         return q.getResultList();
     }
-    
+
     /*
     Método que retorna o número total de alunos estagiando
-    */
-    public Long getAlunosEstagiando(){
-        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e where e.statusDoEstagio = :c");
+     */
+    public Long getQtdAlunosEstagiando() {
+        Query q = em.createQuery("select COUNT(e) from Estagio e where e.statusDoEstagio = :c");
         q.setParameter("c", Status.Cursando);
         return (Long) q.getSingleResult();
-    } 
-    
+    }
+
     /*
-    Método que retorna o número de alunos que estão estagiando por curso
-    */
-    public List<Long> getAlunoPorCurso(){
-        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e group by e.alunoEstagio.curso.idCurso order by e.alunoEstagio.curso.idCurso");
+    Método que retorna o número de alunos por curso que estajam com estágio ativo agrupado pelo idCurso
+     */
+    public List<Number> getQtdAlunoPorCurso() {
+        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e where e.statusDoEstagio = :status group by e.alunoEstagio.curso.nomeCurso order by e.alunoEstagio.curso.nomeCurso");
+        q.setParameter("status", Status.Cursando);
         return q.getResultList();
     }
-    
+
     /*
-    Método que retorna o número de alunos por empresa
-    */
-    public List<Long> getAlunosPorEmpresa(){
-        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e group by e.empresaEstagio.idEmpresa order by e.empresaEstagio.idEmpresa");
+    Método que retorna o número de alunos por empresa com estágio ativo
+     */
+    public List<Number> getQtdAlunosPorEmpresa() {
+        Query q = em.createQuery("select COUNT(e) from Estagio e where e.statusDoEstagio = :status group by e.empresaEstagio.idEmpresa order by e.empresaEstagio.idEmpresa");
+        q.setParameter("status", Status.Cursando);
         return q.getResultList();
     }
-    
+
     /*
-    Método que retorna para o webservice EstagioRest uma lista de EstagioWS
-    */
-    public List<EstagioWS> getListaDeEstagioWS(Long idAluno){
+    Método que retorna para o webservice EstagioRest os dados do EstagioWS
+     */
+    public List<EstagioWS> getListaDeEstagioWS(Long idAluno) {
         Query q = em.createQuery("select new br.edu.femass.controleestagio.wsmodel.EstagioWS(e.idEstagio, e.alunoEstagio.nome, e.alunoEstagio.matricula, e.orientadorEstagio.nomeOrientador,"
                 + " e.empresaEstagio.nomeEmpresa, e.disciplina, e.statusDoEstagio) from Estagio e where e.alunoEstagio.idAluno = :idAluno");
         q.setParameter("idAluno", idAluno);
         return q.getResultList();
     }
-    
+
+    /*
+    Método que retorna o número de alunos por curso que estajam com estágio ativo agrupado pelo idCurso
+     */
+    public List<Number> getQtdAlunoPorTipoEstagio() {
+        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e where e.statusDoEstagio = :status group by e.tipoEstagio");
+        q.setParameter("status", Status.Cursando);
+        return q.getResultList();
+    }
+
+    /*
+    Método que retorna o número de alunos por curso que estajam com estágio ativo agrupado pelo idCurso
+     */
+    public List<Number> getQtdAlunoPorCursoEmEstagioI() {
+        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e where e.statusDoEstagio = :status and e.disciplina = :disciplina group by e.alunoEstagio.curso.nomeCurso order by e.alunoEstagio.curso.nomeCurso");
+        q.setParameter("status", Status.Cursando);
+        q.setParameter("disciplina", Disciplina.Estagio_Obrigatorio_I);
+        return q.getResultList();
+    }
+
+    /*
+    Método que retorna o número de alunos por curso que estajam com estágio ativo agrupado pelo idCurso
+     */
+    public List<Number> getQtdAlunoPorCursoEmEstagioII() {
+        Query q = em.createQuery("select COUNT(e.alunoEstagio) from Estagio e where e.statusDoEstagio = :status and e.disciplina = :disciplina group by e.alunoEstagio.curso.nomeCurso order by e.alunoEstagio.curso.nomeCurso");
+        q.setParameter("status", Status.Cursando);
+        q.setParameter("disciplina", Disciplina.Estagio_Obrigatorio_II);
+        return q.getResultList();
+    }
+
     /*
     Método que retorna para o webservice EstagioRest os dados do EstagioWS
-    */
-    public EstagioWS getEstagioWS(Long idAluno){
+     */
+    public EstagioWS getEstagioWS(Long idAluno) {
         Query q = em.createQuery("select new br.edu.femass.controleestagio.wsmodel.EstagioWS(e.idEstagio, e.alunoEstagio.nome, e.alunoEstagio.matricula, e.orientadorEstagio.nomeOrientador,"
                 + " e.empresaEstagio.nomeEmpresa, e.disciplina, e.statusDoEstagio) from Estagio e where e.alunoEstagio.idAluno = :idAluno");
         q.setParameter("idAluno", idAluno);
         return (EstagioWS) q.getSingleResult();
     }
+
 }

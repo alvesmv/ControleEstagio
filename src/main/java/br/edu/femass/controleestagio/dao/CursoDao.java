@@ -58,4 +58,12 @@ public class CursoDao {
         Query q = em.createQuery("select count(c) from Curso c");
         return (Long) q.getSingleResult();
     }
+
+    /*
+    Método que retorna a lista de curso ordenado pelo nomeCurso
+     */
+    public List<String> getListNomeCurso() {
+        Query q = em.createQuery("select c.nomeCurso from Curso c order by c.nomeCurso");
+        return q.getResultList();
+    }
 }
