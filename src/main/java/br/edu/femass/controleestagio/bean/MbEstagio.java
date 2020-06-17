@@ -97,7 +97,8 @@ public class MbEstagio implements Serializable {
         estagio.setOrientadorEstagio(getOrientadorSelecionado());
         //Refatorar trecho abaixo
         Long qtdeEstagiosAtivos = daoEstagio.getQtdeEstagiosAtivosPorMatricula(estagio.getAlunoEstagio().getMatricula());
-        if(estagio.getIdEstagio() != daoEstagio.getEstagioAtivoPorAluno(estagio.getAlunoEstagio()).getIdEstagio() 
+        Estagio estagioDatabase = daoEstagio.getEstagioAtivoPorAluno(estagio.getAlunoEstagio());
+        if(estagioDatabase != null && estagio.getIdEstagio() != estagioDatabase.getIdEstagio() 
                 && estagio.getStatusDoEstagio().equals(Status.Cursando))
              qtdeEstagiosAtivos++;
         //Garante que aluno esteja cursando apenas um estágio por vez
