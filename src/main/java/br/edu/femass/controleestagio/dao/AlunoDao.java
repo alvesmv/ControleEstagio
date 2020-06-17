@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.femass.controleestagio.dao;
 
 import br.edu.femass.controleestagio.enums.Status;
@@ -71,18 +66,18 @@ public class AlunoDao {
 
    
     public List<Aluno> getAlunosComEstagio() {
-        Query q = em.createQuery("select e.alunoEstagio from Estagio e");
+        Query q = em.createQuery("select e.alunoEstagio from Estagio e where e is not null");
         return q.getResultList();
     }
-    
+    /*
     public List<Aluno> getAlunosComEstagioAtivo() {
-        Query q = em.createQuery("select e.alunoEstagio from Estagio e and e.statusDoEstagio = :status");
+        Query q = em.createQuery("select e.alunoEstagio from Estagio e and e.statusDoEstagio = :status where e is not null");
         q.setParameter("status", Status.Cursando);
         return q.getResultList();
     }
     
     public List<Aluno> getAlunosSemEstagioAtivo() {
-        Query q = em.createQuery("select e.alunoEstagio from Estagio e and e.statusDoEstagio != :status");
+        Query q = em.createQuery("select e.alunoEstagio from Estagio e and e.statusDoEstagio <> :status where e is not null");
         q.setParameter("status", Status.Cursando);
         return q.getResultList();
     }

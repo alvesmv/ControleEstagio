@@ -74,7 +74,7 @@ public class EstagioDao {
         q.setParameter("r", Status.Reprovado);
 
         /* O trecho abaixo pode substituir o código acima enquanto houver apenas 3 status (aprovado, reprovado e cursando)
-        Query q = em.createQuery("select e from Estagio e where e.statusDoEstagio != :c");
+        Query q = em.createQuery("select e from Estagio e where e.statusDoEstagio <> :c");
         q.setParameter("c", Status.Cursando);
          */
         return q.getResultList();

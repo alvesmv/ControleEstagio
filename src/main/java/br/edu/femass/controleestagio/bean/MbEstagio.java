@@ -156,7 +156,7 @@ public class MbEstagio implements Serializable {
     }
 
     public List<Aluno> getListaDeAlunos() {
-        List<Aluno> alunos = alunoDao.getAlunosSemEstagioAtivo();
+        List<Aluno> alunos = alunoDao.getAlunos();
 
         return alunos;
     }
