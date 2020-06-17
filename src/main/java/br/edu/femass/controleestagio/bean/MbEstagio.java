@@ -13,6 +13,7 @@ import br.edu.femass.controleestagio.model.Orientador;
 import br.edu.femass.controleestagio.model.Documento;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -92,28 +93,27 @@ public class MbEstagio implements Serializable {
 
     public String gravar() {
 
-        estagio.setAlunoEstagio(getAlunoSelecionado());
+        Aluno alunoSelecionado = getAlunoSelecionado();
+        estagio.setAlunoEstagio(alunoSelecionado);
         estagio.setEmpresaEstagio(getEmpresaSelecionada());
         estagio.setOrientadorEstagio(getOrientadorSelecionado());
-        //Refatorar trecho abaixo
-        Long qtdeEstagiosAtivos = daoEstagio.getQtdeEstagiosAtivosPorMatricula(estagio.getAlunoEstagio().getMatricula());
-        Estagio estagioDatabase = daoEstagio.getEstagioAtivoPorAluno(estagio.getAlunoEstagio());
-        if(estagioDatabase != null && estagio.getIdEstagio() != estagioDatabase.getIdEstagio() 
-                && estagio.getStatusDoEstagio().equals(Status.Cursando))
-             qtdeEstagiosAtivos++;
-        //Garante que aluno esteja cursando apenas um estágio por vez
-        if( qtdeEstagiosAtivos >= 2) {
+        
+        //Refatorar trecho abaixo que não permite aluno ter mais de um estágio ativo
+       
+        if (alterando){ 
+                daoEstagio.alterar(estagio);
+                
+        }else if(daoEstagio.getQtdeEstagiosAtivosPorMatricula(alunoSelecionado.getMatricula()) == 0){
+            //Cria um novo estágio ativo somente quando não há estágio em aberto no database
+            estagio.setStatusDoEstagio(Status.Cursando);
+            daoEstagio.inserir(estagio);
+        
+        } else{
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Erro","Não é possível mudar o status desse estágio pois aluno já possuí outro estágio ativo") );
             return null;
-        }else{
-            if (alterando) {
-                daoEstagio.alterar(estagio);
-            } else {
-                estagio.setStatusDoEstagio(Status.Cursando);
-                daoEstagio.inserir(estagio);
-            }
         }
+        
         
         return iniciar();
     }

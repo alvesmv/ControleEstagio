@@ -70,6 +70,11 @@ public class AlunoDao {
         return q.getResultList();
     }
     /*
+        Esses métodos comentados abaixoPOSSIVELMENTE não funcionam quando 
+        não há estágios pois e é null, POSSIVELMENTE porque foi acrescentado 
+        "where e is not null" no final da query mas não foi testatdo
+    */
+    /*
     public List<Aluno> getAlunosComEstagioAtivo() {
         Query q = em.createQuery("select e.alunoEstagio from Estagio e and e.statusDoEstagio = :status where e is not null");
         q.setParameter("status", Status.Cursando);
@@ -81,7 +86,8 @@ public class AlunoDao {
         q.setParameter("status", Status.Cursando);
         return q.getResultList();
     }
-
+    */
+    
     /*
     Método que retorna o número de alunos cadastrado no sistema
     */

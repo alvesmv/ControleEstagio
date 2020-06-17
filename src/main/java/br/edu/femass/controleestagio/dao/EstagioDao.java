@@ -45,10 +45,13 @@ public class EstagioDao {
     }
 
     public Estagio getEstagioAtivoPorAluno(Aluno aluno) {
-        Query q = em.createQuery("select e from Estagio e where e.alunoEstagio =:a  and e.statusDoEstagio = :c");
+        Query q = em.createQuery("select e from Estagio e where e is not null and e.alunoEstagio =:a  and e.statusDoEstagio = :c");
         q.setParameter("c", Status.Cursando);
         q.setParameter("a", aluno);
-        return (Estagio) q.getSingleResult();
+        
+        Estagio e = (Estagio) q.getSingleResult();
+        if(e != null) return e;
+        else return null;
     }
 
     public List<Estagio> getEstagiosAtivosPorAluno(String matricula) {
