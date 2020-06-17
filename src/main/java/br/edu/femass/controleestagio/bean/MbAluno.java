@@ -2,9 +2,11 @@ package br.edu.femass.controleestagio.bean;
 
 import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.dao.CursoDao;
+import br.edu.femass.controleestagio.dao.EstagioDao;
 import br.edu.femass.controleestagio.dao.UsuarioDao;
 import br.edu.femass.controleestagio.model.Aluno;
 import br.edu.femass.controleestagio.model.Curso;
+import br.edu.femass.controleestagio.model.Estagio;
 import br.edu.femass.controleestagio.enums.TipoDeAcesso;
 import br.edu.femass.controleestagio.model.Usuario;
 import java.io.Serializable;
@@ -35,6 +37,8 @@ public class MbAluno implements Serializable {
     CursoDao daoCurso = new CursoDao();
     @EJB
     UsuarioDao usuarioDao = new UsuarioDao();
+    @EJB
+    EstagioDao estagioDao = new EstagioDao();
 
     public MbAluno() {
     }
@@ -68,6 +72,12 @@ public class MbAluno implements Serializable {
     }
 
     public String excluir(Aluno a) {
+        List<Estagio> estagioList = estagioDao.getEstagiosPorAluno(a);
+        
+        for(Estagio e : estagioList)
+        {
+            estagioDao.excluir(e);
+        }
         alunoDao.excluir(a);
         alunos = alunoDao.getAlunos();
         return null;

@@ -43,6 +43,12 @@ public class EstagioDao {
         q.setParameter("i", id);
         return q.getResultList();
     }
+    
+    public List<Estagio> getEstagiosPorAluno(Aluno a) {
+        Query q = em.createQuery("select e from Estagio e where e.alunoEstagio = :a");
+        q.setParameter("a", a);
+        return q.getResultList();
+    }
 
     public Estagio getEstagioAtivoPorAluno(Aluno aluno) {
         Query q = em.createQuery("select e from Estagio e where e is not null and e.alunoEstagio =:a  and e.statusDoEstagio = :c");
