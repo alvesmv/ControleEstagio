@@ -27,7 +27,6 @@ import org.primefaces.model.StreamedContent;
 public class MbRelatorios implements Serializable {
 
     private List<Documento> docList;
-    private List<Aluno> alunoList;
     private List<Estagio> listaEstagioI;
     private List<Estagio> listaEstagioII;
     private List<Estagio> listaEstagiosConcluidos;
@@ -58,19 +57,18 @@ public class MbRelatorios implements Serializable {
 
         switch (user.getTipoDeAcesso()) {
             case aluno:
-                /*Possivelmente será alterado após trocar a relação Documento-Aluno por Documento-Estagio*/
                 listaEstagiosAtivosPorAluno = estagioDao.getEstagiosAtivosPorAluno(login);
-
                 return "FrmEstagiosDoAluno";
+                
             case orientador:
-                //alunoList = alunoDao.getAlunosByOrientador(login); // excluir esta linha
                 listaEstagioI = estagioDao.getListEstagioIByOrientador(login);
                 listaEstagioII = estagioDao.getListEstagioIIByOrientador(login);
                 listaEstagiosConcluidos = estagioDao.getListEstagiosConcluidosByOrientador(login);
                 break;
+                
             case coordenador:
             case admin:
-                alunoList = alunoDao.getAlunosComEstagio();
+                
                 listaEstagioI = estagioDao.getListEstagioI();
                 listaEstagioII = estagioDao.getListEstagioII();
                 listaEstagiosConcluidos = estagioDao.getListEstagiosConcluidos();
@@ -116,14 +114,6 @@ public class MbRelatorios implements Serializable {
         this.doc = d;
         this.conteudoTransmitido = new DefaultStreamedContent(new ByteArrayInputStream(d.getArquivo()), "application/pdf");
         return "FrmEditRelatorio";
-    }
-
-    public List<Aluno> getAlunoList() {
-        return alunoList;
-    }
-
-    public void setAlunoList(List<Aluno> alunoList) {
-        this.alunoList = alunoList;
     }
 
     public List<Estagio> getListaEstagioI() {

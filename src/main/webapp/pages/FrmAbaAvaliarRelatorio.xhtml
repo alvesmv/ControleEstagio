@@ -61,7 +61,7 @@
                         <p:panelGrid columns="1">
                             <p:dataTable style ="margin-top:2%; justify-content: center; align-items: center;"
                                          var="est" value="#{mbRelatorios.listaEstagioNaoObrigatorio}"
-                                         emptyMessage="Em construçãso">
+                                         emptyMessage="Nenhum relatorio enviado">
 
                                 <p:column headerText="Nome do Aluno">
                                     <h:outputText value="#{est.alunoEstagio.nome}"></h:outputText>
@@ -77,6 +77,9 @@
 
                                 <p:column headerText="Situação">
                                     <h:outputText value="#{est.statusDoEstagio}"></h:outputText>
+                                </p:column>
+                                <p:column headerText="Ações">
+                                    <p:commandButton value="Acessar Ficha de Relatorios" action="#{mbRelatorios.acessarFichaDeRelatorios(est)}"/>
                                 </p:column>
                             </p:dataTable>
                         </p:panelGrid>
