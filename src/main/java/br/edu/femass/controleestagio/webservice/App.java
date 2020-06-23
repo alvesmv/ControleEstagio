@@ -7,7 +7,7 @@ import javax.ws.rs.core.Application;
  *
  * @author Souza
  */
-@javax.ws.rs.ApplicationPath("ws")
+@javax.ws.rs.ApplicationPath("api")
 public class App extends Application {
 
     @Override
@@ -24,6 +24,7 @@ public class App extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(br.edu.femass.controleestagio.webservice.EstagioRest.class);
         resources.add(br.edu.femass.controleestagio.webservice.Filter.class);
         resources.add(br.edu.femass.controleestagio.webservice.LoginWS.class);
     }

@@ -31,17 +31,17 @@ public class EstagioRest {
     EstagioDao estagioDao;
     
     @GET
-    @Path("lista/{idAluno}")
-    public List<EstagioWS> buscarListaDeEstagios(@PathParam("idAluno")Long idAluno){
-        List<EstagioWS> estagios = estagioDao.getListaDeEstagioWS(idAluno);
+    @Path("lista/{login}")
+    public List<EstagioWS> buscarListaDeEstagios(@PathParam("login")String login){
+        List<EstagioWS> estagios = estagioDao.getListaDeEstagioWS(login);
         
         return estagios;
     }
     
     @GET
-    @Path("ativo/{idAluno}")
-    public EstagioWS buscarEstagioAtivo(@PathParam("idAluno")Long idAluno){
-        EstagioWS estagios = estagioDao.getEstagioWS(idAluno);
+    @Path("ativo/{login}")
+    public EstagioWS buscarEstagioAtivo(@PathParam("login")String login){
+        EstagioWS estagios = estagioDao.getEstagioWS(login);
         
         return estagios;
     } 
