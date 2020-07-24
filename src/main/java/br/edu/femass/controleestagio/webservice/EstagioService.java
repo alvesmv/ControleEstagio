@@ -7,6 +7,7 @@ import br.edu.femass.controleestagio.enums.DocumentoStatus;
 import br.edu.femass.controleestagio.model.Documento;
 import br.edu.femass.controleestagio.wsmodel.EstagioWS;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,10 +21,13 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.UriInfo;
+import org.apache.commons.io.FileUtils;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
@@ -69,6 +73,22 @@ public class EstagioService {
             return Response.status(500).entity(e.getMessage()).build();
         }
         return Response.status(200).entity("Usuário atualizado com sucesso").build();
+    }
+    
+    @GET
+    @Path("ativo/{login}/pdf")
+    @Produces("application/pdf")
+    public Response download(@QueryParam("filename")String nomeArq) throws IOException{
+        
+        Documento doc = docDao.getDocumentoByString(nomeArq);
+
+        File f = new File(doc.getNome());
+        FileUtils.writeByteArrayToFile(f, doc.getArquivo());
+        
+        ResponseBuilder res = Response.ok((Object) f);
+        res.header("Content-Disposition","attachment; filename="+doc.getNome());
+        
+        return res.build();
     }
     
     @POST
