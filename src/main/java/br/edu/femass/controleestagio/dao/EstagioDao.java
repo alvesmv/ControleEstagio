@@ -38,7 +38,7 @@ public class EstagioDao {
         return q.getResultList();
     }
 
-    public List<Estagio> getEstagios(String id) {
+    public List<Estagio> getEstagios(Long id) {
         Query q = em.createQuery("select e from Estagio e where e.idEstagio = :i");
         q.setParameter("i", id);
         return q.getResultList();

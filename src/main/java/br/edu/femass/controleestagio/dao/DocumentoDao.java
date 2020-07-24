@@ -53,11 +53,7 @@ public class DocumentoDao {
         q.setParameter("m", matricula);
         return q.getResultList();
     }
-    
-    /*
-        O método abaixo considera a mudança de Documento-Aluno para Dcoumento-Estágio,
-    basta colocar um estágio ativo no parâmetro
-    */
+
     public List<Documento> getListaDocumentosByEstagio(Estagio e){
         Query q = em.createQuery("select d from Documento d where d.estagio = :e");
         q.setParameter("e", e);

@@ -9,8 +9,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.PathParam;
-
-//Dependencias dos atributos
 import br.edu.femass.controleestagio.dao.UsuarioDao;
 import br.edu.femass.controleestagio.dao.AlunoDao;
 import br.edu.femass.controleestagio.model.Aluno;
@@ -29,7 +27,7 @@ import javax.ejb.EJB;
  * @author Souza
  */
 @Path("/login")
-public class LoginWS {
+public class LoginService {
 
     @Context
     private UriInfo context;
@@ -39,7 +37,7 @@ public class LoginWS {
     @EJB
     AlunoDao alunoDao;
 
-    public LoginWS() {
+    public LoginService() {
     }
     
     //Metodo para obter usuario atraves do login e senha
@@ -78,7 +76,7 @@ public class LoginWS {
                     }
                     
             } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
-                Logger.getLogger(LoginWS.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(LoginService.class.getName()).log(Level.SEVERE, null, ex);
             }
             
             return null;
@@ -103,7 +101,7 @@ public class LoginWS {
         return senhaHex;
     }
     /**
-     * PUT method for updating or creating an instance of LoginWS
+     * PUT method for updating or creating an instance of LoginService
      * @param content representation for the resource
      */
     @PUT
