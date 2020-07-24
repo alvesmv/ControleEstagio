@@ -15,6 +15,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -89,6 +90,21 @@ public class EstagioService {
         res.header("Content-Disposition","attachment; filename="+doc.getNome());
         
         return res.build();
+    }
+    
+    @DELETE
+    @Path("ativo/{login}/pdf")
+    public Response delete(@QueryParam("filename")String nomeArq){
+        try
+        {
+            Documento doc = docDao.getDocumentoByString(nomeArq);
+            docDao.excluir(doc);
+            return Response.status(200).entity("Arquivo excluido com sucesso").build();
+        }
+        catch(Exception e){
+            
+            return Response.status(500).entity(e.getMessage()).build();
+        }
     }
     
     @POST
