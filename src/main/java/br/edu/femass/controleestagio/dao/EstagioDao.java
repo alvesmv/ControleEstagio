@@ -213,7 +213,7 @@ public class EstagioDao {
      */
     public EstagioWS getEstagioWS(String matricula) {
         Query q = em.createQuery("select new br.edu.femass.controleestagio.wsmodel.EstagioWS(e.idEstagio, e.alunoEstagio.nome, e.alunoEstagio.matricula, e.orientadorEstagio.nomeOrientador,"
-                + " e.empresaEstagio.nomeEmpresa, e.disciplina, e.statusDoEstagio) from Estagio e where e.alunoEstagio.matricula = :m");
+                + " e.empresaEstagio.nomeEmpresa, e.disciplina, e.statusDoEstagio, e.tipoEstagio, e.dataInicioEstagio) from Estagio e where e.alunoEstagio.matricula = :m");
         q.setParameter("m", matricula);
         return (EstagioWS) q.getSingleResult();
     }

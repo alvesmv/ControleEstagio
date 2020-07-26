@@ -2,13 +2,15 @@ package br.edu.femass.controleestagio.wsmodel;
 
 import br.edu.femass.controleestagio.enums.Disciplina;
 import br.edu.femass.controleestagio.enums.Status;
+import br.edu.femass.controleestagio.enums.TipoEstagio;
+import java.util.Date;
 
 /**
  *
  * @author dumas
  */
 public class EstagioWS {
-    
+
     private Long idEstagio;
     private String nomeAluno;
     private String matriculaAluno;
@@ -16,8 +18,12 @@ public class EstagioWS {
     private String nomeEmpresa;
     private Disciplina disciplina;
     private Status statusEstagio;
+    private TipoEstagio tipoEstagio;
+    private Date dataInicioEstagio;
 
-    public EstagioWS(Long idEstagio, String nomeAluno, String matriculaAluno, String nomeOrientador, String nomeEmpresa, Disciplina disciplina, Status statusEstagio) {
+    public EstagioWS(Long idEstagio, String nomeAluno, String matriculaAluno,
+            String nomeOrientador, String nomeEmpresa, Disciplina disciplina,
+            Status statusEstagio, TipoEstagio tipoEstagio, Date dataInicioEstagio) {
         this.idEstagio = idEstagio;
         this.nomeAluno = nomeAluno;
         this.matriculaAluno = matriculaAluno;
@@ -25,6 +31,8 @@ public class EstagioWS {
         this.nomeEmpresa = nomeEmpresa;
         this.disciplina = disciplina;
         this.statusEstagio = statusEstagio;
+        this.tipoEstagio = tipoEstagio;
+        this.dataInicioEstagio = dataInicioEstagio;
     }
 
     public Long getIdEstagio() {
@@ -82,6 +90,20 @@ public class EstagioWS {
     public void setStatusEstagio(Status statusEstagio) {
         this.statusEstagio = statusEstagio;
     }
-    
-    
+
+    public TipoEstagio getTipoEstagio() {
+        return tipoEstagio;
+    }
+
+    public void setTipoEstagio(TipoEstagio tipoEstagio) {
+        this.tipoEstagio = tipoEstagio;
+    }
+
+    public Date getDataInicioEstagio() {
+        return dataInicioEstagio;
+    }
+
+    public void setDataInicioEstagio(Date dataInicioEstagio) {
+        this.dataInicioEstagio = dataInicioEstagio;
+    }
 }
