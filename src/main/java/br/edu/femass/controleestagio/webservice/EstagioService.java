@@ -94,10 +94,10 @@ public class EstagioService {
     
     @DELETE
     @Path("ativo/{login}/pdf")
-    public Response delete(@QueryParam("filename")String nomeArq){
+    public Response delete(@QueryParam("filename")String nomeArq, @PathParam("login")String login){
         try
         {
-            Documento doc = docDao.getDocumentoByString(nomeArq);
+            Documento doc = docDao.getDocumentoByEstagio(nomeArq, estagioDao.getEstagioAtivoPorAluno(alunoDao.getAlunoPorMatricula(login)));
             docDao.excluir(doc);
             return Response.status(200).entity("Arquivo excluido com sucesso").build();
         }
